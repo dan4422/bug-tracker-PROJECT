@@ -1,6 +1,7 @@
 // it is best not to edit this file and instead adjust the values inside of the
 // .env file at the root of the project. Only make changes here if you're sure
 // you know what you are doing
+require('dotenv').config()
 
 module.exports = {
   development: {
