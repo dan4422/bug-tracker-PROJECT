@@ -1,5 +1,7 @@
-import React from 'react'
+// CHAKRA:
+import { Container } from '@chakra-ui/react'
 
+// PROJECTS:
 export default function Projects() {
-  return <div>Projects</div>
+  return <Container>Projects</Container>
 }

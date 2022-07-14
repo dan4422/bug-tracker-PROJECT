@@ -1,5 +1,7 @@
-import React from 'react'
+// CHAKRA:
+import { Container } from '@chakra-ui/react'
 
+// LOGIN:
 export default function Login() {
-  return <div>Login</div>
+  return <Container>Login</Container>
 }

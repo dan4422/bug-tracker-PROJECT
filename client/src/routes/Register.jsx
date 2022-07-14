@@ -1,5 +1,7 @@
-import React from 'react'
+// CHAKRA:
+import { Container } from '@chakra-ui/react'
 
+// REGISTER:
 export default function Register() {
-  return <div>Register</div>
+  return <Container>Register</Container>
 }

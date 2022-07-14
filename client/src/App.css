@@ -3,4 +3,6 @@
   --color-b: rgba(39, 87, 44, 0.579);
   min-height: 100vh;
   background: linear-gradient(to bottom right, var(--color-a), var(--color-b));
+  display: flex;
+  flex-direction: row;
 }
