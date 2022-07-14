@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2020",
+    "checkJs": true,
+    "baseUrl": "./",
+    "esModuleInterop": true,
+    "moduleResolution": "node"
+  },
+  "include": ["./types.d.ts", "./**/*.js", "./**/*.ts", "client/src/App.jsx"],
+  "exclude": ["node_modules", "client"]
+}
