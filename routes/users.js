@@ -5,7 +5,7 @@ const models = require('../models')
 
 // GET /api/v1/users/register
 router.post('/register', async (req, res) => {
-  const { email, password, username, state, city, date } = req.body
+  const { email, password, username, state, city, DOB } = req.body
   // if required fields missing, send error
   if (!email || !password) {
     return res.status(400).json({ error: 'missing email and/or password' })
@@ -25,7 +25,7 @@ router.post('/register', async (req, res) => {
     username,
     state,
     city,
-    date,
+    DOB,
   })
   res.json({ success: 'registered successfully' })
 })
