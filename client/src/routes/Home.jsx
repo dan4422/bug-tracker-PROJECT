@@ -1,11 +1,11 @@
 // CHAKRA:
-import { Container, Heading } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
 // HOME:
 export default function Home() {
   return (
-    <Container>
-      <Heading>Bugsly</Heading>
-    </Container>
+    <Box border="1px" borderColor="red" w="100%" h="100%">
+      Home
+    </Box>
   )
 }

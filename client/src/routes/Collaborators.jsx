@@ -1,7 +1,11 @@
 // CHAKRA:
-import { Container } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
 // COLLABORATORS:
 export default function Collaborators() {
-  return <Container>Collaborators</Container>
+  return (
+    <Box border="1px" borderColor="red" w="100%" h="100%">
+      Collaborators
+    </Box>
+  )
 }
