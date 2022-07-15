@@ -5,7 +5,7 @@ import { Box } from '@chakra-ui/react'
 export default function Home() {
   return (
     <Box border="1px" borderColor="red" w="100%" h="100%">
-      Submit Log
+      Home
     </Box>
   )
 }
