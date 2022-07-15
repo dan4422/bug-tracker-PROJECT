@@ -5,13 +5,28 @@ const models = require('../models')
 
 // GET /api/v1/users/register
 router.post('/register', async (req, res) => {
-  const { email, password } = req.body
+  const { email, password, username, state, city, date } = req.body
   // if required fields missing, send error
   if (!email || !password) {
     return res.status(400).json({ error: 'missing email and/or password' })
   }
+  const existingUser = await models.User.findOne({
+    where: { email: req.body.email },
+  })
+  if (existingUser) {
+    res.status(400).json({ error: 'Email already in use' })
+    return
+  }
+  const hash = await bcrypt.hash(password, 10)
   // create new user in database and send success message
-  const user = await models.User.create({ email, password })
+  const user = await models.User.create({
+    email,
+    password: hash,
+    username,
+    state,
+    city,
+    date,
+  })
   res.json({ success: 'registered successfully' })
 })
 
