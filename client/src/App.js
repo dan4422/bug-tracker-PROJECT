@@ -1,5 +1,5 @@
 // CHAKRA:
-import { Flex } from '@chakra-ui/react'
+import { Box, Flex } from '@chakra-ui/react'
 
 // REACT ROUTER:
 import { Route, Routes } from 'react-router-dom'
@@ -22,9 +22,9 @@ export default function App() {
   return (
     <div className="App">
       <PrimaryNav />
-      <Flex flexDirection={'column'} alignItems="center" w={'100vw'}>
+      <Flex flexDirection={'column'} alignItems="center" w={'100vw'} gap="10px">
         <SiteTitle />
-        <Flex border="1px" borderColor="red">
+        <Box border="1px" borderColor="red" w="100%" h="100%">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
@@ -33,7 +33,7 @@ export default function App() {
             <Route path="/issues" element={<Issues />} />
             <Route path="/collaborators" element={<Collaborators />} />
           </Routes>
-        </Flex>
+        </Box>
       </Flex>
     </div>
   )

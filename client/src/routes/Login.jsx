@@ -1,7 +1,11 @@
 // CHAKRA:
-import { Container } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
 // LOGIN:
 export default function Login() {
-  return <Container>Login</Container>
+  return (
+    <Box border="1px" borderColor="red" w="100%" h="100%">
+      Login
+    </Box>
+  )
 }

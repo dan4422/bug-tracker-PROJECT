@@ -5,4 +5,9 @@
   background: linear-gradient(to bottom right, var(--color-a), var(--color-b));
   display: flex;
   flex-direction: row;
+  gap: 10px;
+}
+
+.main {
+  gap: 10px;
 }

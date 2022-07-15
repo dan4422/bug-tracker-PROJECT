@@ -1,7 +1,11 @@
 // CHAKRA:
-import { Container } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 
 // REGISTER:
 export default function Register() {
-  return <Container>Register</Container>
+  return (
+    <Box border="1px" borderColor="red" w="100%" h="100%">
+      Register
+    </Box>
+  )
 }
