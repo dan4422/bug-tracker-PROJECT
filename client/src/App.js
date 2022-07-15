@@ -9,6 +9,7 @@ import Register from './routes/Register'
 import Projects from './routes/Projects'
 import Issues from './routes/Issues'
 import Collaborators from './routes/Collaborators'
+import SecondaryNav from './components/SecondaryNav'
 
 // COMPONENTS:
 import PrimaryNav from './components/PrimaryNav'

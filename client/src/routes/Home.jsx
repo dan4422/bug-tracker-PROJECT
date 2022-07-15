@@ -1,7 +1,11 @@
 // CHAKRA:
-import { Container } from '@chakra-ui/react'
+import { Container, Heading } from '@chakra-ui/react'
 
 // HOME:
 export default function Home() {
-  return <Container>Home</Container>
+  return (
+    <Container>
+      <Heading>Bugsly</Heading>
+    </Container>
+  )
 }
