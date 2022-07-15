@@ -1,5 +1,4 @@
 import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
-import React, { useState } from 'react'
 
 function FormRegister() {
   return (
