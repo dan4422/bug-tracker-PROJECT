@@ -1,10 +1,7 @@
 // CHAKRA:
-import { Container } from '@chakra-ui/react'
+import { Box, Container, Text } from '@chakra-ui/react'
 
 // LOGIN:
-export default function Login() {
-  return <Container>Login</Container>
-import { Box, Text } from '@chakra-ui/react'
 import React from 'react'
 import FormLogin from '../components/FormLogin'
 

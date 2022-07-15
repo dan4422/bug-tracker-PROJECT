@@ -1,7 +1,5 @@
-import { Alert, AlertIcon, Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
-import { Link, BrowserRouter as Router, useNavigate } from 'react-router-dom'
-import React, { useState } from 'react'
-// import { useLoginMutation } from '../redux/services/user'
+import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 
 function FormLogin() {
   return (
