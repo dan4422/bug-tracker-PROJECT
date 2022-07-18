@@ -31,7 +31,7 @@ function FormRegister() {
   }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <FormControl my="5">
         <FormLabel htmlFor="username">Username</FormLabel>
         <Input
