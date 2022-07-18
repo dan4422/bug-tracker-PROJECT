@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 function HomePageGraph() {
-  return <div>HomePageGraph</div>
+  return <div>Home Page Graph</div>
 }
 
 export default HomePageGraph
