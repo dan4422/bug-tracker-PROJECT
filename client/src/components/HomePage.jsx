@@ -8,18 +8,18 @@ import { Link } from 'react-router-dom'
 // HOME PAGE:
 export default function HomePage() {
   return (
-    <Box p={5} w="100%">
+    <Flex gap="10px" flexDirection="column">
       <Flex flexWrap="wrap" justifyContent="space-between" border="1px" borderColor="red">
         <Link to="/Issues">
-          <Button>Add Issues</Button>
+          <Button bg="green">Add Issues</Button>
         </Link>
-        <Heading fontSize={25} mr={120}>
+        <Heading fontSize={25} mr={120} alignSelf="center">
           Home Dashboard
         </Heading>
         <Box></Box>
       </Flex>
       <Box border="1px" borderColor="red">
-        <Flex flexWrap="wrap" gap="16px" justifyContent="space-evenly" border="1px" borderColor="red">
+        <Flex flexWrap="wrap" justifyContent="space-evenly">
           <Box border="1px" borderColor="red">
             Graph
           </Box>
@@ -31,8 +31,8 @@ export default function HomePage() {
           </Box>
         </Flex>
       </Box>
-      <Box border="1px" borderColor="red">
-        <TableContainer>
+      <Box border="1px" borderColor="red" w="100%" position="relative">
+        <TableContainer bg="lightgrey" w="100%" position="relative">
           <Table variant="simple">
             <TableCaption>Bugsly</TableCaption>
             <Thead>
@@ -41,7 +41,7 @@ export default function HomePage() {
                 <Th>Issue Brief</Th>
                 <Th>Created By</Th>
                 <Th>Created Date</Th>
-                <Th>Issue Priority</Th>
+                <Th textAlign={'right'}>Issue Priority</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -50,26 +50,26 @@ export default function HomePage() {
                 <Td>Cant figure out how to render pa...</Td>
                 <Td>GerDawg420</Td>
                 <Td>07/18/2022</Td>
-                <Td>red</Td>
+                <Td textAlign={'right'}>red</Td>
               </Tr>
               <Tr>
                 <Td>JustToDoIt</Td>
                 <Td>Data not linking to calander...</Td>
                 <Td>DanDizzle44</Td>
                 <Td>07/03/2022</Td>
-                <Td>yellow</Td>
+                <Td textAlign={'right'}>yellow</Td>
               </Tr>
               <Tr>
                 <Td>Weather Box</Td>
                 <Td>Redux issues...</Td>
                 <Td>DeBoer753</Td>
                 <Td>6/23/2022</Td>
-                <Td>blue</Td>
+                <Td textAlign={'right'}>blue</Td>
               </Tr>
             </Tbody>
           </Table>
         </TableContainer>
       </Box>
-    </Box>
+    </Flex>
   )
 }

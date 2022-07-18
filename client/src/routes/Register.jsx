@@ -1,21 +1,19 @@
 // CHAKRA:
-import { Box, Container, Text } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 
-// REGISTER:
-import React from 'react'
+// COMPONENTS:
 import FormRegister from '../components/FormRegister'
 
-function Register() {
+// REGISTER:
+export default function Register() {
   return (
-    <>
+    <Box>
       <Text px={4} mt={10} textAlign="center" fontSize="3xl">
         Register
       </Text>
       <Box my={10} mx="auto" w="95%" maxW="400px">
         <FormRegister />
       </Box>
-    </>
+    </Box>
   )
 }
-
-export default Register
