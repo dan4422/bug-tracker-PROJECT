@@ -19,6 +19,7 @@ export default function PrimaryNav() {
       maxW={220}
       minH={'100vh'}
       p={0}
+      bg="white"
     >
       <Box
         borderBottom="1px"
@@ -28,30 +29,30 @@ export default function PrimaryNav() {
         alignItems={'center'}
         py={2}
       >
-        <Image width={90} borderRadius="full" m={0} src={profileImg} alt="" />
-        <Box justifyContent={'center'}>
+        <Image width={90} maxW="50%" borderRadius="full" m={0} src={profileImg} alt="" />
+        <Box maxW="100%" justifyContent={'center'}>
           <Text>Name</Text>
           <Text>Username</Text>
           <Text>Location</Text>
         </Box>
       </Box>
-      <Box display="flex" flexDirection="column" textAlign={'center'}>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} to="/">
+      <Box display="flex" flexDirection="column" textAlign={'center'} maxW="100%">
+        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/">
           Home
         </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} to="/login">
+        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/login">
           Login
         </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} to="/register">
+        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/register">
           Register
         </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} to="/projects">
+        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/projects">
           Projects
         </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} to="/issues">
+        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/issues">
           Issues
         </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} to="/collaborators">
+        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/collaborators">
           Collaborators
         </Anchor>
       </Box>

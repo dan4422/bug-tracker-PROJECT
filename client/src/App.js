@@ -3,17 +3,19 @@ import { Box, Flex } from '@chakra-ui/react'
 
 // REACT ROUTER:
 import { Route, Routes } from 'react-router-dom'
+
+// ROUTES:
 import Home from './routes/Home'
 import Login from './routes/Login'
 import Register from './routes/Register'
 import Projects from './routes/Projects'
 import Issues from './routes/Issues'
 import Collaborators from './routes/Collaborators'
-import SecondaryNav from './components/SecondaryNav'
 
 // COMPONENTS:
 import PrimaryNav from './components/PrimaryNav'
 import SiteTitle from './components/SiteTitle'
+import SecondaryNav from './components/SiteTitle'
 
 // STYLING
 import './App.css'

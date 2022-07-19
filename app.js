@@ -5,10 +5,13 @@ const logger = require('morgan')
 const session = require('express-session')
 const store = require('./lib/session-store')
 const serialize = require('./middleware/serialize')
+const models = require('./models')
 
 // router imports
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
+const projectsRouter = require('./routes/projects')
+const issuesRouter = require('./routes/issues')
 
 // configure express app
 const app = express()
@@ -37,6 +40,8 @@ app.use(express.static(path.join(__dirname, 'client/build')))
 // api routes
 app.use('/api/v1', indexRouter)
 app.use('/api/v1/users', usersRouter)
+app.use('/api/v1/projects', projectsRouter)
+app.use('/api/v1/projects/', issuesRouter)
 
 // redirect all other routes to react client so that react-router can handle them
 app.use('*', (req, res) => {

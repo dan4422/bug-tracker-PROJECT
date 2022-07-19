@@ -2,16 +2,32 @@ const express = require('express')
 const router = express.Router()
 const bcrypt = require('bcrypt')
 const models = require('../models')
+const checkAuth = require('../middleware/checkAuth')
 
 // GET /api/v1/users/register
 router.post('/register', async (req, res) => {
-  const { email, password } = req.body
+  const { email, password, username, state, city, DOB } = req.body
   // if required fields missing, send error
   if (!email || !password) {
     return res.status(400).json({ error: 'missing email and/or password' })
   }
+  const existingUser = await models.User.findOne({
+    where: { email: req.body.email },
+  })
+  if (existingUser) {
+    res.status(400).json({ error: 'Email already in use' })
+    return
+  }
+  const hash = await bcrypt.hash(password, 10)
   // create new user in database and send success message
-  const user = await models.User.create({ email, password })
+  const user = await models.User.create({
+    email,
+    password: hash,
+    username,
+    state,
+    city,
+    DOB,
+  })
   res.json({ success: 'registered successfully' })
 })
 
@@ -42,6 +58,53 @@ router.post('/login', async (req, res) => {
 router.get('/logout', async (req, res) => {
   req.session.user = null
   res.json({ success: 'logged out successfully' })
+})
+
+// GET /api/v1/users/
+router.get('/', checkAuth, async (req, res) => {
+  const user = await models.User.findOne({
+    where: { id: req.session.user.id },
+    include: [
+      {
+        model: models.Project,
+      },
+      {
+        model: models.Issue,
+      },
+    ],
+  })
+  res.json(user)
+})
+
+// PATCH /api/v1/users/update - Update User Data
+router.patch('/update', checkAuth, async (req, res) => {
+  const user = await models.User.findByPk(req.session.user.id)
+  await user.update({
+    email: req.body.email || user.email,
+    password: req.body.password || user.password,
+    username: req.body.username || user.username,
+    state: req.body.state || user.state,
+    city: req.body.city || user.city,
+    DOB: req.body.DOB || user.DOB,
+    profileImage: req.body.profileImage || user.profileImage,
+  })
+  res.status(200).json(user)
+})
+
+// PATCH /api/v1/users/addProfileImage - add/update profile image
+router.patch('/addProfileImage', checkAuth, async (req, res) => {
+  const user = await models.User.findByPk(req.session.user.id)
+  await user.update({
+    profileImage: req.body.profileImage || user.profileImage,
+  })
+  res.status(200).json(user)
+})
+
+// DELETE /api/v1/users/delete
+router.delete('/delete', checkAuth, async (req, res) => {
+  const user = await models.User.findByPk(req.session.user.id)
+  await user.destroy()
+  res.status(200).json({ success: 'deleted user' })
 })
 
 module.exports = router
