@@ -1,8 +1,16 @@
+// CHAKRA:
 import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
+
+// REACT:
+import { useState } from 'react'
+
+// REACT ROUTER:
 import { Link, useNavigate } from 'react-router-dom'
-import React, { useState } from 'react'
+
+// REDUX:
 import { useLoginMutation } from '../redux/services/user'
 
+// FORM LOGIN:
 function FormLogin() {
   const navigate = useNavigate()
   const [login] = useLoginMutation()

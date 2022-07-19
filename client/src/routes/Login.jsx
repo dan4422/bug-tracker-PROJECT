@@ -1,5 +1,5 @@
 // CHAKRA:
-import { Box, Container, Text } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 import FormLogin from '../components/FormLogin'
 
 // LOGIN:
