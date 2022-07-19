@@ -1,5 +1,5 @@
 // CHAKRA:
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Container, Flex } from '@chakra-ui/react'
 
 // REACT ROUTER:
 import { Route, Routes } from 'react-router-dom'
@@ -23,21 +23,25 @@ import './App.css'
 // APP:
 export default function App() {
   return (
-    <div className="App">
-      <PrimaryNav />
-      <Flex flexDirection={'column'} alignItems="center" w={'100vw'} gap="10px">
-        <SiteTitle />
-        <Box border="1px" borderColor="red" w="100%" h="100%">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/issues" element={<Issues />} />
-            <Route path="/collaborators" element={<Collaborators />} />
-          </Routes>
-        </Box>
-      </Flex>
-    </div>
+    <Box className="App" paddingY="50px" minH="100vh">
+      <Container maxW={'95vw'}>
+        <Flex gap="5" w="100%" justifyContent={'center'}>
+          <PrimaryNav />
+          <Flex flexDirection={'column'} alignItems="center" maxW="full" gap="10px" flexGrow="1">
+            <SiteTitle />
+            <Box border="1px" borderColor="red" w="100%" h="100%">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/issues" element={<Issues />} />
+                <Route path="/collaborators" element={<Collaborators />} />
+              </Routes>
+            </Box>
+          </Flex>
+        </Flex>
+      </Container>
+    </Box>
   )
 }

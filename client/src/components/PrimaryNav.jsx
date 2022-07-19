@@ -1,5 +1,6 @@
 // CHAKRA:
 import { Link as Anchor, Box, Container, Image, Text } from '@chakra-ui/react'
+import { useMediaQuery } from '@chakra-ui/react'
 
 // REACT ROUTER:
 import { Link } from 'react-router-dom'
@@ -9,6 +10,8 @@ import profileImg from '../imgs/profilePhoto.png'
 
 // PRIMARY NAV:
 export default function PrimaryNav() {
+  const [navMediaQueryFlexed] = useMediaQuery('(max-width: 480px)')
+
   return (
     <Container
       border="1px"
@@ -16,10 +19,12 @@ export default function PrimaryNav() {
       margin={0}
       display="flex"
       flexDirection="column"
-      maxW={220}
-      minH={'100vh'}
+      minW={{ base: 150, lg: 220 }}
+      maxW={{ base: 150, lg: 150 }}
+      minH={'90vh'}
       p={0}
       bg="white"
+      flexShrink="0"
     >
       <Box
         borderBottom="1px"
@@ -27,9 +32,11 @@ export default function PrimaryNav() {
         display="flex"
         justifyContent={'space-around'}
         alignItems={'center'}
+        flexDirection={{ base: 'column', lg: 'row' }}
+        textAlign={{ base: 'center', lg: 'left' }}
         py={2}
       >
-        <Image width={90} maxW="50%" borderRadius="full" m={0} src={profileImg} alt="" />
+        <Image width={70} maxW="50%" borderRadius="full" m={0} src={profileImg} alt="" />
         <Box maxW="100%" justifyContent={'center'}>
           <Text>Name</Text>
           <Text>Username</Text>

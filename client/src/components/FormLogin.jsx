@@ -11,7 +11,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useLoginMutation } from '../redux/services/user'
 
 // FORM LOGIN:
-function FormLogin() {
+export default function FormLogin() {
   const navigate = useNavigate()
   const [login] = useLoginMutation()
   const [form, setForm] = useState({
@@ -67,5 +67,3 @@ function FormLogin() {
     </form>
   )
 }
-
-export default FormLogin
