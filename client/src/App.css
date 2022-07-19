@@ -1,13 +1,5 @@
 .App {
   --color-a: rgba(92, 207, 111, 0.669);
   --color-b: rgba(39, 87, 44, 0.579);
-  min-height: 100vh;
   background: linear-gradient(to bottom right, var(--color-a), var(--color-b));
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-.main {
-  gap: 10px;
 }
