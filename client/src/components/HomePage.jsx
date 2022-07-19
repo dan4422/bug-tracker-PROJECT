@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 
 // CHAKRA:
 import { Box, Button, Flex, Heading } from '@chakra-ui/react'
-import { Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
+
+
+import { CloseButton, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
+
 import { ResponsiveContainer } from 'recharts'
 
 // REACT ROUTER:
@@ -57,6 +60,12 @@ export default function HomePage() {
                 <Td>GerDawg420</Td>
                 <Td>07/18/2022</Td>
                 <Td textAlign={'right'}>red</Td>
+                <Td>
+                  <Flex>
+                    <Button size="sm">❌</Button>
+                    <Button size="sm">📝</Button>
+                  </Flex>
+                </Td>
               </Tr>
               <Tr>
                 <Td>JustToDoIt</Td>
@@ -64,6 +73,12 @@ export default function HomePage() {
                 <Td>DanDizzle44</Td>
                 <Td>07/03/2022</Td>
                 <Td textAlign={'right'}>yellow</Td>
+                <Td>
+                  <Flex>
+                    <Button size="sm">❌</Button>
+                    <Button size="sm">📝</Button>
+                  </Flex>
+                </Td>
               </Tr>
               <Tr>
                 <Td>Weather Box</Td>
@@ -71,6 +86,12 @@ export default function HomePage() {
                 <Td>DeBoer753</Td>
                 <Td>6/23/2022</Td>
                 <Td textAlign={'right'}>blue</Td>
+                <Td>
+                  <Flex>
+                    <Button size="sm">❌</Button>
+                    <Button size="sm">📝</Button>
+                  </Flex>
+                </Td>
               </Tr>
             </Tbody>
           </Table>
