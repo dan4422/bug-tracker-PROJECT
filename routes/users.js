@@ -60,8 +60,8 @@ router.get('/logout', async (req, res) => {
   res.json({ success: 'logged out successfully' })
 })
 
-// GET /api/v1/users/
-router.get('/', checkAuth, async (req, res) => {
+// GET /api/v1/users/current
+router.get('/current', checkAuth, async (req, res) => {
   const user = await models.User.findOne({
     where: { id: req.session.user.id },
     include: [
