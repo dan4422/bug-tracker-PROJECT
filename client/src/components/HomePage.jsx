@@ -10,18 +10,21 @@ import {
   TableContainer,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
 } from '@chakra-ui/react'
 
 import { ResponsiveContainer } from 'recharts'
+// REDUX
+import { Link } from 'react-router-dom'
 
 // REACT ROUTER:
-import { Link } from 'react-router-dom'
 import HomeBarChart from './HomeBarChart'
 import HomePieChart1 from './HomePieChart1'
 import HomePieChart2 from './HomePieChart2'
+import HomeTable from './HomeTable'
 
 // HOME PAGE:
 export default function HomePage() {
@@ -39,63 +42,7 @@ export default function HomePage() {
             <HomePieChart2 />
           </Box>
         </Flex>
-      </Box>
-      <Box border="1px" borderColor="red" w="100%" position="relative">
-        <TableContainer bg="lightgrey" w="100%" position="relative">
-          <Table variant="simple">
-            <TableCaption>Bugsly</TableCaption>
-            <Thead>
-              <Tr>
-                <Th>Project Name</Th>
-                <Th>Issue Brief</Th>
-                <Th>Created By</Th>
-                <Th>Created Date</Th>
-                <Th textAlign={'right'}>Issue Priority</Th>
-              </Tr>
-            </Thead>
-            <Tbody>
-              <Tr>
-                <Td>@PetMates</Td>
-                <Td>Cant figure out how to render pa...</Td>
-                <Td>Gerdawgdelta8</Td>
-                <Td>07/18/2022</Td>
-                <Td>
-                  <Flex justifyContent={'flex-end'} gap={3} alignItems="center">
-                    <Text>red</Text>
-                    <Button size="sm">❌</Button>
-                    <Button size="sm">📝</Button>
-                  </Flex>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>JustToDoIt</Td>
-                <Td>Data not linking to calander...</Td>
-                <Td>DanDizzle44</Td>
-                <Td>07/03/2022</Td>
-                <Td>
-                  <Flex justifyContent={'flex-end'} gap={3} alignItems="center">
-                    <Text>yellow</Text>
-                    <Button size="sm">❌</Button>
-                    <Button size="sm">📝</Button>
-                  </Flex>
-                </Td>
-              </Tr>
-              <Tr>
-                <Td>Weather Box</Td>
-                <Td>Redux issues...</Td>
-                <Td>DeBoer753</Td>
-                <Td>6/23/2022</Td>
-                <Td>
-                  <Flex justifyContent={'flex-end'} gap={3} alignItems="center">
-                    <Text>blue</Text>
-                    <Button size="sm">❌</Button>
-                    <Button size="sm">📝</Button>
-                  </Flex>
-                </Td>
-              </Tr>
-            </Tbody>
-          </Table>
-        </TableContainer>
+        <HomeTable />
       </Box>
     </Flex>
   )

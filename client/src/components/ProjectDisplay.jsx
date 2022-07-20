@@ -9,9 +9,7 @@ function ProjectDisplay() {
   if (isLoading || isError) return null
   return (
     <Flex flexDirection="column">
-      {data.map((project) => (
-        <ProjectResult key={project.id} project={project} />
-      ))}
+      {data && data.map((project) => <ProjectResult key={project.id} project={project} />)}
     </Flex>
   )
 }
