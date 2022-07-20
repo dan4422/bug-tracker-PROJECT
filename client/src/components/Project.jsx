@@ -38,7 +38,6 @@ export function Project() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(form)
     addNewProject(form)
       .unwrap()
       .then(() => {
@@ -51,55 +50,57 @@ export function Project() {
       .catch((e) => {})
   }
   return (
-    <Box>
-      <Box border="1px" borderColor="red" mb={5}>
-        <Heading fontSize={25}>Projects</Heading>
-      </Box>
-      <form onSubmit={handleSubmit}>
-        <Flex flexWrap="wrap" justifyContent="space-between">
-          <Heading style={{ color: 'white' }}>Project Dashboard</Heading>
-        </Flex>
-        <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-          <FormControl>
-            <FormLabel htmlFor="name">Name</FormLabel>
-            <Input
-              id="name"
-              type="name"
-              required
-              value={form.name}
-              placeholder="Project name here."
-              onChange={(e) => updateProject('name', e.target.value)}
-            />
-            <FormLabel htmlFor="description">Description</FormLabel>
-            <Textarea
-              id="description"
-              required
-              value={form.description}
-              type="description"
-              onChange={(e) => updateProject('description', e.target.value)}
-              placeholder="Write a description for your project here"
-            />
-            <FormLabel>Operational Status</FormLabel>
-            <Select
-              placeholder="Select progress"
-              value={form.status}
-              onChange={(e) => updateProject('status', e.target.value)}
-            >
-              <option value="Not Yet Started">Not Yet Started</option>
-              <option value="In Progress">In Progress</option>
-              <option value="Finished">Finished</option>
-            </Select>
-          </FormControl>
-          <Button type="submit" h="2rem" size="lg">
-            Submit
-          </Button>
-        </VStack>
-      </form>
-      <Box border="1px" borderColor="red">
-        <Heading fontSize={17}>Project List:</Heading>
-        <ProjectDisplay />
-      </Box>
-    </Box>
+    <>
+      <Flex gap="10px" flexDirection="column">
+        <form onSubmit={handleSubmit}>
+          <Flex flexWrap="wrap" justifyContent="space-between">
+            <Heading style={{ color: 'white' }}>Project Dashboard</Heading>
+          </Flex>
+          <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
+            <FormControl>
+              <FormLabel htmlFor="name">Name</FormLabel>
+              <Input
+                id="name"
+                type="name"
+                required
+                value={form.name}
+                placeholder="Project name here."
+                onChange={(e) => updateProject('name', e.target.value)}
+              />
+              <FormLabel htmlFor="description">Description</FormLabel>
+              <Textarea
+                id="description"
+                required
+                value={form.description}
+                type="description"
+                onChange={(e) => updateProject('description', e.target.value)}
+                placeholder="Write a description for your project here"
+              />
+              <FormLabel>Operational Status</FormLabel>
+              <Select
+                placeholder="Select progress"
+                value={form.status}
+                onChange={(e) => updateProject('status', e.target.value)}
+              >
+                <option value="Not Yet Started">Not Yet Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Finished">Finished</option>
+              </Select>
+            </FormControl>
+            <Button type="submit" h="2rem" size="lg">
+              Submit
+            </Button>
+          </VStack>
+        </form>
+      </Flex>
+      <div style={{ margin: '30px', justifyContent: 'center', alignItems: 'center' }}>
+        <Container style={{ boxShadow: '0px 10px 10px gray' }}>
+          <Box>
+            <ProjectDisplay />
+          </Box>
+        </Container>
+      </div>
+    </>
   )
 }
 
