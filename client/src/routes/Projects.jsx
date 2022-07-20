@@ -8,7 +8,7 @@ import { Project } from '../components/Project'
 export default function Projects() {
   return (
     <>
-      <div style={{ height: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ margin: '30px', justifyContent: 'center', alignItems: 'center' }}>
         <Container style={{ boxShadow: '0px 10px 10px gray' }}>
           <Box>
             <Project />

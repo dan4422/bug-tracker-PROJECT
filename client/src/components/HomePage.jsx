@@ -1,10 +1,19 @@
 import React, { useState } from 'react'
 
-// CHAKRA:
-import { Box, Button, Flex, Heading } from '@chakra-ui/react'
-
-
-import { CloseButton, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Table,
+  TableCaption,
+  TableContainer,
+  Tbody,
+  Td,
+  Th,
+  Thead,
+  Tr,
+} from '@chakra-ui/react'
 
 import { ResponsiveContainer } from 'recharts'
 
