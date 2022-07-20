@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 
 // CHAKRA:
-import { Box, Button, Flex, Heading } from '@chakra-ui/react'
-
+import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react'
 
 import { CloseButton, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 
@@ -18,7 +17,7 @@ import HomePieChart2 from './HomePieChart2'
 export default function HomePage() {
   return (
     <Flex gap="10px" flexDirection="column">
-      <Flex flexWrap="wrap" justifyContent="space-between" border="1px" borderColor="red">
+      {/* <Flex flexWrap="wrap" justifyContent="space-between" border="1px" borderColor="red">
         <Link to="/Issues">
           <Button bg="green">Add Issues</Button>
         </Link>
@@ -26,16 +25,16 @@ export default function HomePage() {
           Home Dashboard
         </Heading>
         <Box></Box>
-      </Flex>
+      </Flex> */}
       <Box border="1px" borderColor="red">
         <Flex flexWrap="wrap" justifyContent="space-evenly">
-          <Box border="1px" width={{ base: '100%', sm: '100%', md: '50%' }} borderColor="red">
+          <Box borderRight="1px" width={{ base: '100%', sm: '100%', md: '50%' }} borderColor="red">
             <HomeBarChart />
           </Box>
-          <Box border="1px" maxW={'100%'} width={{ base: '100%', sm: '100%', md: '25%' }} borderColor="red">
+          <Box borderRight="1px" maxW={'100%'} width={{ base: '100%', sm: '100%', md: '25%' }} borderColor="red">
             <HomePieChart1 />
           </Box>
-          <Box border="1px" maxW={'100%'} width={{ base: '100%', sm: '100%', md: '25%' }} borderColor="red">
+          <Box maxW={'100%'} width={{ base: '100%', sm: '100%', md: '25%' }} borderColor="red">
             <HomePieChart2 />
           </Box>
         </Flex>
@@ -55,13 +54,13 @@ export default function HomePage() {
             </Thead>
             <Tbody>
               <Tr>
-                <Td>PetMates</Td>
+                <Td>@PetMates</Td>
                 <Td>Cant figure out how to render pa...</Td>
-                <Td>GerDawg420</Td>
+                <Td>Gerdawgdelta8</Td>
                 <Td>07/18/2022</Td>
-                <Td textAlign={'right'}>red</Td>
                 <Td>
-                  <Flex>
+                  <Flex justifyContent={'flex-end'} gap={3} alignItems="center">
+                    <Text>red</Text>
                     <Button size="sm">❌</Button>
                     <Button size="sm">📝</Button>
                   </Flex>
@@ -72,9 +71,9 @@ export default function HomePage() {
                 <Td>Data not linking to calander...</Td>
                 <Td>DanDizzle44</Td>
                 <Td>07/03/2022</Td>
-                <Td textAlign={'right'}>yellow</Td>
                 <Td>
-                  <Flex>
+                  <Flex justifyContent={'flex-end'} gap={3} alignItems="center">
+                    <Text>yellow</Text>
                     <Button size="sm">❌</Button>
                     <Button size="sm">📝</Button>
                   </Flex>
@@ -85,9 +84,9 @@ export default function HomePage() {
                 <Td>Redux issues...</Td>
                 <Td>DeBoer753</Td>
                 <Td>6/23/2022</Td>
-                <Td textAlign={'right'}>blue</Td>
                 <Td>
-                  <Flex>
+                  <Flex justifyContent={'flex-end'} gap={3} alignItems="center">
+                    <Text>blue</Text>
                     <Button size="sm">❌</Button>
                     <Button size="sm">📝</Button>
                   </Flex>
