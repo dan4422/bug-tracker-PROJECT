@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 // CHAKRA:
 import { Box, Button, Flex, Heading } from '@chakra-ui/react'
 
-
 import { CloseButton, Table, TableCaption, TableContainer, Tbody, Td, Th, Thead, Tr } from '@chakra-ui/react'
 
 import { ResponsiveContainer } from 'recharts'
@@ -18,15 +17,6 @@ import HomePieChart2 from './HomePieChart2'
 export default function HomePage() {
   return (
     <Flex gap="10px" flexDirection="column">
-      <Flex flexWrap="wrap" justifyContent="space-between" border="1px" borderColor="red">
-        <Link to="/Issues">
-          <Button bg="green">Add Issues</Button>
-        </Link>
-        <Heading fontSize={25} mr={120} alignSelf="center">
-          Home Dashboard
-        </Heading>
-        <Box></Box>
-      </Flex>
       <Box border="1px" borderColor="red">
         <Flex flexWrap="wrap" justifyContent="space-evenly">
           <Box border="1px" width={{ base: '100%', sm: '100%', md: '50%' }} borderColor="red">
