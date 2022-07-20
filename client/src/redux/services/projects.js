@@ -19,14 +19,14 @@ export const projectsApiSlice = createApi({
     }),
     deleteProject: builder.mutation({
       query: (id) => ({
-        url: `/projects/${id}`,
+        url: `/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Project'],
     }),
     updateProject: builder.mutation({
       query: ({ id, updatedProject }) => ({
-        url: `/projects/${id}`,
+        url: `/${id}`,
         method: 'PATCH',
         body: updatedProject,
       }),

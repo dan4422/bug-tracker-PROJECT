@@ -13,17 +13,17 @@ function ProjectResult({ project }) {
       ) : (
         <>
           <Flex alignItems="center">
-            <Text>{project.name}</Text>
+            <Text mr="1">{project.name}</Text>
             <Text mr="1">{project.description}</Text>
             <Text>{project.status}</Text>
           </Flex>
           <Flex alignItems="center" gap="2">
             <Button size="sm" aria-label="icon" onClick={() => setShowEditForm(true)}>
-              ❌
+              📝
             </Button>
 
             <Button size="sm" onClick={() => deleteProject(project.id)} aria-label="icon">
-              📝
+              ❌
             </Button>
           </Flex>
         </>

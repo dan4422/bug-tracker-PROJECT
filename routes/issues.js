@@ -8,6 +8,14 @@ router.get('/issues', checkAuth, async (req, res) => {
     where: {
       UserId: req.session.user.id,
     },
+    include: [
+      {
+        model: models.Project,
+      },
+      {
+        model: models.User,
+      },
+    ],
   })
 
   res.json(issues)

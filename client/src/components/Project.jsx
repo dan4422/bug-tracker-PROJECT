@@ -38,6 +38,7 @@ export function Project() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(form)
     addNewProject(form)
       .unwrap()
       .then(() => {
@@ -77,9 +78,14 @@ export function Project() {
                 placeholder="Write a description for your project here"
               />
               <FormLabel>Operational Status</FormLabel>
-              <Select placeholder="Select progress" value={form.status}>
-                <option value="option1">Progress</option>
-                <option value="option2">Finish</option>
+              <Select
+                placeholder="Select progress"
+                value={form.status}
+                onChange={(e) => updateProject('status', e.target.value)}
+              >
+                <option value="Not Yet Started">Not Yet Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Finished">Finished</option>
               </Select>
             </FormControl>
             <Button type="submit" h="2rem" size="lg">
