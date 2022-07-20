@@ -56,7 +56,6 @@ export default function Issue() {
           border="1px"
           borderColor="red"
           id="name"
-          type="name"
           required
           value={issue.description}
           onChange={(e) => updateIssue('description', e.target.value)}

@@ -10,7 +10,7 @@ function HomeTableRow() {
 
   return (
     <>
-      {data &&
+      {/* {data &&
         data.map((data, i) => (
           <>
             {showEditForm ? (
@@ -39,7 +39,7 @@ function HomeTableRow() {
               </Tr>
             )}
           </>
-        ))}
+        ))} */}
     </>
   )
 }
