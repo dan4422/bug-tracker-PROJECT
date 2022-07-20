@@ -1,5 +1,5 @@
 .App {
-  --color-a: rgba(92, 207, 111, 0.669);
-  --color-b: rgba(39, 87, 44, 0.579);
+  --color-a: rgba(42, 193, 67, 0.499);
+  --color-b: rgba(187, 181, 15, 0.609);
   background: linear-gradient(to bottom right, var(--color-a), var(--color-b));
 }

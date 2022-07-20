@@ -41,6 +41,8 @@ export default function HomePage() {
             <HomePieChart2 />
           </Box>
         </Flex>
+      </Box>
+      <Box border="1px" borderColor="red" w="100%" position="relative">
         <HomeTable />
       </Box>
     </Flex>

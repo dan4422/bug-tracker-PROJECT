@@ -1,7 +1,6 @@
 // CHAKRA:
 
-import { Button, FormControl, FormLabel, Heading, Input, Select, StackDivider, VStack } from '@chakra-ui/react'
-
+import { Box, Button, FormControl, FormLabel, Heading, Input, Select, Text, Textarea } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -36,39 +35,57 @@ export default function Issue() {
       .catch(() => {})
   }
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <Heading style={{ textAlign: 'center', color: 'white' }}>Issues</Heading>
-        <VStack divider={<StackDivider borderColor="gray.200" />} spacing={4}>
-          <FormControl>
-            <FormLabel htmlFor="name">Name</FormLabel>
-            <Input
-              id="name"
-              type="name"
-              required
-              value={issue.name}
-              onChange={(e) => updateIssue('name', e.target.value)}
-            ></Input>
-            <FormLabel htmlFor="name">Name</FormLabel>
-            <Input
-              id="name"
-              type="name"
-              required
-              value={issue.description}
-              onChange={(e) => updateIssue('description', e.target.value)}
-            ></Input>
-            <FormLabel htmlFor="status">Status</FormLabel>
-            <Select id="status" required value={issue.status} onChange={(e) => updateIssue('status', e.target.value)}>
-              <option value="Low">Low</option>
-              <option value="Medium">Medium</option>
-              <option value="High">High</option>
-            </Select>
-          </FormControl>
-          <Button type="submit" h="2rem" size="lg">
-            Add New Issue
-          </Button>
-        </VStack>
-      </form>
-    </>
+    <Box>
+      <Box border="1px" borderColor="red" mb={5}>
+        <Heading fontSize={25}>Issues</Heading>
+      </Box>
+      <FormControl onSubmit={handleSubmit} border="1px" borderColor="red" mb={5}>
+        <Heading fontSize={17}>Create an Issue:</Heading>
+        <FormLabel htmlFor="name">Name</FormLabel>
+        <Input
+          border="1px"
+          borderColor="red"
+          id="name"
+          type="name"
+          required
+          value={issue.name}
+          onChange={(e) => updateIssue('name', e.target.value)}
+        ></Input>
+        <FormLabel htmlFor="name">Description</FormLabel>
+        <Textarea
+          border="1px"
+          borderColor="red"
+          id="name"
+          type="name"
+          required
+          value={issue.description}
+          onChange={(e) => updateIssue('description', e.target.value)}
+        ></Textarea>
+        <FormLabel htmlFor="status">Status</FormLabel>
+        <Select
+          border="1px"
+          borderColor="red"
+          mb={5}
+          id="status"
+          required
+          value={issue.status}
+          onChange={(e) => updateIssue('status', e.target.value)}
+        >
+          <option value="Low">Low</option>
+          <option value="Medium">Medium</option>
+          <option value="High">High</option>
+        </Select>
+        <Button type="submit" h="2rem" size="lg" bg="green">
+          Add New Issue
+        </Button>
+      </FormControl>
+      <Box border="1px" borderColor="red">
+        <Heading fontSize={17}>Issue Selected:</Heading>
+        <Box>
+          <Text>PetMates</Text>
+          <Text>PetMates</Text>
+        </Box>
+      </Box>
+    </Box>
   )
 }
