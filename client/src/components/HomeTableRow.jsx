@@ -8,7 +8,6 @@ function HomeTableRow({ issue }) {
   const [showEditForm, setShowEditForm] = useState(false)
 
   return (
-    <>
       <>
         {showEditForm ? (
           <Tr key={issue.id}>
@@ -38,7 +37,6 @@ function HomeTableRow({ issue }) {
           </Tr>
         )}
       </>
-    </>
   )
 }
 

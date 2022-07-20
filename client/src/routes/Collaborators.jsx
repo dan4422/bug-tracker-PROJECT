@@ -1,11 +1,13 @@
 // CHAKRA:
 import { Box, Button, Container, Flex, Heading, Image, Link, Text, Wrap } from '@chakra-ui/react'
+import { useGetCurrentUserQuery } from '../redux/services/user'
 
 // IMGS:
 import profileImg from '../imgs/profilePhoto.png'
 
 // COLLABORATORS:
 export default function Collaborators() {
+  const { data } = useGetCurrentUserQuery()
   return (
     <Box bg="white" p={5} w="100%" h="100%">
       <Box border="1px" borderColor="red" mb={5}>
@@ -24,10 +26,10 @@ export default function Collaborators() {
         <Wrap spacing={10}>
           <Box border="1px" borderColor="red" w={200} textAlign="center">
             <Image w={150} maxW="80%" borderRadius="full" src={profileImg} alt="" m={'0 auto'} mt={2} mb={2} />
-            <Text>Myles D.</Text>
-            <Text fontSize={13}>@DeBoer753</Text>
+            <Text>{data?.username}</Text>
+            <Text fontSize={13}>{data?.email}</Text>
             <Text fontSize={13} mb={2}>
-              San Francisco, CA
+              {data?.city}, {data?.state}
             </Text>
             <hr></hr>
             <Text>4 contributions</Text>
