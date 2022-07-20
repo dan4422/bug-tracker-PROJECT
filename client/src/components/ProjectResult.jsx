@@ -1,4 +1,4 @@
-import { Button, Flex, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useDeleteProjectMutation } from '../redux/services/projects'
 import ProjectEdit from './ProjectEdit'
@@ -7,7 +7,7 @@ function ProjectResult({ project }) {
   const [deleteProject] = useDeleteProjectMutation()
   const [showEditForm, setShowEditForm] = useState(false)
   return (
-    <Flex alignItems="center" mt="4" justifyContent="space-between">
+    <Box border="1px" borderColor="red">
       {showEditForm ? (
         <ProjectEdit project={project} onSuccess={() => setShowEditForm(false)} />
       ) : (
@@ -28,7 +28,7 @@ function ProjectResult({ project }) {
           </Flex>
         </>
       )}
-    </Flex>
+    </Box>
   )
 }
 

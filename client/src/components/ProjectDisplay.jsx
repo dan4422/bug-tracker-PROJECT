@@ -3,7 +3,7 @@ import React from 'react'
 import { useGetProjectsQuery } from '../redux/services/projects'
 import ProjectResult from './ProjectResult'
 
-function ProjectDisplay() {
+export default function ProjectDisplay() {
   const { data, isLoading, isError } = useGetProjectsQuery()
 
   if (isLoading || isError) return null
@@ -13,5 +13,3 @@ function ProjectDisplay() {
     </Flex>
   )
 }
-
-export default ProjectDisplay
