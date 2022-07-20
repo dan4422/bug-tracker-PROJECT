@@ -10,6 +10,7 @@ import {
   TableContainer,
   Tbody,
   Td,
+  Text,
   Th,
   Thead,
   Tr,
@@ -55,7 +56,7 @@ export default function HomePage() {
             </Thead>
             <Tbody>
               <Tr>
-                <Td>@PetMates</Td>
+                <Td>PetMates</Td>
                 <Td>Cant figure out how to render pa...</Td>
                 <Td>Gerdawgdelta8</Td>
                 <Td>07/18/2022</Td>
