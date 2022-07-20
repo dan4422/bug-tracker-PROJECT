@@ -31,7 +31,7 @@ function HomePieChart2() {
       </Heading>
       <ResponsiveContainer width="100%" height={400}>
         <PieChart width={400} height={400}>
-          <Legend wrapperStyle={{ top: 0, left: 25 }} />
+          <Legend verticalAlign="top" />
           <Pie data={data} labelLine={false} label={renderCustomizedLabel} fill="#8884d8" dataKey="value">
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

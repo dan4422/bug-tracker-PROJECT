@@ -37,7 +37,7 @@ function HomePieChart1() {
             ))}
           </Pie>
           <Tooltip />
-          <Legend wrapperStyle={{ top: 0, left: 25 }} />
+          <Legend verticalAlign="top" />
         </PieChart>
       </ResponsiveContainer>
     </>
