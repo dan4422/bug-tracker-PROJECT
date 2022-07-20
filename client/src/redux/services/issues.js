@@ -22,7 +22,7 @@ export const issuesApiSlice = createApi({
       invalidatesTags: ['Issue'],
     }),
     deleteIssue: builder.mutation({
-      query: (projectId, issueId) => ({
+      query: ({ projectId, issueId }) => ({
         url: `/${projectId}/issues/${issueId}`,
         method: 'DELETE',
       }),

@@ -3,13 +3,13 @@ import { Button, Flex, FormControl, Input, Select } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useUpdateIssueMutation } from '../redux/services/issues'
 
-function IssuesEdit({ Issues, onSuccess }) {
+function IssuesEdit({ issue, onSuccess }) {
   const [updateIssues] = useUpdateIssueMutation()
-  console.log(Issues)
   const [form, setForm] = useState({
-    name: Issues.name,
-    description: Issues.description,
-    status: Issues.status,
+    name: issue.name,
+    description: issue.description,
+    status: issue.status,
+    priority: issue.priority,
   })
   const updateField = (name, value) => {
     setForm({
@@ -20,7 +20,7 @@ function IssuesEdit({ Issues, onSuccess }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    updateIssues({ projectId: Issues.Project.id, issueId: Issues.id, updatedIssues: form })
+    updateIssues({ projectId: issue.ProjectId, issueId: issue.id, updatedIssue: form })
       .unwrap()
       .then(() => {
         onSuccess()
@@ -54,6 +54,13 @@ function IssuesEdit({ Issues, onSuccess }) {
             <Select id="status" value={form.status} onChange={(e) => updateField('status', e.target.value)}>
               <option value="Closed">Closed</option>
               <option value="Open">Open</option>
+            </Select>
+          </FormControl>
+          <FormControl w="120px" flexShrink="0">
+            <Select id="priority" value={form.priority} onChange={(e) => updateField('priority', e.target.value)}>
+              <option value="Closed">Low</option>
+              <option value="Medium">Medium</option>
+              <option value="High">High</option>
             </Select>
           </FormControl>
 

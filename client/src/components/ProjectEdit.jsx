@@ -32,13 +32,7 @@ function ProjectEdit({ project, onSuccess }) {
       <form onSubmit={handleSubmit} style={{ width: '100%' }}>
         <Flex alignItems="flex-end" justifyContent="space-between" gap="2" w="100%">
           <FormControl flexGrow="0" flexBasis="50%" w="auto">
-            <Input
-              id="text"
-              type="text"
-              value={form.name}
-              onChange={(e) => updateField('name', e.target.value)}
-              required
-            />
+            <Input id="text" type="text" value={form.name} onChange={(e) => updateField('name', e.target.value)} />
           </FormControl>
           <FormControl flexGrow="0" flexBasis="50%" w="auto">
             <Input
@@ -46,7 +40,6 @@ function ProjectEdit({ project, onSuccess }) {
               type="text"
               value={form.description}
               onChange={(e) => updateField('description', e.target.value)}
-              required
             />
           </FormControl>
           <FormControl w="120px" flexShrink="0">

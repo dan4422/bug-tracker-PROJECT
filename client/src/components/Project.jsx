@@ -10,6 +10,7 @@ import {
   Input,
   Select,
   StackDivider,
+  Textarea,
   VStack,
 } from '@chakra-ui/react'
 
@@ -38,7 +39,6 @@ export function Project() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(form)
     addNewProject(form)
       .unwrap()
       .then(() => {
@@ -69,11 +69,11 @@ export function Project() {
                 onChange={(e) => updateProject('name', e.target.value)}
               />
               <FormLabel htmlFor="description">Description</FormLabel>
-              <Input
+              <Textarea
                 id="description"
-                type="description"
                 required
                 value={form.description}
+                type="description"
                 onChange={(e) => updateProject('description', e.target.value)}
                 placeholder="Write a description for your project here"
               />
