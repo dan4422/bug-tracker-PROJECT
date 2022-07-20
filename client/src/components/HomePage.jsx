@@ -4,7 +4,6 @@ import {
   Box,
   Button,
   Flex,
-  Heading,
   Table,
   TableCaption,
   TableContainer,
