@@ -8,7 +8,7 @@ function FormRegister() {
     password: '',
     state: '',
     city: '',
-    dob: '',
+    DOB: '',
   })
 
   const handleSubmit = (e) => {
@@ -85,7 +85,7 @@ function FormRegister() {
         </FormControl>
         <FormControl my="5">
           <FormLabel htmlFor="date">Date of Birth</FormLabel>
-          <Input value={form.dob} id="date" type="date" onChange={(e) => updateField('dob', e.target.value)} required />
+          <Input value={form.DOB} id="date" type="date" onChange={(e) => updateField('DOB', e.target.value)} required />
         </FormControl>
       </div>
 
