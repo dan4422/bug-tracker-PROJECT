@@ -2,11 +2,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const projectsApiSlice = createApi({
   reducerPath: 'projects',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api/v1/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: '/api/v1/projects' }),
   tagTypes: ['Project'],
   endpoints: (builder) => ({
     getProjects: builder.query({
-      query: () => '/projects',
+      query: () => '/',
       providesTags: ['Project'],
     }),
     addNewProject: builder.mutation({

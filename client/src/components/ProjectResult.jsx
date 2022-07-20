@@ -19,11 +19,11 @@ function ProjectResult({ project }) {
           </Flex>
           <Flex alignItems="center" gap="2">
             <Button size="sm" aria-label="icon" onClick={() => setShowEditForm(true)}>
-              ❌
+              📝
             </Button>
 
             <Button size="sm" onClick={() => deleteProject(project.id)} aria-label="icon">
-              📝
+              ❌
             </Button>
           </Flex>
         </>
