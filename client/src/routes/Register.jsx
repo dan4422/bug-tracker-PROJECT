@@ -7,7 +7,7 @@ import FormRegister from '../components/FormRegister'
 // REGISTER:
 export default function Register() {
   return (
-    <Box border="1px" borderColor="red" w="100%" h="100%">
+    <Box w="100%" h="100%">
       <Text px={4} mt={10} textAlign="center" fontSize="3xl">
         Register
       </Text>

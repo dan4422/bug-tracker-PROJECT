@@ -38,20 +38,14 @@ export default function PrimaryNav() {
       >
         <Image width={70} maxW="50%" borderRadius="full" m={0} src={profileImg} alt="" />
         <Box maxW="100%" justifyContent={'center'}>
-          <Text>Name</Text>
-          <Text>Username</Text>
-          <Text>Location</Text>
+          <Text fontSize={17}>Myles D.</Text>
+          <Text fontSize={13}>@DeBoer753</Text>
+          <Text fontSize={13}>San Francisco, CA</Text>
         </Box>
       </Box>
       <Box display="flex" flexDirection="column" textAlign={'center'} maxW="100%">
         <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/">
           Home
-        </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/login">
-          Login
-        </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/register">
-          Register
         </Anchor>
         <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/projects">
           Projects
@@ -61,6 +55,12 @@ export default function PrimaryNav() {
         </Anchor>
         <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/collaborators">
           Collaborators
+        </Anchor>
+        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/login">
+          Login
+        </Anchor>
+        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/register">
+          Register
         </Anchor>
       </Box>
     </Container>

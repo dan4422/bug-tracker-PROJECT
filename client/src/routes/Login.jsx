@@ -5,7 +5,7 @@ import FormLogin from '../components/FormLogin'
 // LOGIN:
 export default function Login() {
   return (
-    <Box border="1px" borderColor="red" w="100%" h="100%">
+    <Box w="100%" h="100%">
       <Text px={4} mt={10} textAlign="center" fontSize="3xl">
         Login
       </Text>
