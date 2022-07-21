@@ -1,13 +1,11 @@
-import { Flex } from '@chakra-ui/react'
+import { Box, Container, Flex, Wrap } from '@chakra-ui/react'
 import React from 'react'
 import { useGetProjectsQuery } from '../redux/services/projects'
 import ProjectResult from './ProjectResult'
 
 export default function ProjectDisplay() {
-  const { data, isLoading, isError, error } = useGetProjectsQuery()
-  return (
-    <Flex flexDirection="column">
-      {isLoading ? <div>loading</div> : data?.map((project) => <ProjectResult key={project.id} project={project} />)}
-    </Flex>
-  )
+  const { data, isLoading, isError } = useGetProjectsQuery()
+
+  if (isLoading || isError) return null
+  return <Wrap spacing={10}>{data && data.map((project) => <ProjectResult key={project.id} project={project} />)}</Wrap>
 }
