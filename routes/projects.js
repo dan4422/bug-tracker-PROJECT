@@ -14,15 +14,20 @@ router.get('/', checkAuth, async (req, res) => {
   res.json(project)
 })
 
-// // api/v1/projects/:id - gets specific projects
-// router.get('/:id', checkAuth, async (req, res) => {
-//   const project = await models.Project.findByPk(req.params.id)
-//   if (!project || project.UserId !== req.session.user.id) {
-//     res.status(400).json({ error: 'cannot find project' })
-//     return
-//   }
-//   res.json(project)
-// })
+// api/v1/projects/:id - gets specific projects
+router.get('/:id', checkAuth, async (req, res) => {
+  const id = Number(req.params.id)
+  if (isNaN(id)) {
+    res.status(400).json({ error: 'cannot find project' })
+    return
+  }
+  const project = await models.Project.findByPk(id)
+  if (!project || project.UserId !== req.session.user.id) {
+    res.status(400).json({ error: 'cannot find project' })
+    return
+  }
+  res.json(project)
+})
 
 // /api/v1/projects/create
 router.post('/create', checkAuth, async (req, res) => {

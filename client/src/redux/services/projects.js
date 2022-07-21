@@ -10,7 +10,7 @@ export const projectsApiSlice = createApi({
       providesTags: ['Project'],
     }),
     getProjectsByID: builder.query({
-      query: (projectId) => `/${projectId.projectId}`,
+      query: (projectId) => `/${projectId}`,
       providesTags: ['Project'],
     }),
     addNewProject: builder.mutation({

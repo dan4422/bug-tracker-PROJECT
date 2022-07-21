@@ -22,48 +22,59 @@ import Protected from './components/Protected'
 import { useGetCurrentUserQuery } from './redux/services/user'
 import ProjectPage from './routes/ProjectPage'
 
+function AppRoutes() {
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <Protected>
+            <Home />
+          </Protected>
+        }
+      />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route
+        path="/projects/:projectId"
+        element={
+          <Protected>
+            <ProjectPage />
+          </Protected>
+        }
+      />
+      <Route
+        path="/projects"
+        element={
+          <Protected>
+            <Projects />
+          </Protected>
+        }
+      />
+      <Route
+        path="/issues"
+        element={
+          <Protected>
+            <Issues />
+          </Protected>
+        }
+      />
+      <Route
+        path="/collaborators"
+        element={
+          <Protected>
+            <Collaborators />
+          </Protected>
+        }
+      />
+    </Routes>
+  )
+}
 // APP:
 export default function App() {
   const { data } = useGetCurrentUserQuery()
   if (!data || data.error === 'unauthorized') {
-    return (
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <Protected>
-              <Home />
-            </Protected>
-          }
-        />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route
-          path="/projects"
-          element={
-            <Protected>
-              <Projects />
-            </Protected>
-          }
-        />
-        <Route
-          path="/issues"
-          element={
-            <Protected>
-              <Issues />
-            </Protected>
-          }
-        />
-        <Route
-          path="/collaborators"
-          element={
-            <Protected>
-              <Collaborators />
-            </Protected>
-          }
-        />
-      </Routes>
-    )
+    return <AppRoutes />
   } else {
     return (
       <Box className="App" paddingY="50px" minH="100vh">
@@ -73,50 +84,7 @@ export default function App() {
             <Flex flexDirection={'column'} alignItems="center" maxW="full" gap="10px" flexGrow="1">
               <SiteTitle />
               <Box border="1px" borderColor="red" w="100%" h="100%">
-                <Routes>
-                  <Route
-                    path="/"
-                    element={
-                      <Protected>
-                        <Home />
-                      </Protected>
-                    }
-                  />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/register" element={<Register />} />
-                  <Route
-                    path="/projects"
-                    element={
-                      <Protected>
-                        <Projects />
-                      </Protected>
-                    }
-                  />
-                  <Route
-                    path="/issues"
-                    element={
-                      <Protected>
-                        <Issues />
-                      </Protected>
-                    }
-                  />
-                  <Route
-                    path="/collaborators"
-                    element={
-                      <Protected>
-                        <Collaborators />
-                      </Protected>
-                    }
-                  />
-                  <Route
-                    path="/projects/:projectId"
-                    element={
-                      <Protected>
-                        <ProjectPage />
-                      </Protected>
-                    }
-                  />
-                </Routes>
+                <AppRoutes />
               </Box>
             </Flex>
           </Flex>
