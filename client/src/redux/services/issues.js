@@ -14,7 +14,7 @@ export const issuesApiSlice = createApi({
       providesTags: ['Issue'],
     }),
     addNewIssue: builder.mutation({
-      query: (projectId, newIssue) => ({
+      query: ({ projectId, newIssue }) => ({
         url: `/${projectId}/issues/create`,
         method: 'POST',
         body: newIssue,

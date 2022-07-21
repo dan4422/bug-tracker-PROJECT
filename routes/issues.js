@@ -39,7 +39,7 @@ router.get('/:projectId/issues', checkAuth, async (req, res) => {
 
 // /api/v1/projects/:projectId/issues/create
 router.post('/:projectId/issues/create', checkAuth, async (req, res) => {
-  const { projectId } = req.params
+  const projectId = Number(req.params.projectId)
   const user = await models.User.findByPk(req.session.user.id, {
     include: models.Project,
   })
