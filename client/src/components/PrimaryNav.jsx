@@ -4,6 +4,8 @@ import { useMediaQuery } from '@chakra-ui/react'
 
 // REACT ROUTER:
 import { Link } from 'react-router-dom'
+import { issuesApiSlice } from '../redux/services/issues'
+import { projectsApiSlice } from '../redux/services/projects'
 
 // IMGS:
 import profileImg from '../imgs/profilePhoto.png'
@@ -17,10 +19,16 @@ export default function PrimaryNav() {
   const [navMediaQueryFlexed] = useMediaQuery('(max-width: 480px)')
   const [logout] = useLogoutMutation()
   const { data, isLoading } = useGetCurrentUserQuery()
-
   const handleLogout = () => {
     logout()
-    window.location.reload()
+      .unwrap()
+      .then((data) => {
+        if (data.success) {
+          window.location.reload()
+          // projectsApiSlice.util.invalidateTags(['Project'])
+          // issuesApiSlice.util.invalidateTags(['Issue'])
+        }
+      })
   }
 
   return (

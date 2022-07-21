@@ -30,7 +30,7 @@ function HomeTableRow({ issue }) {
           <Td>{new Date(issue.createdAt).toDateString()}</Td>
           <Td>
             <Flex justifyContent={'flex-end'} gap={3} alignItems="center">
-              <Text>red</Text>
+              <Text>{issue.priority}</Text>
               <Button size="sm" onClick={() => setShowEditForm(true)}>
                 📝
               </Button>
