@@ -1,5 +1,6 @@
-import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import { Button, Flex, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 function FormRegister() {
   const [form, setForm] = useState({
@@ -89,11 +90,14 @@ function FormRegister() {
         </FormControl>
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Flex alignItems={'center'} justifyContent={'space-evenly'}>
         <Button type="submit" colorScheme="orange">
           Submit
         </Button>
-      </div>
+        <Link to="/login">
+          <Button>Login</Button>
+        </Link>
+      </Flex>
     </form>
   )
 }

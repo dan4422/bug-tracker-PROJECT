@@ -1,7 +1,11 @@
 import React from 'react'
+import { useParams } from 'react-router-dom'
+import { useGetProjectsByIDQuery } from '../redux/services/projects'
 
 function ProjectPage() {
-  return <div>ProjectPage</div>
+  const projectId = useParams()
+  const { data } = useGetProjectsByIDQuery({ projectId: projectId.projectId })
+  return <div>{data?.name}</div>
 }
 
 export default ProjectPage

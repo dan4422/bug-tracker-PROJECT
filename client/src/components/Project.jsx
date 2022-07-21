@@ -72,7 +72,6 @@ export function Project() {
                 id="description"
                 required
                 value={form.description}
-                type="description"
                 onChange={(e) => updateProject('description', e.target.value)}
                 placeholder="Write a description for your project here"
               />

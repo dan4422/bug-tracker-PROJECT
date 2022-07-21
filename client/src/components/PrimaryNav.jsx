@@ -10,12 +10,18 @@ import profileImg from '../imgs/profilePhoto.png'
 
 // REDUX
 import { useGetCurrentUserQuery, useLogoutMutation } from '../redux/services/user'
+import Protected from './Protected'
 
 // PRIMARY NAV:
 export default function PrimaryNav() {
   const [navMediaQueryFlexed] = useMediaQuery('(max-width: 480px)')
   const [logout] = useLogoutMutation()
   const { data, isLoading } = useGetCurrentUserQuery()
+
+  const handleLogout = () => {
+    logout()
+    window.location.reload()
+  }
 
   return (
     <Container
@@ -53,7 +59,9 @@ export default function PrimaryNav() {
               <Text fontSize={17}>{data?.username}</Text>
               <Text fontSize={13}>{data?.email}</Text>
               <Text fontSize={13}>
-                {data?.city}, {data?.state}
+                {data?.city}
+                {data ? '' : ','}
+                {data?.state}
               </Text>
             </Box>
           </>
@@ -78,7 +86,7 @@ export default function PrimaryNav() {
         <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/register">
           Register
         </Anchor>
-        <Anchor onClick={() => logout()} borderBottom="1px" borderColor="red" py={3} px={3}>
+        <Anchor onClick={() => handleLogout()} borderBottom="1px" borderColor="red" py={3} px={3}>
           Logout
         </Anchor>
       </Box>

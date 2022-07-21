@@ -34,7 +34,6 @@ router.get('/:projectId/issues', checkAuth, async (req, res) => {
       ProjectId: specificProject.id,
     },
   })
-  // res.status(200).json({ success: 'got the data' })
   res.json(issues)
 })
 
