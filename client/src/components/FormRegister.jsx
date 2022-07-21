@@ -1,4 +1,4 @@
-import { Button, Flex, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box, Button, Flex, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -12,15 +12,29 @@ function FormRegister() {
     DOB: '',
   })
 
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    setIsLoading(true)
+    setError('')
+    setSuccess('')
     fetch('/api/v1/users/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form),
     })
       .then((res) => res.json())
-      .then((data) => {})
+      .then((data) => {
+        setIsLoading(false)
+        if (data.error) {
+          setError(data.error)
+        } else {
+          setSuccess('Registered Successfully')
+        }
+      })
   }
 
   // setting each specific form to each field
@@ -33,6 +47,17 @@ function FormRegister() {
 
   return (
     <form onSubmit={handleSubmit}>
+      {error && (
+        <Alert status="error">
+          <AlertIcon /> {error}
+        </Alert>
+      )}
+      {success && (
+        <Alert status="success">
+          <AlertIcon /> {success}
+        </Alert>
+      )}
+
       <FormControl my="5">
         <FormLabel htmlFor="username">Username</FormLabel>
         <Input
@@ -91,11 +116,11 @@ function FormRegister() {
       </div>
 
       <Flex alignItems={'center'} justifyContent={'space-evenly'}>
-        <Button type="submit" colorScheme="orange">
+        <Button isLoading={isLoading} type="submit" colorScheme="orange">
           Submit
         </Button>
         <Link to="/login">
-          <Button>Login</Button>
+          <Button>Return To Login</Button>
         </Link>
       </Flex>
     </form>
