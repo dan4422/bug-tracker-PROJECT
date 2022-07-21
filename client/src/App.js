@@ -15,7 +15,6 @@ import Collaborators from './routes/Collaborators'
 // COMPONENTS:
 import PrimaryNav from './components/PrimaryNav'
 import SiteTitle from './components/SiteTitle'
-import SecondaryNav from './components/SiteTitle'
 
 // STYLING
 import './App.css'
