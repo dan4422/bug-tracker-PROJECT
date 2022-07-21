@@ -9,6 +9,10 @@ export const projectsApiSlice = createApi({
       query: () => '/',
       providesTags: ['Project'],
     }),
+    getProjectsByID: builder.query({
+      query: (projectId) => `/${projectId}`,
+      providesTags: ['Project'],
+    }),
     addNewProject: builder.mutation({
       query: (newProject) => ({
         url: '/create',
@@ -35,5 +39,10 @@ export const projectsApiSlice = createApi({
   }),
 })
 
-export const { useGetProjectsQuery, useAddNewProjectMutation, useDeleteProjectMutation, useUpdateProjectMutation } =
-  projectsApiSlice
+export const {
+  useGetProjectsQuery,
+  useGetProjectsByIDQuery,
+  useAddNewProjectMutation,
+  useDeleteProjectMutation,
+  useUpdateProjectMutation,
+} = projectsApiSlice

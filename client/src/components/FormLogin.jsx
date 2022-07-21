@@ -1,5 +1,5 @@
 // CHAKRA:
-import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import { Button, Flex, FormControl, FormLabel, Input } from '@chakra-ui/react'
 
 // REACT:
 import { useState } from 'react'
@@ -13,7 +13,7 @@ import { useLoginMutation } from '../redux/services/user'
 // FORM LOGIN:
 export default function FormLogin() {
   const navigate = useNavigate()
-  const [login] = useLoginMutation()
+  const [login, { isLoading }] = useLoginMutation()
   const [form, setForm] = useState({
     email: '',
     password: '',
@@ -56,14 +56,14 @@ export default function FormLogin() {
           required
         />
       </FormControl>
-      <div>
-        <Button type="submit" colorScheme="orange">
+      <Flex alignItems={'center'} justifyContent={'space-evenly'}>
+        <Button type="submit" isLoading={isLoading} colorScheme="orange">
           Login
         </Button>
-        <Link to="/Register">
+        <Link to="/register">
           <Button>Register</Button>
         </Link>
-      </div>
+      </Flex>
     </form>
   )
 }

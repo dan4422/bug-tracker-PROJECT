@@ -40,8 +40,8 @@ app.use(express.static(path.join(__dirname, 'client/build')))
 // api routes
 app.use('/api/v1', indexRouter)
 app.use('/api/v1/users', usersRouter)
-app.use('/api/v1/projects', projectsRouter)
 app.use('/api/v1/projects/', issuesRouter)
+app.use('/api/v1/projects', projectsRouter)
 
 // redirect all other routes to react client so that react-router can handle them
 app.use('*', (req, res) => {
