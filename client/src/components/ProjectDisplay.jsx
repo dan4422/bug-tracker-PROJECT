@@ -4,12 +4,10 @@ import { useGetProjectsQuery } from '../redux/services/projects'
 import ProjectResult from './ProjectResult'
 
 export default function ProjectDisplay() {
-  const { data, isLoading, isError } = useGetProjectsQuery()
-
-  if (isLoading || isError) return null
+  const { data, isLoading, isError, error } = useGetProjectsQuery()
   return (
     <Flex flexDirection="column">
-      {data && data.map((project) => <ProjectResult key={project.id} project={project} />)}
+      {isLoading ? <div>loading</div> : data?.map((project) => <ProjectResult key={project.id} project={project} />)}
     </Flex>
   )
 }

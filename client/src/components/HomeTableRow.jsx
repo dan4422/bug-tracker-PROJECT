@@ -1,5 +1,6 @@
-import { Button, Flex, Td, Text, Tr } from '@chakra-ui/react'
+import { Link as Anchor, Button, Flex, Td, Text, Tr } from '@chakra-ui/react'
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useDeleteIssueMutation, useGetIssuesQuery } from '../redux/services/issues'
 import IssuesEdit from './IssuesEdit'
 
@@ -17,7 +18,11 @@ function HomeTableRow({ issue }) {
         </Tr>
       ) : (
         <Tr key={issue.id}>
-          <Td>{issue.Project.name}</Td>
+          <Td>
+            <Anchor as={Link} to={`/projects/${issue.ProjectId}`}>
+              {issue.Project.name}
+            </Anchor>
+          </Td>
           <Td>
             {issue.name}: {issue.description}
           </Td>

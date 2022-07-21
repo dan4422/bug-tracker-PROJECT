@@ -18,7 +18,7 @@ import { useGetIssuesQuery } from '../redux/services/issues'
 import HomeTableRow from './HomeTableRow'
 
 function HomeTable() {
-  const { data } = useGetIssuesQuery()
+  const { data, isError, error } = useGetIssuesQuery()
   return (
     <Box border="1px" borderColor="red" w="100%" position="relative">
       <TableContainer bg="lightgrey" w="100%" position="relative">
@@ -33,7 +33,11 @@ function HomeTable() {
               <Th textAlign={'right'}>Issue Priority</Th>
             </Tr>
           </Thead>
-          <Tbody>{data && data.map((data) => <HomeTableRow key={data.id} issue={data} />)}</Tbody>
+          <Tbody>
+            {data?.map((data) => (
+              <HomeTableRow key={data.id} issue={data} />
+            ))}
+          </Tbody>
         </Table>
       </TableContainer>
     </Box>
