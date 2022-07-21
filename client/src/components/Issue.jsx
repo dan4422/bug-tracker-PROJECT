@@ -1,6 +1,18 @@
 // CHAKRA:
 
-import { Box, Button, FormControl, FormLabel, Heading, Input, Select, Text, Textarea } from '@chakra-ui/react'
+import {
+  Alert,
+  AlertIcon,
+  Box,
+  Button,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Select,
+  Text,
+  Textarea,
+} from '@chakra-ui/react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAddNewIssueMutation } from '../redux/services/issues'
@@ -8,8 +20,11 @@ import { useGetProjectsQuery } from '../redux/services/projects'
 
 // ISSUE:
 export default function Issue() {
-  const { data, isError } = useGetProjectsQuery()
+  const { data } = useGetProjectsQuery()
   const [addIssue] = useAddNewIssueMutation()
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const [project, setProject] = useState('')
   const [issue, setIssue] = useState({
     name: '',
@@ -29,6 +44,14 @@ export default function Issue() {
     e.preventDefault()
     addIssue({ projectId: project, newIssue: issue })
       .unwrap()
+      .then((data) => {
+        setIsLoading(false)
+        if (data.error) {
+          setError(data.error)
+        } else {
+          setSuccess('Issue Submitted')
+        }
+      })
       .then(() => {
         setIssue({
           name: '',
@@ -45,6 +68,17 @@ export default function Issue() {
         <Heading fontSize={25}>Issues</Heading>
       </Box>
       <form onSubmit={handleSubmit}>
+        {error && (
+          <Alert status="error">
+            <AlertIcon /> {error}
+          </Alert>
+        )}
+        {success && (
+          <Alert status="success">
+            <AlertIcon /> {success}
+          </Alert>
+        )}
+
         <FormControl border="1px" borderColor="red" mb={5}>
           <Heading fontSize={17}>Create an Issue:</Heading>
           <FormLabel htmlFor="project">Project Name</FormLabel>
