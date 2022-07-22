@@ -17,6 +17,7 @@
     "db:reset": "npx sequelize db:drop; npx sequelize db:create && npm run db:migrate && npm run db:seed"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.4",
     "@chakra-ui/react": "^2.2.4",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",

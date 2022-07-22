@@ -1,12 +1,24 @@
-import { Button, Flex, FormControl, Input, Select } from '@chakra-ui/react'
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Divider,
+  Flex,
+  FormControl,
+  FormLabel,
+  Input,
+  PopoverFooter,
+  Select,
+  Stack,
+} from '@chakra-ui/react'
 
 import { useState } from 'react'
 import { useUpdateProjectMutation } from '../redux/services/projects'
 
-function ProjectEdit({ project, onSuccess }) {
+function ProjectEdit({ project }) {
   const [updateProject] = useUpdateProjectMutation()
   const [form, setForm] = useState({
-    name: project.text,
+    name: project.name,
     description: project.description,
     status: project.status,
   })
@@ -21,40 +33,40 @@ function ProjectEdit({ project, onSuccess }) {
     e.preventDefault()
     updateProject({ id: project.id, updatedProject: form })
       .unwrap()
-      .then(() => {
-        onSuccess()
-      })
+      .then(() => {})
       .catch((e) => {})
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-        <Flex alignItems="flex-end" justifyContent="space-between" gap="2" w="100%">
-          <FormControl flexGrow="0" flexBasis="50%" w="auto">
+      <Stack>
+        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+          <Flex alignItems="center" flexDir={'column'} justifyContent="center" gap="1" w="100%">
+            <FormLabel>Name</FormLabel>
             <Input id="text" type="text" value={form.name} onChange={(e) => updateField('name', e.target.value)} />
-          </FormControl>
-          <FormControl flexGrow="0" flexBasis="50%" w="auto">
+            <FormLabel>Description</FormLabel>
             <Input
               id="text"
               type="text"
               value={form.description}
               onChange={(e) => updateField('description', e.target.value)}
             />
-          </FormControl>
-          <FormControl w="120px" flexShrink="0">
+            <FormLabel>Status</FormLabel>
             <Select id="status" value={form.status} onChange={(e) => updateField('status', e.target.value)}>
               <option value="Not Yet Started">Not Yet Started</option>
               <option value="In Progress">In Progress</option>
               <option value="Finished">Finished</option>
             </Select>
-          </FormControl>
-
-          <Button type="submit" colorScheme="blue">
-            Save
-          </Button>
-        </Flex>
-      </form>
+            <PopoverFooter border="0" display="flex" alignItems="center" justifyContent="space-between" pb={4}>
+              <ButtonGroup size="sm">
+                <Button colorScheme="blue" type="submit">
+                  Save
+                </Button>
+              </ButtonGroup>
+            </PopoverFooter>
+          </Flex>
+        </form>
+      </Stack>
     </>
   )
 }

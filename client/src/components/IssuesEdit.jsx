@@ -1,9 +1,9 @@
-import { Button, Flex, FormControl, Input, Select } from '@chakra-ui/react'
+import { Button, Flex, FormControl, FormLabel, Input, Select, Stack } from '@chakra-ui/react'
 
 import { useState } from 'react'
 import { useUpdateIssueMutation } from '../redux/services/issues'
 
-function IssuesEdit({ issue, onSuccess }) {
+function IssuesEdit({ issue }) {
   const [updateIssues] = useUpdateIssueMutation()
   const [form, setForm] = useState({
     name: issue.name,
@@ -22,17 +22,16 @@ function IssuesEdit({ issue, onSuccess }) {
     e.preventDefault()
     updateIssues({ projectId: issue.ProjectId, issueId: issue.id, updatedIssue: form })
       .unwrap()
-      .then(() => {
-        onSuccess()
-      })
+      .then(() => {})
       .catch((e) => {})
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit} style={{ width: '100%' }}>
-        <Flex alignItems="flex-end" justifyContent="space-between" gap="2" w="100%">
-          <FormControl flexGrow="0" flexBasis="50%" w="auto">
+      <Stack>
+        <form onSubmit={handleSubmit} style={{ width: '100%' }}>
+          <Flex alignItems="center" flexDir={'column'} justifyContent="center" gap="1" w="100%">
+            <FormLabel>Name</FormLabel>
             <Input
               id="name"
               type="name"
@@ -40,8 +39,7 @@ function IssuesEdit({ issue, onSuccess }) {
               onChange={(e) => updateField('name', e.target.value)}
               required
             />
-          </FormControl>
-          <FormControl flexGrow="0" flexBasis="50%" w="auto">
+            <FormLabel>Description</FormLabel>
             <Input
               id="description"
               type="description"
@@ -49,8 +47,7 @@ function IssuesEdit({ issue, onSuccess }) {
               onChange={(e) => updateField('description', e.target.value)}
               required
             />
-          </FormControl>
-          <FormControl w="120px" flexShrink="0">
+            <FormLabel>Status</FormLabel>
             <Select
               placeholder="Status?"
               id="status"
@@ -60,8 +57,7 @@ function IssuesEdit({ issue, onSuccess }) {
               <option value="Closed">Closed</option>
               <option value="Open">Open</option>
             </Select>
-          </FormControl>
-          <FormControl w="120px" flexShrink="0">
+            <FormLabel>Priority</FormLabel>
             <Select
               placeholder="Priority?"
               id="priority"
@@ -72,13 +68,12 @@ function IssuesEdit({ issue, onSuccess }) {
               <option value="Medium">Medium</option>
               <option value="High">High</option>
             </Select>
-          </FormControl>
-
-          <Button type="submit" colorScheme="blue">
-            Save
-          </Button>
-        </Flex>
-      </form>
+            <Button type="submit" colorScheme="blue">
+              Save
+            </Button>
+          </Flex>
+        </form>
+      </Stack>
     </>
   )
 }
