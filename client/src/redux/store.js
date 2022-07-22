@@ -12,5 +12,10 @@ export const store = configureStore({
     [collabApiSlice.reducerPath]: collabApiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([userApiSlice.middleware, projectsApiSlice.middleware, issuesApiSlice.middleware]),
+    getDefaultMiddleware().concat([
+      userApiSlice.middleware,
+      projectsApiSlice.middleware,
+      issuesApiSlice.middleware,
+      collabApiSlice.middleware,
+    ]),
 })

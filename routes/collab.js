@@ -29,7 +29,7 @@ router.post('/assign', checkAuth, async (req, res) => {
   const { ProjectId, UserId, position } = req.body
   const findCollabProject = user.Collabs.find((collab) => collab.ProjectId === Number(ProjectId))
   // res.json(findCollabProject)
-  if (findCollabProject.role === 'Admin') {
+  if (findCollabProject?.role === 'Admin') {
     const [collab] = await models.Collab.findOrCreate({
       where: {
         UserId,

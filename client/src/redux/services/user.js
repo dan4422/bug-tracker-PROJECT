@@ -5,6 +5,12 @@ export const userApiSlice = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: '/api/v1/users' }),
   tagTypes: ['User'],
   endpoints: (builder) => ({
+    getAllUser: builder.query({
+      query: () => ({
+        url: '/all',
+      }),
+      providesTags: ['User'],
+    }),
     getCurrentUser: builder.query({
       query: () => ({
         url: '/current',
@@ -29,4 +35,4 @@ export const userApiSlice = createApi({
   }),
 })
 
-export const { useLoginMutation, useLogoutMutation, useGetCurrentUserQuery } = userApiSlice
+export const { useGetAllUserQuery, useLoginMutation, useLogoutMutation, useGetCurrentUserQuery } = userApiSlice
