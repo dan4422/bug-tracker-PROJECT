@@ -1,29 +1,101 @@
 // CHAKRA:
-import { Box, Button, Collapse, Heading, Image, Text, useDisclosure, Wrap } from '@chakra-ui/react'
-import { PlusSquareIcon } from '@chakra-ui/icons'
+import {
+  Box,
+  Button,
+  Heading,
+  Image,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+  useDisclosure,
+  Wrap,
+} from '@chakra-ui/react'
+import { useState } from 'react'
 import { useGetCurrentUserQuery } from '../redux/services/user'
 
 // IMGS:
 import profileImg from '../imgs/profilePhoto.png'
-import CollaboratorSearchBar from './CollaboratorSearchBar'
+import { mockData } from '../MockData'
 
 // COLLABORATORS:
-export default function Collaborators() {
+export default function Collaborators({ project }) {
+  const OverlayOne = () => <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px) hue-rotate(90deg)" />
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [overlay, setOverlay] = useState(<OverlayOne />)
   const { data } = useGetCurrentUserQuery()
-  const { isOpen, onToggle } = useDisclosure()
 
+  //   const [form, setForm] = useState({
+  //     name: '',
+  //   })
+
+  //   const updateName = (name, value) => {
+  //     setForm({
+  //       ...form,
+  //       [name]: value,
+  //     })
+  //   }
+
+  const [value, setValue] = useState('')
+
+  const onChange = (event) => {
+    setValue(event.target.value)
+  }
+
+  const onSearch = (searchTerm) => {
+    setValue(searchTerm)
+    // our api to fetch the search result
+  }
   return (
     <Box bg="white" p={5} w="100%" h="100%">
       <Box border="1px" borderColor="red" mb={5}>
         <Heading fontSize={25}>Collaborators</Heading>
       </Box>
 
-      {/* <CollaboratorSearchBar /> */}
+      <Button
+        onClick={() => {
+          setOverlay(<OverlayOne />)
+          onOpen()
+        }}
+      >
+        Search For Collaborator
+      </Button>
+      <Modal isCentered isOpen={isOpen} onClose={onClose}>
+        {overlay}
+        <ModalContent>
+          <ModalHeader style={{ textAlign: 'center' }}>Search User</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Input type="text" value={value} onChange={onChange} placeholder="Enter Name" />
+            {mockData
+              .filter((item) => {
+                const searchTerm = value.toLowerCase()
+                const fullName = item.fullName.toLowerCase()
+
+                return searchTerm && fullName.startsWith(searchTerm) && fullName !== searchTerm
+              })
+              .slice(0, 10)
+              .map((item) => (
+                <div onClick={() => onSearch(item.fullName)} className="dropdown-row" key={item.fullName}>
+                  {item.fullName}
+                </div>
+              ))}
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
 
       <Box border="1px" borderColor="red" mb={5}>
         <Box display={'flex'} justifyContent={'space-between'}>
           <Heading fontSize={20} mb={2}>
-            PetMates
+            pet
           </Heading>
           <Box display={'flex'} flexDir={'row'} gap={2}>
             <Text>3</Text>
