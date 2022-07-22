@@ -28,6 +28,7 @@ export function Project() {
     name: '',
     description: '',
     status: '',
+    position: '',
   })
 
   const updateProject = (name, value) => {
@@ -46,6 +47,7 @@ export function Project() {
           name: '',
           description: '',
           status: '',
+          position: '',
         })
       })
       .catch((e) => {})
@@ -86,6 +88,18 @@ export function Project() {
             <option value="Not Yet Started">Not Yet Started</option>
             <option value="In Progress">In Progress</option>
             <option value="Finished">Finished</option>
+          </Select>
+          <FormLabel>Position</FormLabel>
+          <Select
+            border="1px"
+            borderColor="red"
+            placeholder="Select position"
+            value={form.position}
+            onChange={(e) => updateProject('position', e.target.value)}
+          >
+            <option value="Fullstack">Fullstack</option>
+            <option value="Frontend">Frontend</option>
+            <option value="Backend">Backend</option>
           </Select>
         </FormControl>
         <Button type="submit" h="2rem" size="lg" bg="green" mb={5}>
