@@ -68,7 +68,7 @@ export default function PrimaryNav() {
               <Text fontSize={13}>{data?.email}</Text>
               <Text fontSize={13}>
                 {data?.city}
-                {data ? '' : ','}
+                {data ? ', ' : ''}
                 {data?.state}
               </Text>
             </Box>

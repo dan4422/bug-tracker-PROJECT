@@ -11,6 +11,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Project)
       User.hasMany(models.Issue)
+      User.belongsToMany(models.Project, { through: models.Collab })
+      User.hasMany(models.Collab)
     }
   }
   User.init(

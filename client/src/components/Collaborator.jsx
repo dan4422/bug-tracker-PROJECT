@@ -1,5 +1,6 @@
 // CHAKRA:
-import { Box, Button, Heading, Image, Text, Wrap } from '@chakra-ui/react'
+import { Box, Button, Collapse, Heading, Image, Text, useDisclosure, Wrap } from '@chakra-ui/react'
+import { PlusSquareIcon } from '@chakra-ui/icons'
 import { useGetCurrentUserQuery } from '../redux/services/user'
 
 // IMGS:
@@ -9,6 +10,8 @@ import CollaboratorSearchBar from './CollaboratorSearchBar'
 // COLLABORATORS:
 export default function Collaborators() {
   const { data } = useGetCurrentUserQuery()
+  const { isOpen, onToggle } = useDisclosure()
+
   return (
     <Box bg="white" p={5} w="100%" h="100%">
       <Box border="1px" borderColor="red" mb={5}>
