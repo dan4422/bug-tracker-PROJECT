@@ -76,6 +76,11 @@ router.get('/current', checkAuth, async (req, res) => {
   res.json(user)
 })
 
+router.get('/all', checkAuth, async (req, res) => {
+  const users = await models.User.findAll()
+  res.json(users)
+})
+
 // PATCH /api/v1/users/update - Update User Data
 router.patch('/update', checkAuth, async (req, res) => {
   const user = await models.User.findByPk(req.session.user.id)

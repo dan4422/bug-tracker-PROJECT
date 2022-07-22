@@ -12,6 +12,7 @@ const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const projectsRouter = require('./routes/projects')
 const issuesRouter = require('./routes/issues')
+const collabRouter = require('./routes/collab')
 
 // configure express app
 const app = express()
@@ -40,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'client/build')))
 // api routes
 app.use('/api/v1', indexRouter)
 app.use('/api/v1/users', usersRouter)
+app.use('/api/v1/collab', collabRouter)
 app.use('/api/v1/projects/', issuesRouter)
 app.use('/api/v1/projects', projectsRouter)
 

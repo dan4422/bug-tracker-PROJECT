@@ -33,7 +33,7 @@ router.get('/:id', checkAuth, async (req, res) => {
 // /api/v1/projects/create
 router.post('/create', checkAuth, async (req, res) => {
   const user = await models.User.findByPk(req.session.user.id)
-  const { name, description, status } = req.body
+  const { name, description, status, position } = req.body
   if (!name) {
     return res.status(400).json({ error: 'Missing Name of Project' })
   }
@@ -42,6 +42,13 @@ router.post('/create', checkAuth, async (req, res) => {
     name,
     description,
     status: status || 'In Progress',
+  })
+
+  const collab = await models.Collab.create({
+    UserId: req.session.user.id,
+    ProjectId: project.id,
+    role: 'Admin',
+    position: position || 'Full Stack',
   })
 
   res.json(project)
