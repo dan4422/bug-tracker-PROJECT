@@ -51,14 +51,24 @@ function IssuesEdit({ issue, onSuccess }) {
             />
           </FormControl>
           <FormControl w="120px" flexShrink="0">
-            <Select id="status" value={form.status} onChange={(e) => updateField('status', e.target.value)}>
+            <Select
+              placeholder="Status?"
+              id="status"
+              value={form.status}
+              onChange={(e) => updateField('status', e.target.value)}
+            >
               <option value="Closed">Closed</option>
               <option value="Open">Open</option>
             </Select>
           </FormControl>
           <FormControl w="120px" flexShrink="0">
-            <Select id="priority" value={form.priority} onChange={(e) => updateField('priority', e.target.value)}>
-              <option value="Closed">Low</option>
+            <Select
+              placeholder="Priority?"
+              id="priority"
+              value={form.priority}
+              onChange={(e) => updateField('priority', e.target.value)}
+            >
+              <option value="Low">Low</option>
               <option value="Medium">Medium</option>
               <option value="High">High</option>
             </Select>

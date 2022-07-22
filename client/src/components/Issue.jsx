@@ -36,6 +36,7 @@ export default function Issue() {
           status: '',
           priority: '',
         })
+        setProject('')
       })
       .catch((e) => {})
   }
@@ -54,7 +55,8 @@ export default function Issue() {
             mb={5}
             id="project"
             required
-            value={project}
+            placeholder="Please Select a Project"
+            // value={project}
             onChange={(e) => setProject(e.target.value)}
           >
             {data?.map((project, i) => (
@@ -88,6 +90,7 @@ export default function Issue() {
             borderColor="red"
             mb={5}
             id="status"
+            placeholder="Status?"
             value={issue.status}
             onChange={(e) => updateIssue('status', e.target.value)}
           >
@@ -101,6 +104,7 @@ export default function Issue() {
             mb={5}
             id="priority"
             value={issue.priority}
+            placeholder="Priority?"
             onChange={(e) => updateIssue('priority', e.target.value)}
           >
             <option value="Low">Low</option>

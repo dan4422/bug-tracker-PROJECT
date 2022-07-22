@@ -21,6 +21,21 @@ router.get('/issues', checkAuth, async (req, res) => {
   res.json(issues)
 })
 
+// /api/v1/projects/:projectId/issues/:issueId - deletes issue
+router.get('/:projectId/issues/:issueId', checkAuth, async (req, res) => {
+  const { projectId, issueId } = req.params
+
+  const project = await models.Project.findByPk(projectId, {
+    include: models.Issue,
+  })
+  if (!project || project.UserId !== req.session.user.id) {
+    res.status(400).json({ error: 'cannot find project' })
+    return
+  }
+  const specificIssue = project.Issues.find((issue) => (issue.id = Number(issueId)))
+  res.json(specificIssue)
+})
+
 // /api/v1/projects/:projectId/issues
 router.get('/:projectId/issues', checkAuth, async (req, res) => {
   const { projectId } = req.params
@@ -62,8 +77,8 @@ router.post('/:projectId/issues/create', checkAuth, async (req, res) => {
   const issue = await project.createIssue({
     name,
     description,
-    priority: priority || 'low',
-    status: status || 'open',
+    priority: priority || 'Low',
+    status: status || 'Open',
     UserId: user.id,
   })
 

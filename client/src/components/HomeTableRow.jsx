@@ -24,7 +24,9 @@ function HomeTableRow({ issue }) {
             </Anchor>
           </Td>
           <Td>
-            {issue.name}: {issue.description}
+            <Anchor as={Link} to={`/projects/${issue.ProjectId}/issues/${issue.id}`}>
+              {issue.name}: {issue.description}
+            </Anchor>
           </Td>
           <Td>{issue.User.username}</Td>
           <Td>{new Date(issue.createdAt).toDateString()}</Td>

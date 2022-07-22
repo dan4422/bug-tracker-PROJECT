@@ -9,6 +9,7 @@ router.get('/', checkAuth, async (req, res) => {
     where: {
       UserId: req.session.user.id,
     },
+    include: models.Issue,
   })
 
   res.json(project)
@@ -40,7 +41,7 @@ router.post('/create', checkAuth, async (req, res) => {
   const project = await user.createProject({
     name,
     description,
-    status: status || 'in progress',
+    status: status || 'In Progress',
   })
 
   res.json(project)
