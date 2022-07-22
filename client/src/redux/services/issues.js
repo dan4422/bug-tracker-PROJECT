@@ -13,6 +13,10 @@ export const issuesApiSlice = createApi({
       query: (projectId) => `/${projectId}/issues`,
       providesTags: ['Issue'],
     }),
+    getIssueByID: builder.query({
+      query: ({ projectId, issueId }) => `/${projectId}/issues/${issueId}`,
+      providesTags: ['Issue'],
+    }),
     addNewIssue: builder.mutation({
       query: ({ projectId, newIssue }) => ({
         url: `/${projectId}/issues/create`,
@@ -41,6 +45,7 @@ export const issuesApiSlice = createApi({
 
 export const {
   useGetIssuesQuery,
+  useGetIssueByIDQuery,
   useGetProjectIssuesQuery,
   useAddNewIssueMutation,
   useDeleteIssueMutation,

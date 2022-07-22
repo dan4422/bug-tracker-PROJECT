@@ -1,8 +1,9 @@
 import { Heading } from '@chakra-ui/react'
 import React from 'react'
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
+import { useGetIssuesQuery } from '../redux/services/issues'
 
-const data = [
+const pieData = [
   { name: 'Open', value: 20 },
   { name: 'In Progress', value: 15 },
   { name: 'Close', value: 30 },
@@ -24,6 +25,11 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
 }
 
 function HomePieChart2() {
+  const { data } = useGetIssuesQuery()
+  const pieData = [
+    { name: 'Open', value: data?.filter((issue) => issue.status === 'Open' || issue.status === 'open').length },
+    { name: 'Closed', value: data?.filter((issue) => issue.status === 'Closed' || issue.status === 'closed').length },
+  ]
   return (
     <>
       <Heading size="md" textAlign="center" my={2}>
@@ -32,8 +38,8 @@ function HomePieChart2() {
       <ResponsiveContainer width="100%" height={400}>
         <PieChart width={400} height={400}>
           <Legend verticalAlign="top" />
-          <Pie data={data} labelLine={false} label={renderCustomizedLabel} fill="#8884d8" dataKey="value">
-            {data.map((entry, index) => (
+          <Pie data={pieData} labelLine={false} label={renderCustomizedLabel} fill="#8884d8" dataKey="value">
+            {data?.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>

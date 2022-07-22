@@ -21,6 +21,7 @@ import './App.css'
 import Protected from './components/Protected'
 import { useGetCurrentUserQuery } from './redux/services/user'
 import ProjectPage from './routes/ProjectPage'
+import IssuePage from './routes/IssuePage'
 
 function AppRoutes() {
   return (
@@ -40,6 +41,14 @@ function AppRoutes() {
         element={
           <Protected>
             <ProjectPage />
+          </Protected>
+        }
+      />
+      <Route
+        path="/projects/:projectId/issues/:issueId"
+        element={
+          <Protected>
+            <IssuePage />
           </Protected>
         }
       />

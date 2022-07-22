@@ -4,6 +4,7 @@ import {
   AccordionIcon,
   AccordionItem,
   AccordionPanel,
+  Link as Anchor,
   Box,
   Button,
   Flex,
@@ -11,6 +12,7 @@ import {
   Text,
   Wrap,
 } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useDeleteProjectMutation } from '../redux/services/projects'
 import ProjectEdit from './ProjectEdit'
@@ -27,7 +29,9 @@ function ProjectResult({ project }) {
           <Box w={200} h={300} display="flex" flexDir="column" justifyContent={'space-between'}>
             <Box>
               <Heading fontSize={17} mt={2} mb={2} px={2}>
-                {project.name}
+                <Anchor as={Link} to={`/projects/${project.id}`}>
+                  {project.name}
+                </Anchor>
               </Heading>
               <Text fontSize={12}>Description:</Text>
               <Text textAlign={'center'} px={2}>
