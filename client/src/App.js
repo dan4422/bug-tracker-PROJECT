@@ -22,6 +22,7 @@ import Protected from './components/Protected'
 import { useGetCurrentUserQuery } from './redux/services/user'
 import ProjectPage from './routes/ProjectPage'
 import IssuePage from './routes/IssuePage'
+import Comment from './routes/Comment'
 
 function AppRoutes() {
   return (
@@ -73,6 +74,14 @@ function AppRoutes() {
         element={
           <Protected>
             <Collaborators />
+          </Protected>
+        }
+      />
+      <Route
+        path="/comment"
+        element={
+          <Protected>
+            <Comment />
           </Protected>
         }
       />
