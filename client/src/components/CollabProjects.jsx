@@ -5,7 +5,13 @@ import CollabProject from './CollabProject'
 
 function CollabProjects() {
   const { data } = useGetProjectsByUserQuery()
-  return <>{data && data?.map((data, i) => <CollabProject key={i} project={data} />)}</>
+  return (
+    <>
+      {data?.map((data, i) => (
+        <CollabProject key={i} project={data} />
+      ))}
+    </>
+  )
 }
 
 export default CollabProjects

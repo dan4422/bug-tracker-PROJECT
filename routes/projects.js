@@ -56,6 +56,13 @@ router.post('/create', checkAuth, async (req, res) => {
 
 // api/v1/projects/:id - deletes projects
 router.delete('/:id', checkAuth, async (req, res) => {
+  const [collabProject] = await models.Collab.findAll({
+    where: {
+      ProjectId: req.params.id,
+    },
+  })
+  await collabProject?.destroy()
+
   const project = await models.Project.findByPk(req.params.id)
   if (!project || project.UserId !== req.session.user.id) {
     res.status(400).json({ error: 'cannot find project' })

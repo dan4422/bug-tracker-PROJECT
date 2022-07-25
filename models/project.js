@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       Project.hasMany(models.Issue)
       Project.belongsTo(models.User)
       Project.belongsToMany(models.User, { through: models.Collab })
-      Project.hasMany(models.Collab)
+      Project.hasMany(models.Collab, { onDelete: 'cascade' })
     }
   }
   Project.init(
