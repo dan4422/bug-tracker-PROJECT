@@ -66,7 +66,9 @@ export default function Issue() {
   return (
     <Box>
       <Box border="1px" borderColor="red" mb={5}>
-        <Heading fontSize={25}>Issues</Heading>
+        <Text fontSize={'25px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
+          Issues
+        </Text>
       </Box>
       <form onSubmit={handleSubmit}>
         {error && (
@@ -81,16 +83,19 @@ export default function Issue() {
         )}
 
         <FormControl border="1px" borderColor="red" mb={5}>
-          <Heading fontSize={17}>Create an Issue:</Heading>
-          <FormLabel htmlFor="project">Project Name</FormLabel>
+          <Text fontSize={'17px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
+            Create an Issue
+          </Text>
+          <FormLabel htmlFor="project">Current Project</FormLabel>
           <Select
             border="1px"
             borderColor="red"
             mb={5}
             id="project"
             required
-            placeholder="Please Select a Project"
-            // value={project}
+            color={project ? 'black' : 'gray'}
+            placeholder="Select a project"
+            value={project}
             onChange={(e) => setProject(e.target.value)}
           >
             {data?.map((project, i) => (
@@ -99,12 +104,13 @@ export default function Issue() {
               </option>
             ))}
           </Select>
-          <FormLabel htmlFor="name">Name</FormLabel>
+          <FormLabel htmlFor="name">Title</FormLabel>
           <Input
             border="1px"
             borderColor="red"
             id="name"
             type="name"
+            placeholder="Enter a title for your issue"
             required
             value={issue.name}
             onChange={(e) => updateIssue('name', e.target.value)}
@@ -115,6 +121,7 @@ export default function Issue() {
             borderColor="red"
             id="description"
             required
+            placeholder="Write a description for your issue"
             value={issue.description}
             onChange={(e) => updateIssue('description', e.target.value)}
           ></Textarea>
@@ -124,7 +131,8 @@ export default function Issue() {
             borderColor="red"
             mb={5}
             id="status"
-            placeholder="Status?"
+            placeholder="Select status"
+            color={issue.status ? 'black' : 'gray'}
             value={issue.status}
             onChange={(e) => updateIssue('status', e.target.value)}
           >
@@ -137,8 +145,9 @@ export default function Issue() {
             borderColor="red"
             mb={5}
             id="priority"
+            color={issue.priority ? 'black' : 'gray'}
             value={issue.priority}
-            placeholder="Priority?"
+            placeholder="Select priority"
             onChange={(e) => updateIssue('priority', e.target.value)}
           >
             <option value="Low">Low</option>
