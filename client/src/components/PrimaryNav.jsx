@@ -9,6 +9,11 @@ import { projectsApiSlice } from '../redux/services/projects'
 
 // IMGS:
 import profileImg from '../imgs/profilePhoto.png'
+import homeIcon from '../imgs/homeBlack.png'
+import projectsIcon from '../imgs/projectsBlack.png'
+import issuesIcon from '../imgs/issuesBlack.png'
+import collabIcon from '../imgs/collaboratorsBlack.png'
+import logoutIcon from '../imgs/logoutBlack.png'
 
 // REDUX
 import { useGetCurrentUserQuery, useLogoutMutation } from '../redux/services/user'
@@ -40,10 +45,12 @@ export default function PrimaryNav() {
       flexDirection="column"
       minW={{ base: 150, lg: 220 }}
       maxW={{ base: 150, lg: 150 }}
-      minH={'90vh'}
+      maxH={'100%'} // why does the navbar effect the main home container and not just nav
+      h={'100%'}
       p={0}
-      bg="white"
+      bg="rgba(255, 255, 255, 0.726)"
       flexShrink="0"
+      flexGrow={'0'}
     >
       <Box
         borderBottom="1px"
@@ -76,24 +83,105 @@ export default function PrimaryNav() {
         )}
       </Box>
       <Box display="flex" flexDirection="column" textAlign={'center'} maxW="100%">
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/">
+        <Anchor
+          as={Link}
+          _hover={{ bg: 'green' }}
+          m={1}
+          borderRadius="10px"
+          color="black"
+          display="flex"
+          justifyContent={'flex-start'}
+          gap={2}
+          alignItems="center"
+          py={3}
+          px={3}
+          to="/"
+        >
+          <Image width={5} h={5} src={homeIcon} alt="" />
           Home
         </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/projects">
+        <Anchor
+          as={Link}
+          _hover={{ bg: 'green' }}
+          m={1}
+          borderRadius="10px"
+          color="black"
+          display="flex"
+          justifyContent={'flex-start'}
+          gap={2}
+          alignItems="center"
+          py={3}
+          px={3}
+          to="/projects"
+        >
+          <Image width={5} h={5} src={projectsIcon} alt="" />
           Projects
         </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/issues">
+        <Anchor
+          as={Link}
+          _hover={{ bg: 'green' }}
+          m={1}
+          borderRadius="10px"
+          color="black"
+          display="flex"
+          justifyContent={'flex-start'}
+          gap={2}
+          alignItems="center"
+          py={3}
+          px={3}
+          to="/issues"
+        >
+          <Image width={5} h={5} src={issuesIcon} alt="" />
           Issues
         </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/collaborators">
+        <Anchor
+          as={Link}
+          _hover={{ bg: 'green' }}
+          m={1}
+          borderRadius="10px"
+          color="black"
+          display="flex"
+          justifyContent={'flex-start'}
+          gap={2}
+          alignItems="center"
+          py={3}
+          px={3}
+          to="/collaborators"
+        >
+          <Image width={5} h={5} src={collabIcon} alt="" />
           Collaborators
         </Anchor>
-        <Anchor as={Link} borderBottom="1px" borderColor="red" py={3} px={3} to="/comment">
-          Comments
-        </Anchor>
-        <Anchor onClick={() => handleLogout()} borderBottom="1px" borderColor="red" py={3} px={3}>
+        <Anchor
+          _hover={{ bg: 'green' }}
+          m={1}
+          borderRadius="10px"
+          color="black"
+          display="flex"
+          justifyContent={'flex-start'}
+          gap={2}
+          alignItems="center"
+          onClick={() => handleLogout()}
+          py={3}
+          px={3}
+        >
+          <Image width={5} h={5} src={logoutIcon} alt="" />
           Logout
         </Anchor>
+        {/* <Anchor
+          as={Link}
+          _hover={{ bg: 'green' }}
+          m={1}
+          borderRadius="10px"
+          color="black"
+          display="flex"
+          justifyContent={'flex-start'}
+          gap={2}
+          py={3}
+          px={3}
+          to="/comment"
+        >
+          Comments
+        </Anchor> */}
       </Box>
     </Container>
   )

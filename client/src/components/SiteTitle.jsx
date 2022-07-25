@@ -1,11 +1,23 @@
 // CHAKRA:
-import { Heading } from '@chakra-ui/react'
+import { Heading, Text } from '@chakra-ui/react'
 
 // SITE TITLE:
 export default function SiteTitle() {
   return (
-    <Heading bg="white" border="1px" borderColor="red" m={0} w="100%" textAlign={'center'}>
+    <Text
+      bg="white"
+      border="1px"
+      borderColor="red"
+      m={0}
+      pt={2}
+      w="100%"
+      textAlign={'center'}
+      alignItems="center"
+      fontSize={'35px'}
+      fontWeight="bold"
+      fontFamily="Baloo Tamma 2', cursive"
+    >
       BUGSLY
-    </Heading>
+    </Text>
   )
 }

@@ -1,3 +1,7 @@
+* {
+  font-family: 'Baloo Tamma 2', cursive;
+}
+
 .App {
   --color-a: rgba(42, 193, 67, 0.499);
   --color-b: rgba(187, 181, 15, 0.609);
