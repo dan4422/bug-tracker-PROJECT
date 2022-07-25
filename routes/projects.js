@@ -56,6 +56,13 @@ router.post('/create', checkAuth, async (req, res) => {
 
 // api/v1/projects/:id - deletes projects
 router.delete('/:id', checkAuth, async (req, res) => {
+  const [issue] = await models.Issue.findAll({
+    where: {
+      ProjectId: req.params.id,
+    },
+  })
+  await issue?.destroy()
+
   const [collabProject] = await models.Collab.findAll({
     where: {
       ProjectId: req.params.id,

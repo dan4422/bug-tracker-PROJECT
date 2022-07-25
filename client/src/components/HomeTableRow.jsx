@@ -21,17 +21,9 @@ import ProjectEdit from './ProjectEdit'
 
 function HomeTableRow({ issue }) {
   const [deleteIssue] = useDeleteIssueMutation()
-  const [showEditForm, setShowEditForm] = useState(false)
 
   return (
     <>
-      {/* {showEditForm ? (
-        <Tr key={issue.id}>
-          <Td>
-            <IssuesEdit issue={issue} onSuccess={() => setShowEditForm(false)} />
-          </Td>
-        </Tr>
-      ) : ( */}
       <Tr key={issue.id}>
         <Td>
           <Anchor as={Link} to={`/projects/${issue.ProjectId}`}>
@@ -50,9 +42,7 @@ function HomeTableRow({ issue }) {
             <Text>{issue.priority}</Text>
             <Popover placement="right">
               <PopoverTrigger>
-                <Button size="sm" onClick={() => setShowEditForm(true)}>
-                  📝
-                </Button>
+                <Button size="sm">📝</Button>
               </PopoverTrigger>
               <PopoverContent>
                 <PopoverCloseButton />
@@ -69,7 +59,6 @@ function HomeTableRow({ issue }) {
           </Flex>
         </Td>
       </Tr>
-      {/* )} */}
     </>
   )
 }

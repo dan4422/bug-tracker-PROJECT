@@ -21,12 +21,17 @@ router.get('/issues', checkAuth, async (req, res) => {
   res.json(issues)
 })
 
-// /api/v1/projects/:projectId/issues/:issueId - deletes issue
+// /api/v1/projects/:projectId/issues/:issueId - gets specific issue
 router.get('/:projectId/issues/:issueId', checkAuth, async (req, res) => {
   const { projectId, issueId } = req.params
 
   const project = await models.Project.findByPk(projectId, {
-    include: models.Issue,
+    include: [
+      {
+        model: models.Issue,
+        include: [models.User],
+      },
+    ],
   })
   if (!project || project.UserId !== req.session.user.id) {
     res.status(400).json({ error: 'cannot find project' })

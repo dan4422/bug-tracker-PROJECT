@@ -113,11 +113,11 @@ function CollabProject({ project }) {
             >
               Search For Collaborator
             </Button>
-            <Text>{project.Collabs.length}</Text>
+            <Text>{project.members.length}</Text>
             <Image width={5} borderRadius="full" m={0} src={personIcon} alt="" />
           </Box>
         </Box>
-        <Wrap spacing={10}>{project && project.Collabs.map((user, i) => <CollabUser key={i} data={user} />)}</Wrap>
+        <Wrap spacing={10}>{project && project.members.map((user, i) => <CollabUser key={i} data={user} />)}</Wrap>
       </Box>
     </>
   )
