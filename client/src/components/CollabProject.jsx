@@ -21,6 +21,7 @@ import {
 import React, { useState } from 'react'
 import { useGetAllUserQuery } from '../redux/services/user'
 import { useAssignUserToProjectMutation } from '../redux/services/collab'
+import personIcon from '../imgs/personIcon.png'
 import CollabUser from './CollabUser'
 
 function CollabProject({ project }) {
@@ -97,11 +98,14 @@ function CollabProject({ project }) {
       </Modal>
       <Box border="1px" borderColor="red" mb={5}>
         <Box display={'flex'} justifyContent={'space-between'}>
-          <Heading fontSize={20} mb={2}>
+          <Text fontSize={'20px'} fontWeight="bold" mb={2} fontFamily="Baloo Tamma 2', cursive">
             {project?.name}
-          </Heading>
-          <Box display={'flex'} flexDir={'row'} gap={2}>
+          </Text>
+          <Box display={'flex'} flexDir={'row'} gap={1} alignItems="center">
             <Button
+              bg="green"
+              fontSize={10}
+              h={5}
               onClick={() => {
                 setOverlay(<OverlayOne />)
                 onOpen()
@@ -110,7 +114,7 @@ function CollabProject({ project }) {
               Search For Collaborator
             </Button>
             <Text>{project.Collabs.length}</Text>
-            <Text>person icon</Text>
+            <Image width={5} borderRadius="full" m={0} src={personIcon} alt="" />
           </Box>
         </Box>
         <Wrap spacing={10}>{project && project.Collabs.map((user, i) => <CollabUser key={i} data={user} />)}</Wrap>

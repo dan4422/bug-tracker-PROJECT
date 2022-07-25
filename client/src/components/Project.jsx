@@ -10,6 +10,7 @@ import {
   Input,
   Select,
   StackDivider,
+  Text,
   Textarea,
   VStack,
   Wrap,
@@ -19,6 +20,7 @@ import {
 import { useState } from 'react'
 import { useAddNewProjectMutation } from '../redux/services/projects'
 
+// COMPONENTS:
 import ProjectDisplay from './ProjectDisplay'
 
 // PROJECT:
@@ -55,18 +57,22 @@ export function Project() {
   return (
     <Box>
       <Box border="1px" borderColor="red" mb={5}>
-        <Heading fontSize={25}>Projects</Heading>
+        <Text fontSize={'25px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
+          Projects
+        </Text>
       </Box>
       <form onSubmit={handleSubmit}>
         <FormControl border="1px" borderColor="red" mb={5}>
-          <Heading fontSize={17}>Create a Project:</Heading>
+          <Text fontSize={'17px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
+            Create a Project
+          </Text>
           <FormLabel htmlFor="name">Name</FormLabel>
           <Input
             id="name"
             type="name"
             required
             value={form.name}
-            placeholder="Project name here."
+            placeholder="Enter the name of your project"
             onChange={(e) => updateProject('name', e.target.value)}
           />
           <FormLabel htmlFor="description">Description</FormLabel>
@@ -75,13 +81,14 @@ export function Project() {
             required
             value={form.description}
             onChange={(e) => updateProject('description', e.target.value)}
-            placeholder="Write a description for your project here"
+            placeholder="Write a description for your project"
           />
           <FormLabel>Operational Status</FormLabel>
           <Select
             border="1px"
             borderColor="red"
             placeholder="Select progress"
+            color={form.status ? 'black' : 'gray'}
             value={form.status}
             onChange={(e) => updateProject('status', e.target.value)}
           >
@@ -94,6 +101,7 @@ export function Project() {
             border="1px"
             borderColor="red"
             placeholder="Select position"
+            color={form.position ? 'black' : 'gray'}
             value={form.position}
             onChange={(e) => updateProject('position', e.target.value)}
           >
@@ -107,7 +115,9 @@ export function Project() {
         </Button>
       </form>
       <Box border="1px" borderColor="red">
-        <Heading fontSize={17}>Projects List:</Heading>
+        <Text fontSize={'17px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
+          Projects List
+        </Text>
         <ProjectDisplay />
       </Box>
     </Box>
