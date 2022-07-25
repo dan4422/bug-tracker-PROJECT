@@ -9,6 +9,10 @@ export const collabApiSlice = createApi({
       query: () => '/getProjectsByUser',
       providesTags: ['Collab', 'Project'],
     }),
+    getAllCollabProjects: builder.query({
+      query: () => '/getAllCollabProjects',
+      providesTags: ['Collab', 'Project'],
+    }),
     assignUserToProject: builder.mutation({
       query: (assign) => ({
         url: '/assign',
@@ -17,7 +21,20 @@ export const collabApiSlice = createApi({
       }),
       invalidatesTags: ['Collab', 'Project', 'User'],
     }),
+    unassignUserToProject: builder.mutation({
+      query: (unassign) => ({
+        url: '/unassign',
+        method: 'DELETE',
+        body: unassign,
+      }),
+      invalidatesTags: ['Collab', 'Project', 'User'],
+    }),
   }),
 })
 
-export const { useGetProjectsByUserQuery, useAssignUserToProjectMutation } = collabApiSlice
+export const {
+  useGetProjectsByUserQuery,
+  useGetAllCollabProjectsQuery,
+  useAssignUserToProjectMutation,
+  useUnassignUserToProjectMutation,
+} = collabApiSlice

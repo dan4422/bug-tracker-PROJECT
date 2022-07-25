@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const projectsApiSlice = createApi({
   reducerPath: 'projects',
   baseQuery: fetchBaseQuery({ baseUrl: '/api/v1/projects' }),
-  tagTypes: ['Project'],
+  tagTypes: ['Project', 'Collab'],
   endpoints: (builder) => ({
     getProjects: builder.query({
       query: () => '/',
@@ -34,7 +34,7 @@ export const projectsApiSlice = createApi({
         method: 'PATCH',
         body: updatedProject,
       }),
-      invalidatesTags: ['Project'],
+      invalidatesTags: ['Project', 'Collab'],
     }),
   }),
 })

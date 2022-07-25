@@ -1,4 +1,4 @@
-import { Badge, Box, Center, Container, Divider, Flex, Heading, Text, Wrap } from '@chakra-ui/react'
+import { Badge, Box, Divider, Flex, Heading, Text } from '@chakra-ui/react'
 import React from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetIssueByIDQuery } from '../redux/services/issues'
@@ -30,11 +30,15 @@ function statusColor(status) {
 function IssuePage() {
   const { projectId, issueId } = useParams()
   const { data } = useGetIssueByIDQuery({ projectId, issueId })
+  console.log(data)
   return (
     <>
       <Box bg="white">
         <Heading my={2} textAlign={'center'}>
           {data?.name.toUpperCase()}
+        </Heading>
+        <Heading size={'sm'} my={2} textAlign={'center'}>
+          created by: {data?.User.username}
         </Heading>
         <Flex justifyContent={'center'} alignItems="center" gap={5}>
           <Badge rounded={16} my={2} alignItems={'center'} colorScheme={priorityColor(data?.priority)} fontSize="1.5em">

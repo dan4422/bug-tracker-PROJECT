@@ -1,7 +1,18 @@
-import { Box, Image, Text } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Button, Image, Text } from '@chakra-ui/react'
+import { useUnassignUserToProjectMutation } from '../redux/services/collab'
 
 function CollabUser({ data }) {
+  const [unassignUser] = useUnassignUserToProjectMutation()
+  const unassign = (ProjectId, UserId) => {
+    const unassignData = {
+      ProjectId,
+      UserId,
+    }
+    unassignUser(unassignData)
+      .unwrap()
+      .then(() => {})
+  }
+
   return (
     <Box border="1px" borderColor="red" w={200} textAlign="center">
       <Image w={150} maxW="80%" borderRadius="full" src={''} alt="" m={'0 auto'} mt={2} mb={2} />
@@ -16,6 +27,13 @@ function CollabUser({ data }) {
       <Text>{data.position}</Text>
       <hr></hr>
       <Text mb={2}>{data.role}</Text>
+      {data.role === 'Admin' ? (
+        ''
+      ) : (
+        <Button onClick={() => unassign(data.ProjectId, data.UserId)} size="xs" bg="red">
+          Unassign
+        </Button>
+      )}
     </Box>
   )
 }

@@ -9,10 +9,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Project.hasMany(models.Issue)
+      Project.hasMany(models.Issue, { onDelete: 'cascade' })
       Project.belongsTo(models.User)
       Project.belongsToMany(models.User, { through: models.Collab })
       Project.hasMany(models.Collab, { onDelete: 'cascade' })
+      Project.hasMany(models.Collab, { as: 'members' })
     }
   }
   Project.init(
