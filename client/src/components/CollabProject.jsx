@@ -19,7 +19,6 @@ import {
   Wrap,
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
-import { mockData } from '../MockData'
 import { useGetAllUserQuery } from '../redux/services/user'
 import { useAssignUserToProjectMutation } from '../redux/services/collab'
 import CollabUser from './CollabUser'
@@ -110,7 +109,7 @@ function CollabProject({ project }) {
             >
               Search For Collaborator
             </Button>
-            <Text>3</Text>
+            <Text>{project.Collabs.length}</Text>
             <Text>person icon</Text>
           </Box>
         </Box>

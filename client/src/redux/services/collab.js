@@ -3,11 +3,11 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const collabApiSlice = createApi({
   reducerPath: 'collab',
   baseQuery: fetchBaseQuery({ baseUrl: '/api/v1/collab' }),
-  tagTypes: ['Collab'],
+  tagTypes: ['Collab', 'User', 'Project'],
   endpoints: (builder) => ({
     getProjectsByUser: builder.query({
       query: () => '/getProjectsByUser',
-      providesTags: ['Collab'],
+      providesTags: ['Collab', 'Project'],
     }),
     assignUserToProject: builder.mutation({
       query: (assign) => ({
@@ -15,7 +15,7 @@ export const collabApiSlice = createApi({
         method: 'POST',
         body: assign,
       }),
-      invalidatesTags: ['Collab'],
+      invalidatesTags: ['Collab', 'Project', 'User'],
     }),
   }),
 })

@@ -1,6 +1,5 @@
 // CHAKRA:
 import { Box, Heading } from '@chakra-ui/react'
-
 import CollabProjects from './CollabProjects'
 
 // COLLABORATORS:
