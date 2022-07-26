@@ -6,4 +6,5 @@
   --color-a: rgba(42, 193, 67, 0.499);
   --color-b: rgba(187, 181, 15, 0.609);
   background: linear-gradient(to bottom right, var(--color-a), var(--color-b));
+
 }

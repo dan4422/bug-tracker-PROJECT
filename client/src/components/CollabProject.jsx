@@ -27,7 +27,7 @@ import CollabUser from './CollabUser'
 function CollabProject({ project }) {
   const { data } = useGetAllUserQuery()
   const [assignUser] = useAssignUserToProjectMutation()
-  const OverlayOne = () => <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px) hue-rotate(90deg)" />
+  const OverlayOne = () => <ModalOverlay bg="rgba(216, 216, 0, 0.314);" backdropFilter="blur(30px) " />
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [overlay, setOverlay] = useState(<OverlayOne />)
   const [userId, setUserId] = useState(null)
@@ -96,14 +96,15 @@ function CollabProject({ project }) {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <Box border="1px" borderColor="red" mb={5}>
-        <Box display={'flex'} justifyContent={'space-between'}>
-          <Text fontSize={'20px'} fontWeight="bold" mb={2} fontFamily="Baloo Tamma 2', cursive">
+      <Box mb={5}>
+        <Box borderBottom="1px" borderColor="lightgray" mx={2} display={'flex'} justifyContent={'space-between'}>
+          <Text fontSize={'17px'} pl={2} pt={1} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
             {project?.name}
           </Text>
           <Box display={'flex'} flexDir={'row'} gap={1} alignItems="center">
             <Button
-              bg="green"
+              bg="rgba(178, 217, 100, 0.765)"
+              _hover={{ bg: 'rgba(217, 199, 0, 0.487)' }}
               fontSize={10}
               h={5}
               onClick={() => {
@@ -117,7 +118,9 @@ function CollabProject({ project }) {
             <Image width={5} borderRadius="full" m={0} src={personIcon} alt="" />
           </Box>
         </Box>
-        <Wrap spacing={10}>{project && project.members.map((user, i) => <CollabUser key={i} data={user} />)}</Wrap>
+        <Wrap mt={4} spacing={10}>
+          {project && project.members.map((user, i) => <CollabUser key={i} data={user} />)}
+        </Wrap>
       </Box>
     </>
   )

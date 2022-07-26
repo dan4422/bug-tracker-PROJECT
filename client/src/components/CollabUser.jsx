@@ -26,7 +26,7 @@ function CollabUser({ data }) {
   }
 
   return (
-    <Box border="1px" borderColor="red" w={200} textAlign="center">
+    <Box bg="rgba(213, 213, 213, 0.682)" borderRadius="20px" w={200} textAlign="center">
       <Image w={150} maxW="80%" borderRadius="full" src={''} alt="" m={'0 auto'} mt={2} mb={2} />
       <Text>{data.User.username}</Text>
       <Text fontSize={13}>{data.User.email}</Text>

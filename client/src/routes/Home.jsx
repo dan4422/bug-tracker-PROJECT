@@ -7,7 +7,7 @@ import HomePage from '../components/HomePage'
 // HOME:
 export default function Home() {
   return (
-    <Box bg="white" p={5} w="100%" h="100%">
+    <Box bg="white" borderRadius="5px" p={5} w="100%" h="100%">
       <HomePage />
     </Box>
   )

@@ -101,7 +101,7 @@ export default function App() {
             <PrimaryNav />
             <Flex flexDirection={'column'} alignItems="center" maxW="full" gap="10px" flexGrow="1">
               <SiteTitle />
-              <Box border="1px" borderColor="red" w="100%" h="100%">
+              <Box w="100%" h="100%">
                 <AppRoutes />
               </Box>
             </Flex>

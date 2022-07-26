@@ -21,17 +21,19 @@ function HomeTable() {
   const { data, isError, error } = useGetAllIssuesQuery()
   const issues = data?.map((data) => data.Issues)
   return (
-    <Box border="1px" borderColor="red" w="100%" position="relative">
-      <TableContainer bg="lightgrey" w="100%" position="relative">
+    <Box w="100%" position="relative">
+      <TableContainer bg="rgba(213, 213, 213, 0.682)" borderRadius="5px" w="100%" p={2} position="relative">
         <Table variant="simple">
           <TableCaption>Bugsly</TableCaption>
           <Thead>
             <Tr>
-              <Th>Project Name</Th>
-              <Th>Issue Brief</Th>
-              <Th>Created By</Th>
-              <Th>Created Date</Th>
-              <Th textAlign={'right'}>Issue Priority</Th>
+              <Th borderBottom="2px">Project Name</Th>
+              <Th borderBottom="2px">Issue Brief</Th>
+              <Th borderBottom="2px">Created By</Th>
+              <Th borderBottom="2px">Created Date</Th>
+              <Th borderBottom="2px" textAlign={'right'}>
+                Issue Priority
+              </Th>
             </Tr>
           </Thead>
           <Tbody>{issues?.map((data) => data.map((data) => <HomeTableRow key={data.id} issue={data} />))}</Tbody>

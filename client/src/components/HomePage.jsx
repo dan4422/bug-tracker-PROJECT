@@ -16,20 +16,20 @@ import HomeTable from './HomeTable'
 export default function HomePage() {
   return (
     <Flex gap="10px" flexDirection="column">
-      <Box border="1px" borderColor="red">
+      <Box borderRadius="5px">
         <Flex flexWrap="wrap" justifyContent="space-evenly">
-          <Box borderRight="1px" width={{ base: '100%', sm: '100%', md: '50%' }} borderColor="red">
+          <Box bg="rgba(213, 213, 213, 0.682)" width={{ base: '100%', sm: '100%', md: '50%' }}>
             <HomeBarChart />
           </Box>
-          <Box borderRight="1px" maxW={'100%'} width={{ base: '100%', sm: '100%', md: '25%' }} borderColor="red">
+          <Box bg="rgba(213, 213, 213, 0.682)" maxW={'100%'} width={{ base: '100%', sm: '100%', md: '25%' }}>
             <HomePieChart1 />
           </Box>
-          <Box maxW={'100%'} width={{ base: '100%', sm: '100%', md: '25%' }} borderColor="red">
+          <Box bg="rgba(213, 213, 213, 0.682)" maxW={'100%'} width={{ base: '100%', sm: '100%', md: '25%' }}>
             <HomePieChart2 />
           </Box>
         </Flex>
       </Box>
-      <Box border="1px" borderColor="red" w="100%" position="relative">
+      <Box borderRadius="5px" mt={2} w="100%" position="relative">
         <HomeTable />
       </Box>
     </Flex>

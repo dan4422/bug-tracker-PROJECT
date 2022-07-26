@@ -1,5 +1,7 @@
 // CHAKRA:
 import {
+  Alert,
+  AlertIcon,
   Box,
   Button,
   Container,
@@ -7,6 +9,7 @@ import {
   FormControl,
   FormLabel,
   Heading,
+  Image,
   Input,
   Select,
   StackDivider,
@@ -20,12 +23,18 @@ import {
 import { useState } from 'react'
 import { useAddNewProjectMutation } from '../redux/services/projects'
 
+// IMGS:
+import projectsIcon from '../imgs/projectsBlack.png'
+
 // COMPONENTS:
 import ProjectDisplay from './ProjectDisplay'
 
 // PROJECT:
 export function Project() {
   const [addNewProject] = useAddNewProjectMutation()
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
   const [form, setForm] = useState({
     name: '',
     description: '',
@@ -45,6 +54,12 @@ export function Project() {
     addNewProject(form)
       .unwrap()
       .then(() => {
+        setIsLoading(false)
+        if (error) {
+          setError(error)
+        } else {
+          setSuccess('Project Submitted')
+        }
         setForm({
           name: '',
           description: '',
@@ -56,18 +71,34 @@ export function Project() {
   }
   return (
     <Box>
-      <Box border="1px" borderColor="red" mb={5}>
-        <Text fontSize={'25px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
-          Projects
+      <Box
+        bg="rgba(213, 213, 213, 0.682)"
+        borderRadius={'5px'}
+        mb={5}
+        pl={2}
+        pr={2}
+        display="flex"
+        gap={2}
+        alignItems="center"
+      >
+        <Image width={8} h={8} src={projectsIcon} alt="" />
+        <Text fontSize={'25px'} pt={1} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
+          Create Project
         </Text>
       </Box>
       <form onSubmit={handleSubmit}>
-        <FormControl border="1px" borderColor="red" mb={5}>
-          <Text fontSize={'17px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
+        <FormControl mb={5}>
+          {/* <Text fontSize={'17px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
             Create a Project
-          </Text>
-          <FormLabel htmlFor="name">Name</FormLabel>
+          </Text> */}
+          <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={55} htmlFor="name">
+            Name
+          </FormLabel>
           <Input
+            border="2px"
+            borderColor="rgba(76, 209, 4, 0.649)"
+            focusBorderColor="rgba(63, 180, 0, 0.906)"
+            mb={5}
             id="name"
             type="name"
             required
@@ -75,18 +106,28 @@ export function Project() {
             placeholder="Enter the name of your project"
             onChange={(e) => updateProject('name', e.target.value)}
           />
-          <FormLabel htmlFor="description">Description</FormLabel>
+          <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={100} htmlFor="description">
+            Description
+          </FormLabel>
           <Textarea
+            border="2px"
+            borderColor="rgba(76, 209, 4, 0.649)"
+            focusBorderColor="rgba(63, 180, 0, 0.906)"
+            mb={5}
             id="description"
             required
             value={form.description}
             onChange={(e) => updateProject('description', e.target.value)}
             placeholder="Write a description for your project"
           />
-          <FormLabel>Operational Status</FormLabel>
+          <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={150}>
+            Operational Status
+          </FormLabel>
           <Select
-            border="1px"
-            borderColor="red"
+            border="2px"
+            borderColor="rgba(76, 209, 4, 0.649)"
+            focusBorderColor="rgba(63, 180, 0, 0.906)"
+            mb={5}
             placeholder="Select progress"
             color={form.status ? 'black' : 'gray'}
             value={form.status}
@@ -96,10 +137,14 @@ export function Project() {
             <option value="In Progress">In Progress</option>
             <option value="Finished">Finished</option>
           </Select>
-          <FormLabel>Position</FormLabel>
+          <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={73}>
+            Position
+          </FormLabel>
           <Select
-            border="1px"
-            borderColor="red"
+            border="2px"
+            borderColor="rgba(76, 209, 4, 0.649)"
+            focusBorderColor="rgba(63, 180, 0, 0.906)"
+            mb={5}
             placeholder="Select position"
             color={form.position ? 'black' : 'gray'}
             value={form.position}
@@ -109,17 +154,38 @@ export function Project() {
             <option value="Frontend">Frontend</option>
             <option value="Backend">Backend</option>
           </Select>
+          <Flex alignItems={'center'} gap={2}>
+            <Button type="submit" size="lg" bg="rgba(178, 217, 100, 0.765)" _hover={{ bg: 'rgba(217, 199, 0, 0.487)' }}>
+              Add Project
+            </Button>
+            <Box w={'100%'}>
+              {error && (
+                <Alert borderRadius={10} status="error">
+                  <AlertIcon /> {error}
+                </Alert>
+              )}
+              {success && (
+                <Alert borderRadius={10} status="success">
+                  <AlertIcon /> {success}
+                </Alert>
+              )}
+            </Box>
+          </Flex>
         </FormControl>
-        <Button type="submit" h="2rem" size="lg" bg="green" mb={5}>
-          Submit
-        </Button>
       </form>
-      <Box border="1px" borderColor="red">
-        <Text fontSize={'17px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
-          Projects List
-        </Text>
-        <ProjectDisplay />
-      </Box>
+      <Text
+        fontSize={'17px'}
+        mb={4}
+        mx={2}
+        pl={2}
+        borderBottom="1px"
+        borderColor="lightgray"
+        fontWeight="bold"
+        fontFamily="Baloo Tamma 2', cursive"
+      >
+        Projects List
+      </Text>
+      <ProjectDisplay />
     </Box>
   )
 }
