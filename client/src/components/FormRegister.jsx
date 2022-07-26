@@ -1,10 +1,15 @@
 import { Alert, AlertIcon, Box, Button, Flex, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { useRegisterMutation } from '../redux/services/user'
 
 function FormRegister() {
+  const navigate = useNavigate()
+
   const [form, setForm] = useState({
     username: '',
+    first_name: '',
+    last_name: '',
     email: '',
     password: '',
     state: '',
@@ -15,25 +20,43 @@ function FormRegister() {
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [register] = useRegisterMutation()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setIsLoading(true)
     setError('')
     setSuccess('')
-    fetch('/api/v1/users/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    })
-      .then((res) => res.json())
+    register(form)
+      .unwrap()
       .then((data) => {
         setIsLoading(false)
-        if (data.error) {
-          setError(data.error)
-        } else {
-          setSuccess('Registered Successfully')
-        }
+        setSuccess('Registered Successfully')
+        setForm({
+          username: '',
+          first_name: '',
+          last_name: '',
+          email: '',
+          password: '',
+          state: '',
+          city: '',
+          DOB: '',
+        })
+        navigate('/login')
+      })
+      .catch((error) => {
+        setError(error.data.error)
+        setForm({
+          username: '',
+          first_name: '',
+          last_name: '',
+          email: '',
+          password: '',
+          state: '',
+          city: '',
+          DOB: '',
+        })
+        setIsLoading(false)
       })
   }
 
@@ -69,6 +92,26 @@ function FormRegister() {
         />
       </FormControl>
       <FormControl my="5">
+        <FormLabel htmlFor="first_name">First Name</FormLabel>
+        <Input
+          value={form.first_name}
+          id="first_name"
+          type="first_name"
+          onChange={(e) => updateField('first_name', e.target.value)}
+          required
+        />
+      </FormControl>
+      <FormControl my="5">
+        <FormLabel htmlFor="last_name">Last Name</FormLabel>
+        <Input
+          value={form.last_name}
+          id="last_name"
+          type="last_name"
+          onChange={(e) => updateField('last_name', e.target.value)}
+          required
+        />
+      </FormControl>
+      <FormControl my="5">
         <FormLabel htmlFor="email">Email address</FormLabel>
         <Input
           value={form.email}
@@ -90,22 +133,22 @@ function FormRegister() {
       </FormControl>
       <div>
         <FormControl my="5">
-          <FormLabel htmlFor="state">State</FormLabel>
-          <Input
-            value={form.state}
-            id="state"
-            type="state"
-            onChange={(e) => updateField('state', e.target.value)}
-            required
-          />
-        </FormControl>
-        <FormControl my="5">
           <FormLabel htmlFor="city">City</FormLabel>
           <Input
             value={form.city}
             id="city"
             type="city"
             onChange={(e) => updateField('city', e.target.value)}
+            required
+          />
+        </FormControl>
+        <FormControl my="5">
+          <FormLabel htmlFor="state">State</FormLabel>
+          <Input
+            value={form.state}
+            id="state"
+            type="state"
+            onChange={(e) => updateField('state', e.target.value)}
             required
           />
         </FormControl>

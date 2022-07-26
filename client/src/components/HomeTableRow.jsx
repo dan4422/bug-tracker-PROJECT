@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useDeleteIssueMutation, useGetIssuesQuery } from '../redux/services/issues'
+import { useDeleteIssueMutation } from '../redux/services/issues'
 import IssuesEdit from './IssuesEdit'
 import ProjectEdit from './ProjectEdit'
 

@@ -1,25 +1,31 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/dist/query/react'
+import { mainApi } from './main'
 
-export const userApiSlice = createApi({
-  reducerPath: 'user',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api/v1/users' }),
-  tagTypes: ['User'],
+export const userApiSlice = mainApi.injectEndpoints({
+  overrideExisting: false,
   endpoints: (builder) => ({
     getAllUser: builder.query({
       query: () => ({
-        url: '/all',
+        url: '/users/all',
       }),
       providesTags: ['User'],
     }),
     getCurrentUser: builder.query({
       query: () => ({
-        url: '/current',
+        url: '/users/current',
       }),
       providesTags: ['User'],
     }),
     login: builder.mutation({
       query: (userDetails) => ({
-        url: '/login',
+        url: '/users/login',
+        method: 'POST',
+        body: userDetails,
+      }),
+      invalidatesTags: ['User'],
+    }),
+    register: builder.mutation({
+      query: (userDetails) => ({
+        url: '/users/register',
         method: 'POST',
         body: userDetails,
       }),
@@ -27,12 +33,21 @@ export const userApiSlice = createApi({
     }),
     logout: builder.mutation({
       query: () => ({
-        url: '/logout',
+        url: '/users/logout',
         method: 'GET',
+      }),
+      invalidatesTags: ['User'],
+    }),
+    image: builder.mutation({
+      query: (profileImage) => ({
+        url: '/addProfileImage',
+        method: 'PATCH',
+        body: profileImage,
       }),
       invalidatesTags: ['User'],
     }),
   }),
 })
 
-export const { useGetAllUserQuery, useLoginMutation, useLogoutMutation, useGetCurrentUserQuery } = userApiSlice
+export const { useGetAllUserQuery, useRegisterMutation, useLoginMutation, useLogoutMutation, useGetCurrentUserQuery, useImageMutation } =
+  userApiSlice

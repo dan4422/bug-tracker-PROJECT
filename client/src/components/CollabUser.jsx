@@ -1,4 +1,15 @@
-import { Box, Button, Image, Text } from '@chakra-ui/react'
+import {
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogContent,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogOverlay,
+  Box,
+  Button,
+  Image,
+  Text,
+} from '@chakra-ui/react'
 import { useUnassignUserToProjectMutation } from '../redux/services/collab'
 
 function CollabUser({ data }) {
@@ -11,6 +22,7 @@ function CollabUser({ data }) {
     unassignUser(unassignData)
       .unwrap()
       .then(() => {})
+      .catch((error) => {})
   }
 
   return (
