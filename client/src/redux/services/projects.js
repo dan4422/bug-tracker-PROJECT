@@ -1,40 +1,38 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { mainApi } from './main'
 
-export const projectsApiSlice = createApi({
-  reducerPath: 'projects',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api/v1/projects' }),
-  tagTypes: ['Project', 'Collab'],
+export const projectsApiSlice = mainApi.injectEndpoints({
+  overrideExisting: false,
   endpoints: (builder) => ({
     getProjects: builder.query({
-      query: () => '/',
+      query: () => '/projects',
       providesTags: ['Project'],
     }),
     getProjectsByID: builder.query({
-      query: (projectId) => `/${projectId}`,
+      query: (projectId) => `/projects/${projectId}`,
       providesTags: ['Project'],
     }),
     addNewProject: builder.mutation({
       query: (newProject) => ({
-        url: '/create',
+        url: '/projects/create',
         method: 'POST',
         body: newProject,
       }),
-      invalidatesTags: ['Project'],
+      invalidatesTags: ['Project', 'Collab'],
     }),
     deleteProject: builder.mutation({
       query: (id) => ({
-        url: `/${id}`,
+        url: `/projects/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Project'],
     }),
     updateProject: builder.mutation({
       query: ({ id, updatedProject }) => ({
-        url: `/${id}`,
+        url: `/projects/${id}`,
         method: 'PATCH',
         body: updatedProject,
       }),
-      invalidatesTags: ['Project', 'Collab'],
+      invalidatesTags: ['Project'],
     }),
   }),
 })

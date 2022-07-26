@@ -6,12 +6,17 @@ const models = require('../models')
 // /api/v1/projects
 router.get('/', checkAuth, async (req, res) => {
   const project = await models.Project.findAll({
-    where: {
-      UserId: req.session.user.id,
-    },
-    include: models.Issue,
+    include: [
+      {
+        model: models.Collab,
+        where: { UserId: req.session.user.id },
+        include: [models.User],
+      },
+      {
+        model: models.Issue,
+      },
+    ],
   })
-
   res.json(project)
 })
 
@@ -56,19 +61,35 @@ router.post('/create', checkAuth, async (req, res) => {
 
 // api/v1/projects/:id - deletes projects
 router.delete('/:id', checkAuth, async (req, res) => {
-  const [issue] = await models.Issue.findAll({
+  const checkIfAdmin = await models.Collab.findOne({
     where: {
       ProjectId: req.params.id,
+      UserId: req.session.user.id,
     },
   })
-  await issue?.destroy()
 
-  const [collabProject] = await models.Collab.findAll({
+  if (checkIfAdmin?.role !== 'Admin' || checkIfAdmin === null) {
+    res.status(400).json({ error: 'Must be the Admin to delete this project' })
+    return
+  }
+
+  const collabProject = await models.Collab.findAll({
     where: {
       ProjectId: req.params.id,
     },
   })
-  await collabProject?.destroy()
+  for (let i = 0; i < collabProject.length; i++) {
+    await collabProject[i].destroy()
+  }
+
+  const issue = await models.Issue.findAll({
+    where: {
+      ProjectId: req.params.id,
+    },
+  })
+  for (let i = 0; i < issue.length; i++) {
+    await issue[i].destroy()
+  }
 
   const project = await models.Project.findByPk(req.params.id)
   if (!project || project.UserId !== req.session.user.id) {

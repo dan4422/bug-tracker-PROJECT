@@ -14,11 +14,12 @@ import {
   Thead,
   Tr,
 } from '@chakra-ui/react'
-import { useGetIssuesQuery } from '../redux/services/issues'
+import { useGetAllIssuesQuery } from '../redux/services/issues'
 import HomeTableRow from './HomeTableRow'
 
 function HomeTable() {
-  const { data, isError, error } = useGetIssuesQuery()
+  const { data, isError, error } = useGetAllIssuesQuery()
+  const issues = data?.map((data) => data.Issues)
   return (
     <Box border="1px" borderColor="red" w="100%" position="relative">
       <TableContainer bg="lightgrey" w="100%" position="relative">
@@ -33,11 +34,7 @@ function HomeTable() {
               <Th textAlign={'right'}>Issue Priority</Th>
             </Tr>
           </Thead>
-          <Tbody>
-            {data?.map((data) => (
-              <HomeTableRow key={data.id} issue={data} />
-            ))}
-          </Tbody>
+          <Tbody>{issues?.map((data) => data.map((data) => <HomeTableRow key={data.id} issue={data} />))}</Tbody>
         </Table>
       </TableContainer>
     </Box>

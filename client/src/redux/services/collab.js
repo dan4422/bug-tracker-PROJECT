@@ -1,33 +1,31 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { mainApi } from './main'
 
-export const collabApiSlice = createApi({
-  reducerPath: 'collab',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api/v1/collab' }),
-  tagTypes: ['Collab', 'User', 'Project'],
+export const collabApiSlice = mainApi.injectEndpoints({
+  overrideExisting: false,
   endpoints: (builder) => ({
     getProjectsByUser: builder.query({
-      query: () => '/getProjectsByUser',
+      query: () => '/collab/getProjectsByUser',
       providesTags: ['Collab', 'Project'],
     }),
     getAllCollabProjects: builder.query({
-      query: () => '/getAllCollabProjects',
-      providesTags: ['Collab', 'Project'],
+      query: () => '/collab/getAllCollabProjects',
+      providesTags: ['Collab'],
     }),
     assignUserToProject: builder.mutation({
       query: (assign) => ({
-        url: '/assign',
+        url: '/collab/assign',
         method: 'POST',
         body: assign,
       }),
-      invalidatesTags: ['Collab', 'Project', 'User'],
+      invalidatesTags: ['Collab'],
     }),
     unassignUserToProject: builder.mutation({
       query: (unassign) => ({
-        url: '/unassign',
+        url: '/collab/unassign',
         method: 'DELETE',
         body: unassign,
       }),
-      invalidatesTags: ['Collab', 'Project', 'User'],
+      invalidatesTags: ['Collab'],
     }),
   }),
 })
