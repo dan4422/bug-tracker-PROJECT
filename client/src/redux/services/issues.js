@@ -1,25 +1,27 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { mainApi } from './main'
 
-export const issuesApiSlice = createApi({
-  reducerPath: 'issues',
-  baseQuery: fetchBaseQuery({ baseUrl: '/api/v1/projects' }),
-  tagTypes: ['Issue'],
+export const issuesApiSlice = mainApi.injectEndpoints({
+  overrideExisting: false,
   endpoints: (builder) => ({
     getIssues: builder.query({
-      query: () => '/issues',
+      query: () => '/projects/issues',
+      providesTags: ['Issue'],
+    }),
+    getAllIssues: builder.query({
+      query: () => '/projects/getAllIssues',
       providesTags: ['Issue'],
     }),
     getProjectIssues: builder.query({
-      query: (projectId) => `/${projectId}/issues`,
+      query: (projectId) => `/projects/${projectId}/issues`,
       providesTags: ['Issue'],
     }),
     getIssueByID: builder.query({
-      query: ({ projectId, issueId }) => `/${projectId}/issues/${issueId}`,
+      query: ({ projectId, issueId }) => `/projects/${projectId}/issues/${issueId}`,
       providesTags: ['Issue'],
     }),
     addNewIssue: builder.mutation({
       query: ({ projectId, newIssue }) => ({
-        url: `/${projectId}/issues/create`,
+        url: `/projects/${projectId}/issues/create`,
         method: 'POST',
         body: newIssue,
       }),
@@ -27,14 +29,14 @@ export const issuesApiSlice = createApi({
     }),
     deleteIssue: builder.mutation({
       query: ({ projectId, issueId }) => ({
-        url: `/${projectId}/issues/${issueId}`,
+        url: `/projects/${projectId}/issues/${issueId}`,
         method: 'DELETE',
       }),
       invalidatesTags: ['Issue'],
     }),
     updateIssue: builder.mutation({
       query: ({ projectId, issueId, updatedIssue }) => ({
-        url: `/${projectId}/issues/${issueId}`,
+        url: `/projects/${projectId}/issues/${issueId}`,
         method: 'PATCH',
         body: updatedIssue,
       }),
@@ -45,6 +47,7 @@ export const issuesApiSlice = createApi({
 
 export const {
   useGetIssuesQuery,
+  useGetAllIssuesQuery,
   useGetIssueByIDQuery,
   useGetProjectIssuesQuery,
   useAddNewIssueMutation,

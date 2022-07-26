@@ -17,12 +17,9 @@ import logoutIcon from '../imgs/logoutBlack.png'
 
 // REDUX
 import { useGetCurrentUserQuery, useLogoutMutation } from '../redux/services/user'
-import Protected from './Protected'
-import ProfileImage from './ProfileImage'
 
 // PRIMARY NAV:
 export default function PrimaryNav() {
-  const [navMediaQueryFlexed] = useMediaQuery('(max-width: 480px)')
   const [logout] = useLogoutMutation()
   const { data, isLoading } = useGetCurrentUserQuery()
   const handleLogout = () => {
@@ -73,7 +70,9 @@ export default function PrimaryNav() {
             <ProfileImage />
             <Box maxW="100%" justifyContent={'center'}>
               <Text fontSize={17}>{data?.username}</Text>
-              <Text fontSize={13}>{data?.email}</Text>
+              <Text fontSize={13}>
+                {data?.first_name} {data?.last_name}
+              </Text>
               <Text fontSize={13}>
                 {data?.city}
                 {data ? ', ' : ''}

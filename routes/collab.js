@@ -93,6 +93,10 @@ router.get('/getAllCollabProjects', checkAuth, async (req, res) => {
         as: 'members',
         include: [models.User],
       },
+      {
+        model: models.Issue,
+        include: [models.User],
+      },
     ],
   })
   res.json(project)

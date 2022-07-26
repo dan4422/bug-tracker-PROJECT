@@ -21,6 +21,28 @@ router.get('/issues', checkAuth, async (req, res) => {
   res.json(issues)
 })
 
+router.get('/getAllIssues', checkAuth, async (req, res) => {
+  const id = Number(req.session.user.id)
+  const project = await models.Project.findAll({
+    include: [
+      {
+        model: models.Collab,
+        where: { UserId: id },
+      },
+      {
+        model: models.Collab,
+        as: 'members',
+        include: [models.User],
+      },
+      {
+        model: models.Issue,
+        include: [models.User, models.Project],
+      },
+    ],
+  })
+  res.json(project)
+})
+
 // /api/v1/projects/:projectId/issues/:issueId - gets specific issue
 router.get('/:projectId/issues/:issueId', checkAuth, async (req, res) => {
   const { projectId, issueId } = req.params
@@ -101,7 +123,7 @@ router.delete('/:projectId/issues/:issueId', checkAuth, async (req, res) => {
     res.status(400).json({ error: 'cannot find project' })
     return
   }
-  const specificIssue = project.Issues.find((issue) => (issue.id = Number(issueId)))
+  const specificIssue = project.Issues.find((issue) => issue.id === Number(issueId))
   await specificIssue.destroy()
   res.status(200).json({ success: 'deleted issue' })
 })
