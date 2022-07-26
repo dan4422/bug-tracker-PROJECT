@@ -18,6 +18,7 @@ import logoutIcon from '../imgs/logoutBlack.png'
 // REDUX
 import { useGetCurrentUserQuery, useLogoutMutation } from '../redux/services/user'
 import Protected from './Protected'
+import ProfileImage from './ProfileImage'
 
 // PRIMARY NAV:
 export default function PrimaryNav() {
@@ -69,7 +70,7 @@ export default function PrimaryNav() {
           </>
         ) : (
           <>
-            <Image width={70} maxW="50%" borderRadius="full" m={0} src={profileImg} alt="" />
+            <ProfileImage />
             <Box maxW="100%" justifyContent={'center'}>
               <Text fontSize={17}>{data?.username}</Text>
               <Text fontSize={13}>{data?.email}</Text>

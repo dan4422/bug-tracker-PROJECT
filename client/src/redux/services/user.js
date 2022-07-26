@@ -32,7 +32,16 @@ export const userApiSlice = createApi({
       }),
       invalidatesTags: ['User'],
     }),
+    image: builder.mutation({
+      query: (profileImage) => ({
+        url: '/addProfileImage',
+        method: 'PATCH',
+        body: profileImage,
+      }),
+      invalidatesTags: ['User'],
+    }),
   }),
 })
 
-export const { useGetAllUserQuery, useLoginMutation, useLogoutMutation, useGetCurrentUserQuery } = userApiSlice
+export const { useGetAllUserQuery, useLoginMutation, useLogoutMutation, useGetCurrentUserQuery, useImageMutation } =
+  userApiSlice
