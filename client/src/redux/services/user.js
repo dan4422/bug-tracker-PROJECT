@@ -49,5 +49,11 @@ export const userApiSlice = mainApi.injectEndpoints({
   }),
 })
 
-export const { useGetAllUserQuery, useRegisterMutation, useLoginMutation, useLogoutMutation, useGetCurrentUserQuery, useImageMutation } =
-  userApiSlice
+export const {
+  useGetAllUserQuery,
+  useRegisterMutation,
+  useLoginMutation,
+  useLogoutMutation,
+  useGetCurrentUserQuery,
+  useImageMutation,
+} = userApiSlice
