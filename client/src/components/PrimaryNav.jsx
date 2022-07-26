@@ -17,6 +17,7 @@ import logoutIcon from '../imgs/logoutBlack.png'
 
 // REDUX
 import { useGetCurrentUserQuery, useLogoutMutation } from '../redux/services/user'
+import ProfileImage from './ProfileImage'
 
 // PRIMARY NAV:
 export default function PrimaryNav() {
