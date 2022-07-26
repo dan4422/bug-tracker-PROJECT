@@ -67,7 +67,7 @@ export default function PrimaryNav() {
           </>
         ) : (
           <>
-            <Image width={70} maxW="50%" borderRadius="full" m={0} src={profileImg} alt="" />
+            <ProfileImage />
             <Box maxW="100%" justifyContent={'center'}>
               <Text fontSize={17}>{data?.username}</Text>
               <Text fontSize={13}>
