@@ -6,8 +6,7 @@ export default function SiteTitle() {
   return (
     <Text
       bg="white"
-      border="1px"
-      borderColor="red"
+      borderRadius="5px"
       m={0}
       pt={2}
       w="100%"

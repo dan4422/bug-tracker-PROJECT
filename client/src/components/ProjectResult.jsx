@@ -4,6 +4,7 @@ import {
   Button,
   Flex,
   Heading,
+  Image,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -17,12 +18,17 @@ import {
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import { useDeleteProjectMutation } from '../redux/services/projects'
+// IMGS:
+import trashIcon from '../imgs/trashIcon.png'
+import editIcon from '../imgs/editIcon.png'
+
+// COMPONENTS:
 import ProjectEdit from './ProjectEdit'
 
 function ProjectResult({ project }) {
   const [deleteProject] = useDeleteProjectMutation()
   return (
-    <Box border="1px" borderColor="red" w={200} textAlign="center">
+    <Box borderRadius="20px" bg="rgba(213, 213, 213, 0.682)" w={200} textAlign="center">
       <Wrap spacing={10}>
         <Box w={200} h={300} display="flex" flexDir="column" justifyContent={'space-between'}>
           <Box>
@@ -41,11 +47,11 @@ function ProjectResult({ project }) {
               <Text>0 Contributions</Text>
               <Text>{project.status}</Text>
             </Box>
-            <Flex gap="2" justifyContent={'center'}>
+            <Flex gap="2" mb="2" justifyContent={'center'}>
               <Popover placement="left">
                 <PopoverTrigger>
                   <Button size="sm" aria-label="icon">
-                    📝
+                    <Image width={5} h={5} src={editIcon} alt="" />
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent>
@@ -58,7 +64,7 @@ function ProjectResult({ project }) {
                 </PopoverContent>
               </Popover>
               <Button size="sm" onClick={() => deleteProject(project.id)} aria-label="icon">
-                ❌
+                <Image width={5} h={5} src={trashIcon} alt="" />
               </Button>
             </Flex>
           </Box>

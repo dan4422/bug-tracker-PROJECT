@@ -25,19 +25,19 @@ function HomeTableRow({ issue }) {
   return (
     <>
       <Tr key={issue.id}>
-        <Td>
+        <Td borderBottom="2px">
           <Anchor as={Link} to={`/projects/${issue.ProjectId}`}>
             {issue.Project.name}
           </Anchor>
         </Td>
-        <Td>
+        <Td borderBottom="2px">
           <Anchor as={Link} to={`/projects/${issue.ProjectId}/issues/${issue.id}`}>
             {issue.name}: {issue.description}
           </Anchor>
         </Td>
-        <Td>{issue.User.username}</Td>
-        <Td>{new Date(issue.createdAt).toDateString()}</Td>
-        <Td>
+        <Td borderBottom="2px">{issue.User.username}</Td>
+        <Td borderBottom="2px">{new Date(issue.createdAt).toDateString()}</Td>
+        <Td borderBottom="2px">
           <Flex justifyContent={'flex-end'} gap={3} alignItems="center">
             <Text>{issue.priority}</Text>
             <Popover placement="right">

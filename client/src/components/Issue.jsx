@@ -1,13 +1,14 @@
 // CHAKRA:
-
 import {
   Alert,
   AlertIcon,
   Box,
   Button,
+  Flex,
   FormControl,
   FormLabel,
   Heading,
+  Image,
   Input,
   Select,
   Text,
@@ -17,6 +18,9 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAddNewIssueMutation } from '../redux/services/issues'
 import { useGetProjectsQuery } from '../redux/services/projects'
+
+// IMGS:
+import issuesIcon from '../imgs/issuesBlack.png'
 
 // ISSUE:
 export default function Issue() {
@@ -65,31 +69,33 @@ export default function Issue() {
   }
   return (
     <Box>
-      <Box border="1px" borderColor="red" mb={5}>
-        <Text fontSize={'25px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
-          Issues
+      <Box
+        bg="rgba(213, 213, 213, 0.682)"
+        borderRadius={'5px'}
+        mb={5}
+        pl={2}
+        pr={2}
+        display="flex"
+        gap={2}
+        alignItems="center"
+      >
+        <Image width={8} h={8} src={issuesIcon} alt="" />
+        <Text fontSize={'25px'} pt={1} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
+          Report Issue
         </Text>
       </Box>
       <form onSubmit={handleSubmit}>
-        {error && (
-          <Alert status="error">
-            <AlertIcon /> {error}
-          </Alert>
-        )}
-        {success && (
-          <Alert status="success">
-            <AlertIcon /> {success}
-          </Alert>
-        )}
-
-        <FormControl border="1px" borderColor="red" mb={5}>
-          <Text fontSize={'17px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
+        <FormControl mb={5}>
+          {/* <Text fontSize={'17px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
             Create an Issue
-          </Text>
-          <FormLabel htmlFor="project">Current Project</FormLabel>
+          </Text> */}
+          <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={123} htmlFor="project">
+            Current Project
+          </FormLabel>
           <Select
-            border="1px"
-            borderColor="red"
+            border="2px"
+            borderColor="rgba(76, 209, 4, 0.649)"
+            focusBorderColor="rgba(63, 180, 0, 0.906)"
             mb={5}
             id="project"
             required
@@ -104,10 +110,14 @@ export default function Issue() {
               </option>
             ))}
           </Select>
-          <FormLabel htmlFor="name">Title</FormLabel>
+          <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={50} htmlFor="name">
+            Title
+          </FormLabel>
           <Input
-            border="1px"
-            borderColor="red"
+            border="2px"
+            borderColor="rgba(76, 209, 4, 0.649)"
+            focusBorderColor="rgba(63, 180, 0, 0.906)"
+            mb={5}
             id="name"
             type="name"
             placeholder="Enter a title for your issue"
@@ -115,20 +125,27 @@ export default function Issue() {
             value={issue.name}
             onChange={(e) => updateIssue('name', e.target.value)}
           ></Input>
-          <FormLabel htmlFor="description">Description</FormLabel>
+          <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={97} htmlFor="description">
+            Description
+          </FormLabel>
           <Textarea
-            border="1px"
-            borderColor="red"
+            border="2px"
+            borderColor="rgba(76, 209, 4, 0.649)"
+            focusBorderColor="rgba(63, 180, 0, 0.906)"
+            mb={5}
             id="description"
             required
             placeholder="Write a description for your issue"
             value={issue.description}
             onChange={(e) => updateIssue('description', e.target.value)}
           ></Textarea>
-          <FormLabel htmlFor="status">Status</FormLabel>
+          <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={59} htmlFor="status">
+            Status
+          </FormLabel>
           <Select
-            border="1px"
-            borderColor="red"
+            border="2px"
+            borderColor="rgba(76, 209, 4, 0.649)"
+            focusBorderColor="rgba(63, 180, 0, 0.906)"
             mb={5}
             id="status"
             placeholder="Select status"
@@ -139,10 +156,13 @@ export default function Issue() {
             <option value="Open">Open</option>
             <option value="Closed">Closed</option>
           </Select>
-          <FormLabel htmlFor="priority">Priority</FormLabel>
+          <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={68} htmlFor="priority">
+            Priority
+          </FormLabel>
           <Select
-            border="1px"
-            borderColor="red"
+            border="2px"
+            borderColor="rgba(76, 209, 4, 0.649)"
+            focusBorderColor="rgba(63, 180, 0, 0.906)"
             mb={5}
             id="priority"
             color={issue.priority ? 'black' : 'gray'}
@@ -154,18 +174,31 @@ export default function Issue() {
             <option value="Medium">Medium</option>
             <option value="High">High</option>
           </Select>
-          <Button type="submit" h="2rem" size="lg" bg="green">
-            Add New Issue
-          </Button>
+          <Flex alignItems={'center'} gap={2}>
+            <Button
+              type="submit"
+              size="lg"
+              bg="rgba(178, 217, 100, 0.765)"
+              _hover={{ bg: 'rgba(217, 199, 0, 0.487)' }}
+              alignItems="center"
+            >
+              Add Issue
+            </Button>
+            <Box w={'100%'}>
+              {error && (
+                <Alert borderRadius={10} status="error">
+                  <AlertIcon /> {error}
+                </Alert>
+              )}
+              {success && (
+                <Alert borderRadius={10} status="success">
+                  <AlertIcon /> {success}
+                </Alert>
+              )}
+            </Box>
+          </Flex>
         </FormControl>
       </form>
-      <Box border="1px" borderColor="red">
-        <Heading fontSize={17}>Issue Selected:</Heading>
-        <Box>
-          <Text>PetMates</Text>
-          <Text>PetMates</Text>
-        </Box>
-      </Box>
     </Box>
   )
 }

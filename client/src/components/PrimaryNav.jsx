@@ -38,8 +38,6 @@ export default function PrimaryNav() {
 
   return (
     <Container
-      border="1px"
-      borderColor="red"
       margin={0}
       display="flex"
       flexDirection="column"
@@ -48,13 +46,13 @@ export default function PrimaryNav() {
       maxH={'100%'} // why does the navbar effect the main home container and not just nav
       h={'100%'}
       p={0}
-      bg="rgba(255, 255, 255, 0.726)"
       flexShrink="0"
       flexGrow={'0'}
     >
       <Box
-        borderBottom="1px"
-        borderColor="red"
+        bg="white"
+        borderRadius="5px"
+        mb={3}
         display="flex"
         justifyContent={'space-around'}
         alignItems={'center'}
@@ -82,10 +80,10 @@ export default function PrimaryNav() {
           </>
         )}
       </Box>
-      <Box display="flex" flexDirection="column" textAlign={'center'} maxW="100%">
+      <Box bg="white" borderRadius="5px" display="flex" flexDirection="column" textAlign={'center'} maxW="100%">
         <Anchor
           as={Link}
-          _hover={{ bg: 'green' }}
+          _hover={{ bg: 'rgba(209, 255, 118, 0.64)' }}
           m={1}
           borderRadius="10px"
           color="black"
@@ -102,7 +100,7 @@ export default function PrimaryNav() {
         </Anchor>
         <Anchor
           as={Link}
-          _hover={{ bg: 'green' }}
+          _hover={{ bg: 'rgba(209, 255, 118, 0.64)' }}
           m={1}
           borderRadius="10px"
           color="black"
@@ -115,11 +113,11 @@ export default function PrimaryNav() {
           to="/projects"
         >
           <Image width={5} h={5} src={projectsIcon} alt="" />
-          Projects
+          Create Project
         </Anchor>
         <Anchor
           as={Link}
-          _hover={{ bg: 'green' }}
+          _hover={{ bg: 'rgba(209, 255, 118, 0.64)' }}
           m={1}
           borderRadius="10px"
           color="black"
@@ -132,11 +130,11 @@ export default function PrimaryNav() {
           to="/issues"
         >
           <Image width={5} h={5} src={issuesIcon} alt="" />
-          Issues
+          Report Issue
         </Anchor>
         <Anchor
           as={Link}
-          _hover={{ bg: 'green' }}
+          _hover={{ bg: 'rgba(209, 255, 118, 0.64)' }}
           m={1}
           borderRadius="10px"
           color="black"
@@ -152,7 +150,7 @@ export default function PrimaryNav() {
           Collaborators
         </Anchor>
         <Anchor
-          _hover={{ bg: 'green' }}
+          _hover={{ bg: 'rgba(209, 255, 118, 0.64)' }}
           m={1}
           borderRadius="10px"
           color="black"
