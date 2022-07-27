@@ -1,4 +1,6 @@
 import {
+  Alert,
+  AlertIcon,
   Box,
   Button,
   Divider,
@@ -26,7 +28,7 @@ import CollabUser from './CollabUser'
 
 function CollabProject({ project }) {
   const { data } = useGetAllUserQuery()
-  const [assignUser] = useAssignUserToProjectMutation()
+  const [assignUser, { error }] = useAssignUserToProjectMutation()
   const OverlayOne = () => <ModalOverlay bg="rgba(216, 216, 0, 0.314);" backdropFilter="blur(30px) " />
   const { isOpen, onOpen, onClose } = useDisclosure()
   const [overlay, setOverlay] = useState(<OverlayOne />)
@@ -50,6 +52,7 @@ function CollabProject({ project }) {
       .then(() => {
         onClose()
       })
+      .catch(() => {})
   }
 
   return (
@@ -60,6 +63,15 @@ function CollabProject({ project }) {
           <ModalHeader style={{ textAlign: 'center' }}>Search User</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
+            {error && (
+              <Alert mb={2} status="error">
+                <AlertIcon />{' '}
+                {
+                  // @ts-ignore
+                  error.data.error
+                }
+              </Alert>
+            )}
             <Input type="text" value={value} onChange={(e) => setValue(e.target.value)} placeholder="Enter Name" />
             {data &&
               data
@@ -120,7 +132,7 @@ function CollabProject({ project }) {
           </Box>
         </Box>
         <Wrap mt={4} spacing={10}>
-          {project && project.members.map((user, i) => <CollabUser key={i} data={user} />)}
+          {project && project.members.map((user, i) => <CollabUser key={i} user={user} />)}
         </Wrap>
       </Box>
     </>

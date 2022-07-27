@@ -10,13 +10,20 @@ import {
   Flex,
   Image,
   Text,
+  useDisclosure,
 } from '@chakra-ui/react'
+import React, { useState } from 'react'
 import { useUnassignUserToProjectMutation } from '../redux/services/collab'
 
 // IMGS:
 import assignerIcon from '../imgs/assignerIcon.png'
 
-function CollabUser({ data }) {
+function CollabUser({ user }) {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const cancelRef = React.useRef()
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+
   const [unassignUser] = useUnassignUserToProjectMutation()
   const unassign = (ProjectId, UserId) => {
     const unassignData = {
@@ -25,12 +32,32 @@ function CollabUser({ data }) {
     }
     unassignUser(unassignData)
       .unwrap()
-      .then(() => {})
-      .catch((error) => {})
+      .then((data) => {
+        setSuccess(data.success)
+      })
+      .catch((error) => {
+        setError(error.data.error)
+        onOpen()
+      })
   }
 
   return (
     <Box bg="rgba(213, 213, 213, 0.682)" borderRadius="20px" w={200} textAlign="center">
+      <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Error
+            </AlertDialogHeader>
+            <AlertDialogBody>{error}</AlertDialogBody>
+            <AlertDialogFooter>
+              <Button colorScheme="red" onClick={onClose} ml={3}>
+                OK
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
       <Image
         borderRadius="50%"
         border="4px"
@@ -39,18 +66,19 @@ function CollabUser({ data }) {
         maxH={'50%'}
         width={120}
         height={120}
-        src={data.User.profileImage}
+        borderRadius={'50%'}
+        src={user.User.profileImage}
         alt=""
         m={'0 auto'}
         my={3}
       />
-      <Text>{data.User.username}</Text>
-      <Text fontSize={13}>{data.User.email}</Text>
+      <Text>{user.User.username}</Text>
+      <Text fontSize={13}>{user.User.email}</Text>
       <Text fontSize={13} mb={2}>
-        {data.User.city}, {data.User.state}
+        {user.User.city}, {user.User.state}
       </Text>
       <Box>
-        {data.role === 'Admin' ? (
+        {user.role === 'Admin' ? (
           <Flex justifyContent="center">
             <Image mb={2} width={6} h={6} src={assignerIcon} alt="" />
           </Flex>
@@ -63,7 +91,7 @@ function CollabUser({ data }) {
               size="xs"
               bg="rgba(178, 217, 100, 0.765)"
               _hover={{ bg: 'rgba(217, 199, 0, 0.487)' }}
-              onClick={() => unassign(data.ProjectId, data.UserId)}
+              onClick={() => unassign(user.ProjectId, user.UserId)}
             >
               Unassign
             </Button>
@@ -71,11 +99,11 @@ function CollabUser({ data }) {
         )}
       </Box>
       <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
-      <Text>4 contributions</Text>
+      <Text>{user.User.Issues.length} Issues Created</Text>
       <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
-      <Text>{data.position}</Text>
+      <Text>{user.position}</Text>
       <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
-      <Text mb={2}>{data.role}</Text>
+      <Text mb={2}>{user.role}</Text>
     </Box>
   )
 }

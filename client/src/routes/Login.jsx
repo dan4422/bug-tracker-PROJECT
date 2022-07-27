@@ -1,5 +1,6 @@
 // CHAKRA:
 import { Box, Text } from '@chakra-ui/react'
+import SiteTitleLogin from '../components/SiteTitleLogin'
 import FormLogin from '../components/FormLogin'
 import SiteTitle from '../components/SiteTitle'
 
@@ -7,7 +8,7 @@ import SiteTitle from '../components/SiteTitle'
 export default function Login() {
   return (
     <Box className="App" w="100%" h="100vh">
-      <SiteTitle />
+      <SiteTitleLogin />
       <Text px={4} pt={10} textAlign="center" fontSize="3xl">
         Login
       </Text>
