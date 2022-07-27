@@ -9,7 +9,7 @@ import CollabProjects from './CollabProjects'
 // COLLABORATORS:
 export default function Collaborators() {
   return (
-    <Box bg="white" p={5} w="100%" h="100%">
+    <Box bg="white" borderRadius="5px" p={5} w="100%" h="100%">
       <Box
         bg="rgba(213, 213, 213, 0.682)"
         borderRadius={'5px'}

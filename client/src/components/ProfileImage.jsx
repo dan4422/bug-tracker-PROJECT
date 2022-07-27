@@ -38,6 +38,8 @@ function ProfileImage() {
             width={95}
             height={95}
             borderRadius="50%"
+            border="4px"
+            borderColor="rgba(178, 217, 100, 0.765)"
             m={0}
             src={data?.profileImage}
             onClick={() => inputRef.current && inputRef.current?.click()}

@@ -40,7 +40,7 @@ export default function PrimaryNav() {
       flexDirection="column"
       minW={{ base: 150, lg: 220 }}
       maxW={{ base: 150, lg: 150 }}
-      maxH={'100%'} // why does the navbar effect the main home container and not just nav
+      maxH={'100%'}
       h={'100%'}
       p={0}
       flexShrink="0"
@@ -79,7 +79,15 @@ export default function PrimaryNav() {
           </>
         )}
       </Box>
-      <Box bg="white" borderRadius="5px" display="flex" flexDirection="column" textAlign={'center'} maxW="100%">
+      <Box
+        fontSize={14.3}
+        bg="white"
+        borderRadius="5px"
+        display="flex"
+        flexDirection="column"
+        textAlign={'center'}
+        maxW="100%"
+      >
         <Anchor
           as={Link}
           _hover={{ bg: 'rgba(209, 255, 118, 0.64)' }}
@@ -169,6 +177,7 @@ export default function PrimaryNav() {
           _hover={{ bg: 'green' }}
           m={1}
           borderRadius="10px"
+
           color="black"
           display="flex"
           justifyContent={'flex-start'}

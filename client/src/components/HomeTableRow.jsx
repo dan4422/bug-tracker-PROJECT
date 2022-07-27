@@ -2,6 +2,7 @@ import {
   Link as Anchor,
   Button,
   Flex,
+  Image,
   Popover,
   PopoverArrow,
   PopoverBody,
@@ -16,8 +17,12 @@ import {
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDeleteIssueMutation } from '../redux/services/issues'
+import trashIcon from '../imgs/trashIcon.png'
+import editIcon from '../imgs/editIcon.png'
 import IssuesEdit from './IssuesEdit'
 import ProjectEdit from './ProjectEdit'
+
+// IMGS:
 
 function HomeTableRow({ issue }) {
   const [deleteIssue] = useDeleteIssueMutation()
@@ -43,7 +48,9 @@ function HomeTableRow({ issue }) {
             <Text>{issue.priority}</Text>
             <Popover placement="right">
               <PopoverTrigger>
-                <Button size="sm">📝</Button>
+                <Button size="sm">
+                  <Image width={5} h={5} src={editIcon} alt="" />
+                </Button>
               </PopoverTrigger>
               <PopoverContent>
                 <PopoverCloseButton />
@@ -55,7 +62,7 @@ function HomeTableRow({ issue }) {
               </PopoverContent>
             </Popover>
             <Button size="sm" onClick={() => deleteIssue({ projectId: issue.ProjectId, issueId: issue.id })}>
-              ❌
+              <Image width={5} h={5} src={trashIcon} alt="" />
             </Button>
           </Flex>
         </Td>
