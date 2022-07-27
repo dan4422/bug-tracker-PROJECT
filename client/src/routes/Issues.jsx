@@ -7,7 +7,7 @@ import Issue from '../components/Issue'
 // ISSUES:
 export default function Issues() {
   return (
-    <Box bg="white" p={5} w="100%" h="100%">
+    <Box bg="white" borderRadius="5px" p={5} w="100%" h="100%">
       <Issue />
     </Box>
   )
