@@ -1,18 +1,17 @@
 // CHAKRA:
-import { Box, Text } from '@chakra-ui/react'
-import SiteTitleLogin from '../components/SiteTitleLogin'
+import { Box, Image, Text } from '@chakra-ui/react'
+
 import FormLogin from '../components/FormLogin'
-import SiteTitle from '../components/SiteTitle'
+
+// IMGS:
+import logo from '../imgs/logoAndShadow.png'
 
 // LOGIN:
 export default function Login() {
   return (
     <Box className="App" w="100%" h="100vh">
-      <SiteTitleLogin />
-      <Text px={4} pt={10} textAlign="center" fontSize="3xl">
-        Login
-      </Text>
       <Box my={10} mx="auto" w="95%" maxW="400px">
+        <Image width={'100%'} src={logo} alt="" />
         <FormLogin />
       </Box>
     </Box>

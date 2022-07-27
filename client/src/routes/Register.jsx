@@ -4,7 +4,6 @@ import SiteTitle from '../components/SiteTitle'
 
 // COMPONENTS:
 import FormRegister from '../components/FormRegister'
-import SiteTitleLogin from '../components/SiteTitleLogin'
 
 // REGISTER:
 export default function Register() {
