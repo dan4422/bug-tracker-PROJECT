@@ -1,6 +1,7 @@
 // CHAKRA:
 import { Box, Image, Text } from '@chakra-ui/react'
 
+// COMPONENTS:
 import FormLogin from '../components/FormLogin'
 
 // IMGS:

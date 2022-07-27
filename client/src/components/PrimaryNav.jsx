@@ -15,8 +15,11 @@ import issuesIcon from '../imgs/issuesBlack.png'
 import collabIcon from '../imgs/collaboratorsBlack.png'
 import logoutIcon from '../imgs/logoutBlack.png'
 
-// REDUX
+// CSS:
 import { useGetCurrentUserQuery, useLogoutMutation } from '../redux/services/user'
+import styles from './PrimaryNav.module.css'
+
+// REDUX:
 import ProfileImage from './ProfileImage'
 
 // PRIMARY NAV:
@@ -103,7 +106,7 @@ export default function PrimaryNav() {
           px={3}
           to="/"
         >
-          <Image width={5} h={5} src={homeIcon} alt="" />
+          <Image className={styles.iconAnimation} width={5} h={5} src={homeIcon} alt="" />
           Home
         </Anchor>
         <Anchor
@@ -120,7 +123,7 @@ export default function PrimaryNav() {
           px={3}
           to="/projects"
         >
-          <Image width={5} h={5} src={projectsIcon} alt="" />
+          <Image className={styles.iconAnimation} width={5} h={5} src={projectsIcon} alt="" />
           Create Project
         </Anchor>
         <Anchor
@@ -137,7 +140,7 @@ export default function PrimaryNav() {
           px={3}
           to="/issues"
         >
-          <Image width={5} h={5} src={issuesIcon} alt="" />
+          <Image className={styles.iconAnimation} width={5} h={5} src={issuesIcon} alt="" />
           Report Issue
         </Anchor>
         <Anchor
@@ -154,7 +157,7 @@ export default function PrimaryNav() {
           px={3}
           to="/collaborators"
         >
-          <Image width={5} h={5} src={collabIcon} alt="" />
+          <Image className={styles.iconAnimation} width={5} h={5} src={collabIcon} alt="" />
           Collaborators
         </Anchor>
         <Anchor
@@ -170,7 +173,7 @@ export default function PrimaryNav() {
           py={3}
           px={3}
         >
-          <Image width={5} h={5} src={logoutIcon} alt="" />
+          <Image className={styles.iconAnimation} width={5} h={5} src={logoutIcon} alt="" />
           Logout
         </Anchor>
         {/* <Anchor
