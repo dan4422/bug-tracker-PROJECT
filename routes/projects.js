@@ -15,6 +15,9 @@ router.get('/', checkAuth, async (req, res) => {
       {
         model: models.Issue,
       },
+      {
+        model: models.User,
+      },
     ],
   })
   res.json(project)
@@ -112,7 +115,7 @@ router.patch('/:id', checkAuth, async (req, res) => {
     description: req.body.description || project.description,
     status: req.body.status || project.status,
   })
-  res.status(200).json(project)
+  res.status(200).json({ success: 'Updated Project', project })
 })
 
 module.exports = router

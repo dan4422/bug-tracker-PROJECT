@@ -1,10 +1,13 @@
-import { Button, Flex, FormControl, FormLabel, Input, Select, Stack } from '@chakra-ui/react'
+import { Alert, AlertIcon, Button, Flex, FormControl, FormLabel, Input, Select, Stack } from '@chakra-ui/react'
 
 import { useState } from 'react'
 import { useUpdateIssueMutation } from '../redux/services/issues'
 
 function IssuesEdit({ issue }) {
   const [updateIssues] = useUpdateIssueMutation()
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
+
   const [form, setForm] = useState({
     name: issue.name,
     description: issue.description,
@@ -22,8 +25,12 @@ function IssuesEdit({ issue }) {
     e.preventDefault()
     updateIssues({ projectId: issue.ProjectId, issueId: issue.id, updatedIssue: form })
       .unwrap()
-      .then(() => {})
-      .catch((e) => {})
+      .then((data) => {
+        setSuccess(data.success)
+      })
+      .catch((e) => {
+        setError(e.data.error)
+      })
   }
 
   return (
@@ -31,7 +38,17 @@ function IssuesEdit({ issue }) {
       <Stack>
         <form onSubmit={handleSubmit} style={{ width: '100%' }}>
           <Flex alignItems="center" flexDir={'column'} justifyContent="center" gap="1" w="100%">
-            <FormLabel>Name</FormLabel>
+            {error && (
+              <Alert status="error">
+                <AlertIcon /> {error}
+              </Alert>
+            )}
+            {success && (
+              <Alert status="success">
+                <AlertIcon /> {success}
+              </Alert>
+            )}
+            <FormLabel>Issue Name</FormLabel>
             <Input
               id="name"
               type="name"
@@ -39,7 +56,7 @@ function IssuesEdit({ issue }) {
               onChange={(e) => updateField('name', e.target.value)}
               required
             />
-            <FormLabel>Description</FormLabel>
+            <FormLabel>Issue Description</FormLabel>
             <Input
               id="description"
               type="description"
@@ -47,7 +64,7 @@ function IssuesEdit({ issue }) {
               onChange={(e) => updateField('description', e.target.value)}
               required
             />
-            <FormLabel>Status</FormLabel>
+            <FormLabel>Issue Status</FormLabel>
             <Select
               placeholder="Status?"
               id="status"
@@ -57,7 +74,7 @@ function IssuesEdit({ issue }) {
               <option value="Closed">Closed</option>
               <option value="Open">Open</option>
             </Select>
-            <FormLabel>Priority</FormLabel>
+            <FormLabel>Issue Priority</FormLabel>
             <Select
               placeholder="Priority?"
               id="priority"
@@ -68,7 +85,7 @@ function IssuesEdit({ issue }) {
               <option value="Medium">Medium</option>
               <option value="High">High</option>
             </Select>
-            <Button type="submit" colorScheme="blue">
+            <Button mt={5} type="submit" colorScheme="blue">
               Save
             </Button>
           </Flex>

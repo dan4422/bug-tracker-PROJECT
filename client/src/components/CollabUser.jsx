@@ -66,7 +66,6 @@ function CollabUser({ user }) {
         maxH={'50%'}
         width={120}
         height={120}
-        borderRadius={'50%'}
         src={user.User.profileImage}
         alt=""
         m={'0 auto'}
@@ -78,7 +77,7 @@ function CollabUser({ user }) {
         {user.User.last_name.charAt(0).toUpperCase() + user.User.last_name.slice(1)}
       </Text>
       <Text fontSize={13} mb={2}>
-        {user.User.city.charAt(0).toUpperCase() + user.User.city.slice(1)}{' '}
+        {user.User.city.charAt(0).toUpperCase() + user.User.city.slice(1)}, {''}
         {user.User.state.charAt(0).toUpperCase() + user.User.state.slice(1)}
       </Text>
       <Box>
@@ -103,7 +102,9 @@ function CollabUser({ user }) {
         )}
       </Box>
       <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
-      <Text>Issues Posted: <span style={{ fontWeight: '800', color: 'navy' }}>{user.User.Issues.length}</span></Text>
+      <Text>
+        Issues Posted: <span style={{ fontWeight: '800', color: 'navy' }}>{user.User.Issues.length}</span>
+      </Text>
       <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
       <Text>{user.position}</Text>
       <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>

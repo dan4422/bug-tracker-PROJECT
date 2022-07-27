@@ -55,11 +55,11 @@ router.get('/:projectId/issues/:issueId', checkAuth, async (req, res) => {
       },
     ],
   })
-  if (!project || project.UserId !== req.session.user.id) {
+  if (!project) {
     res.status(400).json({ error: 'cannot find project' })
     return
   }
-  const specificIssue = project.Issues.find((issue) => (issue.id = Number(issueId)))
+  const specificIssue = project.Issues.find((issue) => issue.id === Number(issueId))
   res.json(specificIssue)
 })
 
@@ -119,27 +119,31 @@ router.delete('/:projectId/issues/:issueId', checkAuth, async (req, res) => {
   const project = await models.Project.findByPk(projectId, {
     include: models.Issue,
   })
-  if (!project || project.UserId !== req.session.user.id) {
+  if (!project) {
     res.status(400).json({ error: 'cannot find project' })
     return
   }
   const specificIssue = project.Issues.find((issue) => issue.id === Number(issueId))
+  // if (specificIssue.id !== req.session.user.id) {
+  //   res.status(400).json({ error: 'Not the owner of this issue' })
+  //   return
+  // }
   await specificIssue.destroy()
   res.status(200).json({ success: 'deleted issue' })
 })
 
-// api/v1/projects/:projectId/issues/:issueId -updates projects
+// api/v1/projects/:projectId/issues/:issueId -updates issue
 router.patch('/:projectId/issues/:issueId', checkAuth, async (req, res) => {
   const { projectId, issueId } = req.params
 
   const project = await models.Project.findByPk(projectId, {
     include: models.Issue,
   })
-  if (!project || project.UserId !== req.session.user.id) {
+  if (!project) {
     res.status(400).json({ error: 'cannot find project' })
     return
   }
-  const specificIssue = project.Issues.find((issue) => (issue.id = Number(issueId)))
+  const specificIssue = project.Issues.find((issue) => issue.id === Number(issueId))
   if (!specificIssue) {
     res.status(400).json({ error: 'cannot find issue' })
     return
@@ -150,7 +154,7 @@ router.patch('/:projectId/issues/:issueId', checkAuth, async (req, res) => {
     priority: req.body.priority || specificIssue.priority,
     status: req.body.status || specificIssue.status,
   })
-  res.status(200).json(specificIssue)
+  res.status(200).json({ success: 'Updated Issue', specificIssue })
 })
 
 module.exports = router

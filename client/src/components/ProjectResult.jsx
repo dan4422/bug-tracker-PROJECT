@@ -38,7 +38,6 @@ function ProjectResult({ project }) {
   const [error, setError] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [onClose, setOnClose] = useState(true)
-
   const cancelRef = React.useRef()
 
   return (
@@ -82,15 +81,18 @@ function ProjectResult({ project }) {
                 {project.name}
               </Anchor>
             </Heading>
+            <Text>Created by {project.User.username}</Text>
             <Text fontSize={12}>Description:</Text>
             <Text textAlign={'center'} px={2}>
-              {project.description.length > 100 ? project.description.substring(0, 85) + '...' : project.description}
+              {project.description.length > 90 ? project.description.substring(0, 85) + '...' : project.description}
             </Text>
           </Box>
           <Box>
             <Box mb={2}>
               <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
-              <Text># of Issues: <span style={{ fontWeight: '800', color: 'navy' }}>{project.Issues.length}</span></Text>
+              <Text>
+                # of Issues: <span style={{ fontWeight: '800', color: 'navy' }}>{project.Issues.length}</span>
+              </Text>
               <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
               <Text>{project.status}</Text>
               <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
