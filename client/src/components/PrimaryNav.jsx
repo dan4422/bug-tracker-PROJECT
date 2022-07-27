@@ -29,8 +29,6 @@ export default function PrimaryNav() {
       .then((data) => {
         if (data.success) {
           window.location.reload()
-          // projectsApiSlice.util.invalidateTags(['Project'])
-          // issuesApiSlice.util.invalidateTags(['Issue'])
         }
       })
   }

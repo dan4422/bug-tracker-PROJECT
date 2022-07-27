@@ -40,7 +40,7 @@ export const userApiSlice = mainApi.injectEndpoints({
     }),
     image: builder.mutation({
       query: (profileImage) => ({
-        url: '/addProfileImage',
+        url: '/users/addProfileImage',
         method: 'PATCH',
         body: profileImage,
       }),
