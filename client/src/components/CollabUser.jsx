@@ -103,7 +103,9 @@ function CollabUser({ user }) {
         )}
       </Box>
       <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
-      <Text>Issues Posted: <span style={{ fontWeight: '800', color: 'navy' }}>{user.User.Issues.length}</span></Text>
+      <Text>
+        Issues Posted: <span style={{ fontWeight: '800', color: 'navy' }}>{user.User.Issues.length}</span>
+      </Text>
       <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
       <Text>{user.position}</Text>
       <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
