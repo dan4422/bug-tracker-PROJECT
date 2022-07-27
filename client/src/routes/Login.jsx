@@ -11,7 +11,7 @@ export default function Login() {
   return (
     <Box className="App" w="100%" h="100vh">
       <Box my={10} mx="auto" w="95%" maxW="400px">
-        <Image width={'100%'} src={logo} alt="" />
+        <Image m={'0 auto'} width={'80%'} src={logo} alt="" />
         <FormLogin />
       </Box>
     </Box>
