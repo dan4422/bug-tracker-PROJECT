@@ -12,8 +12,6 @@ import HomePieChart1 from './HomePieChart1'
 import HomePieChart2 from './HomePieChart2'
 import HomeTable from './HomeTable'
 
-import styles from './HomePage.module.css'
-
 // HOME PAGE:
 export default function HomePage() {
   return (
