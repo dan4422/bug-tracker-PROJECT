@@ -2,7 +2,28 @@
 
 A bug tracking app that allows users to keep track of issues found in their projects.
 
-# DigitalCrafts Full Stack React App Template
+# A preview of Bugsly
+
+**Main Login Page where users can either login/register.**
+<img src='../component/imgs/Login.png'>
+
+**Once logged in, users will be redirected to the main dashboard which shows all information about their current projects/issues.**
+<img src='../components/imgs/Dashboard.png'>
+
+**If the user is new or wanting to add a new project, they can create a new project with details about it such as description, status and position picking for yourself.**
+<img src='../components/imgs/ProjectPage.png'>
+
+**Once a project has been created, users will then be able to give a briefing of their projects issue.**
+<img src='../components/imgs/IssuePage.png'>
+
+**Once users submit their project issues, they can add other users to specific projects to work on**
+<img src='../components/imgs/Collaborator.png'>
+
+
+# Team Members
+* Gerardo Delao
+* Myles DeBoer
+* Daniel Le
 
 This template has been configured with a lot of the common technologies taught
 at DigitalCrafts. It serves as a starting point for capstone projects though it
@@ -49,17 +70,6 @@ configured to automatically start both the frontend and backend simultaneously.
 npm run dev
 ```
 
-If you plan on using user authentication, review the [auth](#authentication)
-section below.
-
-## Recommendations
-
-This project is configured in a way that makes it easy to follow the project
-structure that DigitalCrafts teaches in class. The following points are
-recommendations for how to proceed with development for your project. These are
-just recommendations, however, and you are free to alter/add/remove anything you
-like.
-
 ### ESLint and Type Checking
 This project has been configured with ESLint and Type Checking using the
 Typescript engine. This will add extra debugging hints and handle some common
@@ -73,7 +83,7 @@ want to disable the ESLint extension. This is not recommended but it will make
 
 
 ### Routing
-DigitalCrafts uses React Router in class, and that is what is installed. The
+React Router is what is installed. The
 backend is configured to pass all requests that don't match API routes to the
 index page so that the client routing solution can handle missing page requests.
 
