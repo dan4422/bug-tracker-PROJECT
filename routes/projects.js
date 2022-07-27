@@ -53,7 +53,7 @@ router.post('/create', checkAuth, async (req, res) => {
     UserId: req.session.user.id,
     ProjectId: project.id,
     role: 'Admin',
-    position: position || 'Full Stack',
+    position: position || 'Fullstack',
   })
 
   res.json(project)

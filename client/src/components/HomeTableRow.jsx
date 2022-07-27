@@ -38,7 +38,7 @@ function HomeTableRow({ issue }) {
         <Td borderBottom="2px">
           <Anchor as={Link} to={`/projects/${issue.ProjectId}/issues/${issue.id}`}>
             {issue.name}:{' '}
-            {issue.description.length > 100 ? issue.description.substring(0, 65) + '...' : issue.description}
+            {issue.description.length > 20 ? issue.description.substring(0, 25) + '...' : issue.description}
           </Anchor>
         </Td>
         <Td borderBottom="2px">{issue.User.username}</Td>
