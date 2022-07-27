@@ -38,7 +38,6 @@ function ProjectResult({ project }) {
   const [error, setError] = useState('')
   const [isOpen, setIsOpen] = useState(false)
   const [onClose, setOnClose] = useState(true)
-
   const cancelRef = React.useRef()
 
   return (
@@ -82,9 +81,10 @@ function ProjectResult({ project }) {
                 {project.name}
               </Anchor>
             </Heading>
+            <Text>Created by {project.User.username}</Text>
             <Text fontSize={12}>Description:</Text>
             <Text textAlign={'center'} px={2}>
-              {project.description.length > 100 ? project.description.substring(0, 85) + '...' : project.description}
+              {project.description.length > 90 ? project.description.substring(0, 85) + '...' : project.description}
             </Text>
           </Box>
           <Box>

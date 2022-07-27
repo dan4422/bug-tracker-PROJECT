@@ -88,9 +88,6 @@ export function Project() {
       </Box>
       <form onSubmit={handleSubmit}>
         <FormControl mb={5}>
-          {/* <Text fontSize={'17px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
-            Create a Project
-          </Text> */}
           <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={55} htmlFor="name">
             Name
           </FormLabel>
@@ -128,7 +125,7 @@ export function Project() {
             borderColor="rgba(76, 209, 4, 0.649)"
             focusBorderColor="rgba(63, 180, 0, 0.906)"
             mb={5}
-            placeholder="Select progress"
+            placeholder="Select Status"
             color={form.status ? 'black' : 'gray'}
             value={form.status}
             onChange={(e) => updateProject('status', e.target.value)}

@@ -1,6 +1,13 @@
 import {
   Link as Anchor,
   Button,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
   Flex,
   Image,
   Popover,
@@ -13,6 +20,7 @@ import {
   Td,
   Text,
   Tr,
+  useDisclosure,
 } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -26,6 +34,8 @@ import ProjectEdit from './ProjectEdit'
 
 function HomeTableRow({ issue }) {
   const [deleteIssue] = useDeleteIssueMutation()
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const btnRef = React.useRef()
 
   return (
     <>
@@ -46,21 +56,24 @@ function HomeTableRow({ issue }) {
         <Td borderBottom="2px">
           <Flex justifyContent={'flex-end'} gap={3} alignItems="center">
             <Text>{issue.priority}</Text>
-            <Popover placement="right">
-              <PopoverTrigger>
-                <Button size="sm">
-                  <Image width={5} h={5} src={editIcon} alt="" />
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent>
-                <PopoverCloseButton />
-                <PopoverArrow />
-                <PopoverHeader textAlign={'center'}>Edit {issue.name}</PopoverHeader>
-                <PopoverBody>
+            <Button size="sm">
+              <Image width={5} h={5} src={editIcon} alt="" onClick={onOpen} ref={btnRef} />
+            </Button>
+            <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
+              <DrawerOverlay />
+              <DrawerContent>
+                <DrawerCloseButton />
+                <DrawerHeader>Edit {issue.name}</DrawerHeader>
+                <DrawerBody>
                   <IssuesEdit issue={issue} />
-                </PopoverBody>
-              </PopoverContent>
-            </Popover>
+                </DrawerBody>
+                <DrawerFooter>
+                  <Button variant="outline" mr={3} onClick={onClose}>
+                    Cancel
+                  </Button>
+                </DrawerFooter>
+              </DrawerContent>
+            </Drawer>
             <Button size="sm" onClick={() => deleteIssue({ projectId: issue.ProjectId, issueId: issue.id })}>
               <Image width={5} h={5} src={trashIcon} alt="" />
             </Button>
