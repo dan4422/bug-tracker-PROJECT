@@ -5,29 +5,25 @@ A bug tracking app that allows users to keep track of issues found in their proj
 # A preview of Bugsly
 
 **Main Login Page where users can either login/register.**
-<img src='../component/imgs/Login.png'>
+<img src='../src/imgs/Login.png'>
 
 **Once logged in, users will be redirected to the main dashboard which shows all information about their current projects/issues.**
-<img src='../components/imgs/Dashboard.png'>
+<img src='../src/imgs/Dashboard.png'>
 
 **If the user is new or wanting to add a new project, they can create a new project with details about it such as description, status and position picking for yourself.**
-<img src='../components/imgs/ProjectPage.png'>
+<img src='../src/imgs/ProjectPage.png'>
 
 **Once a project has been created, users will then be able to give a briefing of their projects issue.**
-<img src='../components/imgs/IssuePage.png'>
+<img src='../src/imgs/IssuePage.png'>
 
 **Once users submit their project issues, they can add other users to specific projects to work on**
-<img src='../components/imgs/Collaborator.png'>
+<img src='../src/imgs/Collaborator.png'>
 
 
 # Team Members
 * Gerardo Delao
 * Myles DeBoer
-* Daniel Le
-
-This template has been configured with a lot of the common technologies taught
-at DigitalCrafts. It serves as a starting point for capstone projects though it
-is not required.
+* Daniel Lee
 
 ## Backend
 * Node
@@ -38,6 +34,9 @@ is not required.
 ## Frontend
 * React
 * React Router
+* HTML5
+* Chakra UI
+
 
 ## Getting Started
 
