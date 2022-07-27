@@ -121,7 +121,7 @@ function ProjectResult({ project }) {
                 }
                 aria-label="icon"
               >
-              <Image width={5} h={5} src={trashIcon} alt="" />
+                <Image width={5} h={5} src={trashIcon} alt="" />
               </Button>
             </Flex>
           </Box>
