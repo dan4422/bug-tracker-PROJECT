@@ -58,19 +58,40 @@ function CollabUser({ user }) {
           </AlertDialogContent>
         </AlertDialogOverlay>
       </AlertDialog>
-      <Image
-        borderRadius="50%"
-        border="4px"
-        borderColor="rgba(178, 217, 100, 0.765)"
-        maxW="70%"
-        maxH={'50%'}
-        width={120}
-        height={120}
-        src={user.User.profileImage}
-        alt=""
-        m={'0 auto'}
-        my={3}
-      />
+      {user.User?.profileImage ===
+      `${user.User.first_name.charAt(0).toUpperCase()}${user.User.last_name.charAt(0).toUpperCase()}` ? (
+        <Flex
+          borderRadius="50%"
+          border="4px"
+          borderColor="rgba(178, 217, 100, 0.765)"
+          maxW="70%"
+          maxH={'50%'}
+          width={120}
+          height={120}
+          justifyContent={'center'}
+          m={'0 auto'}
+          my={3}
+        >
+          <Text alignItems={'center'} fontSize={50} pt={6}>
+            {user.User.profileImage}
+          </Text>
+        </Flex>
+      ) : (
+        <Image
+          borderRadius="50%"
+          border="4px"
+          borderColor="rgba(178, 217, 100, 0.765)"
+          maxW="70%"
+          maxH={'50%'}
+          width={120}
+          height={120}
+          src={user.User.profileImage}
+          alt=""
+          m={'0 auto'}
+          my={3}
+        />
+      )}
+
       <Text>{user.User.username.charAt(0).toUpperCase() + user.User.username.slice(1)}</Text>
       <Text fontSize={13}>
         {user.User.first_name.charAt(0).toUpperCase() + user.User.first_name.slice(1)}{' '}
