@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Avatar, Image, Input } from '@chakra-ui/react'
+import { Avatar, Image, Input, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { useGetCurrentUserQuery, useImageMutation } from '../redux/services/user'
 
@@ -34,17 +34,22 @@ function ProfileImage() {
         <h3>Loading...</h3>
       ) : (
         <>
-          <Image
-            width={95}
-            height={95}
-            borderRadius="50%"
-            border="4px"
-            borderColor="rgba(178, 217, 100, 0.765)"
-            m={0}
-            src={data?.profileImage}
-            onClick={() => inputRef.current && inputRef.current?.click()}
-            cursor={'pointer'}
-          />
+          {data?.profileImage ===
+          `${data.first_name.charAt(0).toUpperCase()}${data.last_name.charAt(0).toUpperCase()}` ? (
+            <Text>{data.profileImage}</Text>
+          ) : (
+            <Image
+              width={95}
+              height={95}
+              borderRadius="50%"
+              border="4px"
+              borderColor="rgba(178, 217, 100, 0.765)"
+              m={0}
+              src={data?.profileImage}
+              onClick={() => inputRef.current && inputRef.current?.click()}
+              cursor={'pointer'}
+            />
+          )}
           <Input type="file" onChange={uploadImage} ref={inputRef} display="none" />
         </>
       )}
