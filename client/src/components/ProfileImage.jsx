@@ -23,6 +23,7 @@ function ProfileImage() {
     const file = await res.json()
     setProfileImage(file.secure_url)
     const newProfileImage = { profileImage: file.secure_url }
+    console.log(newProfileImage)
     addProfileImage(newProfileImage)
     setLoading(false)
   }
