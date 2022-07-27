@@ -29,6 +29,7 @@ router.post('/register', async (req, res) => {
     state,
     city,
     DOB,
+    profileImage: `${first_name.charAt(0).toUpperCase()}${last_name.charAt(0).toUpperCase()}`,
   })
   res.json({ success: 'registered successfully' })
 })
