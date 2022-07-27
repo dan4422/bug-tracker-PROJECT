@@ -103,6 +103,7 @@ function CollabProject({ project }) {
           </Text>
           <Box display={'flex'} flexDir={'row'} gap={1} alignItems="center">
             <Button
+              pt={0.5}
               bg="rgba(178, 217, 100, 0.765)"
               _hover={{ bg: 'rgba(217, 199, 0, 0.487)' }}
               fontSize={10}

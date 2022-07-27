@@ -25,6 +25,7 @@ import {
 import { Link } from 'react-router-dom'
 import React, { useState } from 'react'
 import { useDeleteProjectMutation } from '../redux/services/projects'
+
 // IMGS:
 import trashIcon from '../imgs/trashIcon.png'
 import editIcon from '../imgs/editIcon.png'
@@ -88,8 +89,11 @@ function ProjectResult({ project }) {
           </Box>
           <Box>
             <Box mb={2}>
+              <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
               <Text>0 Contributions</Text>
+              <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
               <Text>{project.status}</Text>
+              <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
             </Box>
             <Flex gap="2" mb="2" justifyContent={'center'}>
               <Popover placement="left">
@@ -132,38 +136,3 @@ function ProjectResult({ project }) {
 }
 
 export default ProjectResult
-
-// WITH OR WITHOUT ACCORDION??
-
-// <Box border="1px" borderColor="red" w={200} textAlign="center">
-//       {showEditForm ? (
-//         <ProjectEdit project={project} onSuccess={() => setShowEditForm(false)} />
-//       ) : (
-//         <Wrap spacing={10}>
-//           <Box w={200} h={300}>
-//             <Accordion allowToggle>
-//               <AccordionItem>
-//                 <h2>
-//                   <AccordionButton>
-//                     <Box flex="1" textAlign="left">
-//                       {project.name}
-//                     </Box>
-//                     <AccordionIcon />
-//                   </AccordionButton>
-//                 </h2>
-//                 <AccordionPanel pb={4}>{project.description}</AccordionPanel>
-//               </AccordionItem>
-//             </Accordion>
-//             <Text>{project.status}</Text>
-//             <Flex gap="2" justifyContent={'center'}>
-//               <Button size="sm" aria-label="icon" onClick={() => setShowEditForm(true)}>
-//                 📝
-//               </Button>
-//               <Button size="sm" onClick={() => deleteProject(project.id)} aria-label="icon">
-//                 ❌
-//               </Button>
-//             </Flex>
-//           </Box>
-//         </Wrap>
-//       )}
-//     </Box>
