@@ -36,7 +36,9 @@ function ProfileImage() {
         <>
           {data?.profileImage ===
           `${data.first_name.charAt(0).toUpperCase()}${data.last_name.charAt(0).toUpperCase()}` ? (
-            <Text>{data.profileImage}</Text>
+            <Text onClick={() => inputRef.current && inputRef.current?.click()} cursor={'pointer'}>
+              {data.profileImage}
+            </Text>
           ) : (
             <Image
               width={95}
