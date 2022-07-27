@@ -6,6 +6,9 @@ import { ResponsiveContainer } from 'recharts'
 // REDUX
 import { Link } from 'react-router-dom'
 
+// CSS
+import './HomePage.module.css'
+
 // REACT ROUTER:
 import HomeBarChart from './HomeBarChart'
 import HomePieChart1 from './HomePieChart1'
