@@ -15,3 +15,12 @@ export default function Register() {
     </Box>
   )
 }
+// ;<Box className="App" w="100%" h="100vh">
+//   <SiteTitleLogin />
+//   <Text px={4} pt={10} textAlign="center" fontSize="3xl">
+//     Register
+//   </Text>
+//   <Box my={10} mx="auto" w="95%" maxW="400px">
+//     <FormRegister />
+//   </Box>
+// </Box>

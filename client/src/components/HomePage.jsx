@@ -6,14 +6,13 @@ import { ResponsiveContainer } from 'recharts'
 // REDUX
 import { Link } from 'react-router-dom'
 
-// CSS
-import './HomePage.module.css'
-
 // REACT ROUTER:
 import HomeBarChart from './HomeBarChart'
 import HomePieChart1 from './HomePieChart1'
 import HomePieChart2 from './HomePieChart2'
 import HomeTable from './HomeTable'
+
+import styles from './HomePage.module.css'
 
 // HOME PAGE:
 export default function HomePage() {
@@ -32,7 +31,7 @@ export default function HomePage() {
           </Box>
         </Flex>
       </Box>
-      <Box borderRadius="5px" mt={2} w="100%" position="relative">
+      <Box className="homeTable" borderRadius="5px" mt={2} width={{ base: '100%', sm: '100%' }} position="relative">
         <HomeTable />
       </Box>
     </Flex>
