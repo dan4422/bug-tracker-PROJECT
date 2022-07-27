@@ -28,7 +28,7 @@ router.get('/:id', checkAuth, async (req, res) => {
     return
   }
   const project = await models.Project.findByPk(id)
-  if (!project || project.UserId !== req.session.user.id) {
+  if (!project) {
     res.status(400).json({ error: 'cannot find project' })
     return
   }

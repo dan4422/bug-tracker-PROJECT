@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   Issue.init(
     {
       name: DataTypes.STRING,
-      description: DataTypes.STRING,
+      description: DataTypes.TEXT,
       priority: DataTypes.STRING,
       status: DataTypes.STRING,
     },

@@ -28,6 +28,10 @@ router.post('/assign', checkAuth, async (req, res) => {
     ],
   })
   const { ProjectId, UserId, position } = req.body
+  if (UserId === req.session.user.id || !UserId) {
+    res.status(400).json({ error: 'Please select a different user' })
+    return
+  }
   const findCollabProject = user.Collabs.find((collab) => collab.ProjectId === Number(ProjectId))
   if (findCollabProject?.role === 'Admin') {
     const [collab] = await models.Collab.findOrCreate({
@@ -73,7 +77,7 @@ router.delete('/unassign', checkAuth, async (req, res) => {
         },
       ],
     })
-    await collab.destroy()
+    await collab?.destroy()
     res.status(200).json({ success: `${collab.User.username} has been unassigned from ${collab.Project.name}` })
   } else {
     res.status(400).json({ error: 'You are not an Admin for this project' })
@@ -91,7 +95,12 @@ router.get('/getAllCollabProjects', checkAuth, async (req, res) => {
       {
         model: models.Collab,
         as: 'members',
-        include: [models.User],
+        include: [
+          {
+            model: models.User,
+            include: [models.Issue],
+          },
+        ],
       },
       {
         model: models.Issue,
