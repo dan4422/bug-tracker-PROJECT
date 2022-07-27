@@ -88,7 +88,7 @@ function ProjectResult({ project }) {
           </Box>
           <Box>
             <Box mb={2}>
-              <Text>0 Contributions</Text>
+              <Text>{project.Issues.length} Issues</Text>
               <Text>{project.status}</Text>
             </Box>
             <Flex gap="2" mb="2" justifyContent={'center'}>

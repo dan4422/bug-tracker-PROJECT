@@ -9,10 +9,16 @@ import {
   Button,
   Image,
   Text,
+  useDisclosure,
 } from '@chakra-ui/react'
+import React, { useState } from 'react'
 import { useUnassignUserToProjectMutation } from '../redux/services/collab'
 
-function CollabUser({ data }) {
+function CollabUser({ user }) {
+  const { isOpen, onOpen, onClose } = useDisclosure()
+  const cancelRef = React.useRef()
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
   const [unassignUser] = useUnassignUserToProjectMutation()
   const unassign = (ProjectId, UserId) => {
     const unassignData = {
@@ -21,38 +27,68 @@ function CollabUser({ data }) {
     }
     unassignUser(unassignData)
       .unwrap()
-      .then(() => {})
-      .catch((error) => {})
+      .then((data) => {
+        setSuccess(data.success)
+      })
+      .catch((error) => {
+        setError(error.data.error)
+        onOpen()
+      })
   }
 
   return (
     <Box bg="rgba(213, 213, 213, 0.682)" borderRadius="20px" w={200} textAlign="center">
+      <AlertDialog isOpen={isOpen} leastDestructiveRef={cancelRef} onClose={onClose}>
+        <AlertDialogOverlay>
+          <AlertDialogContent>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              Error
+            </AlertDialogHeader>
+            <AlertDialogBody>{error}</AlertDialogBody>
+            <AlertDialogFooter>
+              <Button colorScheme="red" onClick={onClose} ml={3}>
+                OK
+              </Button>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialogOverlay>
+      </AlertDialog>
       <Image
         maxW="70%"
         maxH={'50%'}
         width={120}
         height={120}
         borderRadius={'50%'}
-        src={data.User.profileImage}
+        src={user.User.profileImage}
         alt=""
         m={'0 auto'}
         my={3}
       />
-      <Text>{data.User.username}</Text>
-      <Text fontSize={13}>{data.User.email}</Text>
+      <Text>{user.User.username}</Text>
+      <Text fontSize={13}>{user.User.email}</Text>
       <Text fontSize={13} mb={2}>
-        {data.User.city} {data.User.state}
+        {user.User.city} {user.User.state}
       </Text>
       <hr></hr>
-      <Text>4 contributions</Text>
+      <Text>{user.User.Issues.length} Issues Created</Text>
       <hr></hr>
-      <Text>{data.position}</Text>
+      <Text>{user.position}</Text>
       <hr></hr>
-      <Text mb={2}>{data.role}</Text>
-      {data.role === 'Admin' ? (
+      <Text mb={1}>{user.role}</Text>
+      {user.role === 'Admin' ? (
         ''
       ) : (
-        <Button onClick={() => unassign(data.ProjectId, data.UserId)} size="xs" bg="red">
+        <Button
+          alignContent={'center'}
+          alignItems="center"
+          textAlign={'center'}
+          onClick={() => unassign(user.ProjectId, user.UserId)}
+          size="xs"
+          color={'white'}
+          bg="#F02D3A"
+          variant="ghost"
+          mb={1}
+        >
           Unassign
         </Button>
       )}
