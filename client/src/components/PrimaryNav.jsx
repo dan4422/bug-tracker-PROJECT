@@ -66,14 +66,15 @@ export default function PrimaryNav() {
           <>
             <ProfileImage />
             <Box maxW="100%" justifyContent={'center'}>
-              <Text fontSize={17}>{data?.username}</Text>
+              <Text fontSize={17}>{data?.username.charAt(0).toUpperCase() + data?.username.slice(1)}</Text>
               <Text fontSize={13}>
-                {data?.first_name} {data?.last_name}
+                {data?.first_name.charAt(0).toUpperCase() + data?.first_name.slice(1)}{' '}
+                {data?.last_name.charAt(0).toUpperCase() + data?.last_name.slice(1)}
               </Text>
               <Text fontSize={13}>
-                {data?.city}
+                {data?.city.charAt(0).toUpperCase() + data?.city.slice(1)}
                 {data ? ', ' : ''}
-                {data?.state}
+                {data?.state.charAt(0).toUpperCase() + data?.state.slice(1)}
               </Text>
             </Box>
           </>

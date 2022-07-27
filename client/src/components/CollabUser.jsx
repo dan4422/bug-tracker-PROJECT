@@ -64,13 +64,20 @@ function CollabUser({ user }) {
         m={'0 auto'}
         my={3}
       />
-      <Text>{user.User.username}</Text>
-      <Text fontSize={13}>{user.User.email}</Text>
+      <Text>{user.User.username.charAt(0).toUpperCase() + user.User.username.slice(1)}</Text>
+      <Text fontSize={13}>
+        {user.User.first_name.charAt(0).toUpperCase() + user.User.first_name.slice(1)}{' '}
+        {user.User.last_name.charAt(0).toUpperCase() + user.User.last_name.slice(1)}
+      </Text>
       <Text fontSize={13} mb={2}>
-        {user.User.city} {user.User.state}
+        {user.User.city.charAt(0).toUpperCase() + user.User.city.slice(1)}{' '}
+        {user.User.state.charAt(0).toUpperCase() + user.User.state.slice(1)}
       </Text>
       <hr></hr>
-      <Text>{user.User.Issues.length} Issues Created</Text>
+      <Text>
+        {' '}
+        Issues Posted: <span style={{ fontWeight: '800', color: 'navy' }}>{user.User.Issues.length}</span>
+      </Text>
       <hr></hr>
       <Text>{user.position}</Text>
       <hr></hr>

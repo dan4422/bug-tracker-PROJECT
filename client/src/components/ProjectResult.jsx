@@ -88,7 +88,10 @@ function ProjectResult({ project }) {
           </Box>
           <Box>
             <Box mb={2}>
-              <Text>{project.Issues.length} Issues</Text>
+              <Text>
+                {' '}
+                # of Issues: <span style={{ fontWeight: '800', color: 'navy' }}>{project.Issues.length}</span>
+              </Text>
               <Text>{project.status}</Text>
             </Box>
             <Flex gap="2" mb="2" justifyContent={'center'}>
