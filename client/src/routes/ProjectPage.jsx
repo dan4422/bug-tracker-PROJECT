@@ -16,36 +16,45 @@ function statusColor(status) {
   }
 }
 
+function positionColor(position) {
+  switch (position) {
+    case 'FullStack':
+      return 'Blue'
+    case 'FrontEnd':
+      return 'Red'
+    case 'Backend':
+      return 'Green'
+    default:
+      return ''
+  }
+}
+
 function ProjectPage() {
   const { projectId } = useParams()
   const { data } = useGetProjectsByIDQuery(projectId)
+  console.log(data)
   return (
     <>
       <Box bg="white">
         <Heading my={2} textAlign={'center'}>
           {data?.name.toUpperCase()}
         </Heading>
-        <Heading my={5} textAlign={'center'}>
-          Position: {data?.position}
-        </Heading>
         <Flex justifyContent={'center'} alignItems="center" gap={5}>
-          <Badge rounded={16} my={2} alignItems={'center'} fontSize="1.5em">
-            {data?.description}
-          </Badge>
-          <Badge rounded={16} my={2} alignItems={'center'} colorScheme={statusColor(data?.status)} fontSize="1.5em">
+          <Heading>Status:</Heading>
+          <Badge rounded={16} my={3} alignItems={'center'} colorScheme={statusColor(data?.status)} fontSize="1.5em">
             {data?.status}
           </Badge>
+          <div></div>
         </Flex>
         <Text textAlign={'center'}>Last Updated: {new Date(data?.updatedAt).toDateString()}</Text>
         <Text textAlign={'center'}>Issue Opened: {new Date(data?.createdAt).toDateString()}</Text>
         <Flex flexDir={'column'} alignItems="center" justifyContent="center">
-          <Heading mt={5} size="md">
-            Description:
+          <Heading mt={5} size="md" textDecoration={'underline'} textDecorationColor={'red'} fontSize={'35px'}>
+            Description
           </Heading>
-          <Text fontSize={25} mt={5}>
+          <Text fontSize={'22px'} mt={5} textAlign="center">
             {data?.description}
           </Text>
-          <Divider />
         </Flex>
       </Box>
     </>
