@@ -41,7 +41,7 @@ function HomePieChart1() {
         Status Levels by Project
       </Heading>
       <ResponsiveContainer width="100%" height={400}>
-        <PieChart width={400} height={100}>
+        <PieChart width={90} height={100}>
           <Pie data={pieData} labelLine={false} label={renderCustomizedLabel} fill="#8884d8" dataKey="value">
             {data?.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />

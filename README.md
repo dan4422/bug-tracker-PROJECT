@@ -1,3 +1,7 @@
+# BUGSLY
+
+A bug tracking app that allows users to keep track of issues found in their projects.
+
 # DigitalCrafts Full Stack React App Template
 
 This template has been configured with a lot of the common technologies taught

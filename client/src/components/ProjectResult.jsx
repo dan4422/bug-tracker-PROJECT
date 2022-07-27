@@ -90,7 +90,9 @@ function ProjectResult({ project }) {
           <Box>
             <Box mb={2}>
               <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
-              <Text># of Issues: <span style={{ fontWeight: '800', color: 'navy' }}>{project.Issues.length}</span></Text>
+              <Text>
+                # of Issues: <span style={{ fontWeight: '800', color: 'navy' }}>{project.Issues.length}</span>
+              </Text>
               <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>
               <Text>{project.status}</Text>
               <Text borderBottom="1px" borderColor="white" w={'90%'} alignItems="center" margin={'0 auto'}></Text>

@@ -9,14 +9,24 @@ import SiteTitleLogin from '../components/SiteTitleLogin'
 // REGISTER:
 export default function Register() {
   return (
-    <Box className="App" w="100%" h="100vh">
+    <Box className="App">
       <SiteTitleLogin />
       <Text px={4} pt={10} textAlign="center" fontSize="3xl">
         Register
       </Text>
-      <Box my={10} mx="auto" w="95%" maxW="400px">
+      <Box mx="auto" w="95%" maxW="400px">
         <FormRegister />
       </Box>
     </Box>
   )
 }
+
+// ;<Box className="App" w="100%" h="100vh">
+//   <SiteTitleLogin />
+//   <Text px={4} pt={10} textAlign="center" fontSize="3xl">
+//     Register
+//   </Text>
+//   <Box my={10} mx="auto" w="95%" maxW="400px">
+//     <FormRegister />
+//   </Box>
+// </Box>
