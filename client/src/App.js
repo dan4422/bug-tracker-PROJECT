@@ -96,7 +96,7 @@ export default function App() {
   } else {
     return (
       <Box className="App" paddingY="50px" minH="100vh">
-        <Container maxW={'80vw'}>
+        <Container maxW={'1300px'}>
           <Flex gap="5" w="100%" justifyContent={'center'}>
             <PrimaryNav />
             <Flex flexDirection={'column'} alignItems="center" maxW="full" gap="10px" flexGrow="1">

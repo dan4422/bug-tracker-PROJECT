@@ -63,6 +63,7 @@ function CollabUser({ user }) {
         <Flex
           borderRadius="50%"
           border="4px"
+          bg="white"
           borderColor="rgba(178, 217, 100, 0.765)"
           maxW="70%"
           maxH={'50%'}
@@ -92,7 +93,7 @@ function CollabUser({ user }) {
         />
       )}
 
-      <Text>{user.User.username.charAt(0).toUpperCase() + user.User.username.slice(1)}</Text>
+      <Text>@{user.User.username.charAt(0).toUpperCase() + user.User.username.slice(1)}</Text>
       <Text fontSize={13}>
         {user.User.first_name.charAt(0).toUpperCase() + user.User.first_name.slice(1)}{' '}
         {user.User.last_name.charAt(0).toUpperCase() + user.User.last_name.slice(1)}
