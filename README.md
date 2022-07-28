@@ -5,19 +5,19 @@ A bug tracking app that allows users to keep track of issues found in their proj
 # A preview of Bugsly
 
 **Main Login Page where users can either login/register.**
-<img src='../src/imgs/Login.png'>
+![img!](./Login.png)
 
 **Once logged in, users will be redirected to the main dashboard which shows all information about their current projects/issues.**
-<img src='../src/imgs/Dashboard.png'>
+![img!](./Dashboard.png)
 
 **If the user is new or wanting to add a new project, they can create a new project with details about it such as description, status and position picking for yourself.**
-<img src='../src/imgs/ProjectPage.png'>
+![img!](./ProjectPage.png)
 
 **Once a project has been created, users will then be able to give a briefing of their projects issue.**
-<img src='../src/imgs/IssuePage.png'>
+![img!](./IssuePage.png)
 
 **Once users submit their project issues, they can add other users to specific projects to work on**
-<img src='../src/imgs/Collaborator.png'>
+![img!](./Collaborator.png)
 
 
 # Team Members
