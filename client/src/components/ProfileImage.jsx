@@ -1,6 +1,5 @@
-import React, { useRef, useState } from 'react'
-import { Avatar, Box, Flex, Image, Input, Text } from '@chakra-ui/react'
-import { Link } from 'react-router-dom'
+import { useRef, useState } from 'react'
+import { Flex, Image, Input, Text } from '@chakra-ui/react'
 import { useGetCurrentUserQuery, useImageMutation } from '../redux/services/user'
 
 function ProfileImage() {

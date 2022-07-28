@@ -1,5 +1,4 @@
-import { Box, Container, Flex, Wrap } from '@chakra-ui/react'
-import React from 'react'
+import { Wrap } from '@chakra-ui/react'
 import { useGetProjectsQuery } from '../redux/services/projects'
 import ProjectResult from './ProjectResult'
 

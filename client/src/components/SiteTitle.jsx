@@ -1,5 +1,5 @@
 // CHAKRA:
-import { Heading, Text } from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 
 // SITE TITLE:
 export default function SiteTitle() {

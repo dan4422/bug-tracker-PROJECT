@@ -1,14 +1,10 @@
 // CHAKRA:
 import { Link as Anchor, Box, Container, Image, Skeleton, SkeletonCircle, SkeletonText, Text } from '@chakra-ui/react'
-import { useMediaQuery } from '@chakra-ui/react'
 
 // REACT ROUTER:
 import { Link } from 'react-router-dom'
-import { issuesApiSlice } from '../redux/services/issues'
-import { projectsApiSlice } from '../redux/services/projects'
 
 // IMGS:
-import profileImg from '../imgs/profilePhoto.png'
 import homeIcon from '../imgs/homeBlack.png'
 import projectsIcon from '../imgs/projectsBlack.png'
 import issuesIcon from '../imgs/issuesBlack.png'

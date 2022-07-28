@@ -1,24 +1,10 @@
 import React from 'react'
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Text,
-  Th,
-  Thead,
-  Tr,
-} from '@chakra-ui/react'
+import { Box, Table, TableCaption, TableContainer, Tbody, Th, Thead, Tr } from '@chakra-ui/react'
 import { useGetAllIssuesQuery } from '../redux/services/issues'
 import HomeTableRow from './HomeTableRow'
 
 function HomeTable() {
-  const { data, isError, error } = useGetAllIssuesQuery()
+  const { data } = useGetAllIssuesQuery()
   const issues = data?.map((data) => data.Issues)
   return (
     <Box w="100%" position="relative">

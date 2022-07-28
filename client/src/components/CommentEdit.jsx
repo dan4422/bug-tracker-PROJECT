@@ -1,5 +1,5 @@
-import { Box, Button, Heading, Textarea } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { Box, Heading } from '@chakra-ui/react'
+import { useState } from 'react'
 import { useUpdateCommentMutation } from '../redux/services/comment'
 
 function CommentEdit({ comment }) {

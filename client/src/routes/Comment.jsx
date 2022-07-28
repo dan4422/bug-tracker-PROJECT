@@ -1,4 +1,3 @@
-import React from 'react'
 import Comments from '../components/Comments'
 
 function Comment() {

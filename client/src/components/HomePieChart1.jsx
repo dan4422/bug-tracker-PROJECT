@@ -1,5 +1,4 @@
 import { Heading } from '@chakra-ui/react'
-import React from 'react'
 import { Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 import { useGetProjectsQuery } from '../redux/services/projects'
 

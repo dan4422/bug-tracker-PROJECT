@@ -10,25 +10,17 @@ import {
   DrawerOverlay,
   Flex,
   Image,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverHeader,
-  PopoverTrigger,
   Td,
   Text,
   Tr,
   useDisclosure,
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDeleteIssueMutation } from '../redux/services/issues'
 import trashIcon from '../imgs/trashIcon.png'
 import editIcon from '../imgs/editIcon.png'
 import IssuesEdit from './IssuesEdit'
-import ProjectEdit from './ProjectEdit'
 
 // IMGS:
 
