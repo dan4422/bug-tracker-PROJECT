@@ -1,18 +1,4 @@
-import {
-  Alert,
-  AlertIcon,
-  Box,
-  Button,
-  ButtonGroup,
-  Divider,
-  Flex,
-  FormControl,
-  FormLabel,
-  Input,
-  PopoverFooter,
-  Select,
-  Stack,
-} from '@chakra-ui/react'
+import { Alert, AlertIcon, Button, Flex, FormLabel, Input, Select, Stack } from '@chakra-ui/react'
 
 import { useState } from 'react'
 import { useUpdateProjectMutation } from '../redux/services/projects'

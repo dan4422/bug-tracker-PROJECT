@@ -1,4 +1,3 @@
-import React from 'react'
 import Collaborator from '../components/Collaborator'
 
 function Collaborators() {

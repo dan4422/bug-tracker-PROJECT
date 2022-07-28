@@ -7,7 +7,6 @@ import {
   Flex,
   FormControl,
   FormLabel,
-  Heading,
   Image,
   Input,
   Select,
@@ -15,7 +14,6 @@ import {
   Textarea,
 } from '@chakra-ui/react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useAddNewIssueMutation } from '../redux/services/issues'
 import { useGetProjectsQuery } from '../redux/services/projects'
 
@@ -86,9 +84,6 @@ export default function Issue() {
       </Box>
       <form onSubmit={handleSubmit}>
         <FormControl mb={5}>
-          {/* <Text fontSize={'17px'} fontWeight="bold" fontFamily="Baloo Tamma 2', cursive">
-            Create an Issue
-          </Text> */}
           <FormLabel bg="rgba(213, 213, 213, 0.682)" borderRadius={'5px'} mb={5} pl={2} w={123} htmlFor="project">
             Current Project
           </FormLabel>

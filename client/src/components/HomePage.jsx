@@ -1,10 +1,4 @@
-import React, { useState } from 'react'
-
 import { Box, Flex } from '@chakra-ui/react'
-
-import { ResponsiveContainer } from 'recharts'
-// REDUX
-import { Link } from 'react-router-dom'
 
 // REACT ROUTER:
 import HomeBarChart from './HomeBarChart'

@@ -4,19 +4,14 @@ import {
   AlertIcon,
   Box,
   Button,
-  Container,
   Flex,
   FormControl,
   FormLabel,
-  Heading,
   Image,
   Input,
   Select,
-  StackDivider,
   Text,
   Textarea,
-  VStack,
-  Wrap,
 } from '@chakra-ui/react'
 
 // REACT:

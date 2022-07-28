@@ -1,16 +1,9 @@
 import {
   Alert,
-  AlertDialog,
-  AlertDialogBody,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
   AlertIcon,
   Badge,
   Box,
   Button,
-  Divider,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -19,15 +12,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
   Flex,
-  Heading,
   Image,
-  Popover,
-  PopoverArrow,
-  PopoverBody,
-  PopoverCloseButton,
-  PopoverContent,
-  PopoverHeader,
-  PopoverTrigger,
   Text,
   useDisclosure,
 } from '@chakra-ui/react'
@@ -46,19 +31,6 @@ function statusColor(status) {
       return 'yellow'
     case 'Not Yet Started':
       return 'red'
-    default:
-      return ''
-  }
-}
-
-function positionColor(position) {
-  switch (position) {
-    case 'FullStack':
-      return 'Blue'
-    case 'FrontEnd':
-      return 'Red'
-    case 'Backend':
-      return 'Green'
     default:
       return ''
   }
@@ -136,8 +108,6 @@ function ProjectPage() {
                   setError(error.data.error)
                   onOpen()
                   onClose()
-                  // setIsOpen(!isOpen)
-                  // setOnClose(!onClose)
                 })
             }
             aria-label="icon"
@@ -157,9 +127,6 @@ function ProjectPage() {
           fontFamily="Baloo Tamma 2', cursive"
         ></Text>
         <Flex justifyContent={'center'} alignItems="center" mt={2}>
-          {/* <Text pt={2} fontSize={15} mr={2} textAlign="center">
-            Status:
-          </Text> */}
           <Badge
             borderRadius={'20px'}
             my={2}

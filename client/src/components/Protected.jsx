@@ -1,4 +1,3 @@
-import React from 'react'
 import { Navigate } from 'react-router'
 import { useGetCurrentUserQuery } from '../redux/services/user'
 

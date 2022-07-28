@@ -5,7 +5,6 @@ import {
   Button,
   Divider,
   FormLabel,
-  Heading,
   Image,
   Input,
   Modal,
@@ -20,7 +19,7 @@ import {
   useDisclosure,
   Wrap,
 } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useGetAllUserQuery } from '../redux/services/user'
 import { useAssignUserToProjectMutation } from '../redux/services/collab'
 import personIcon from '../imgs/personIcon.png'

@@ -1,5 +1,3 @@
-import { Box } from '@chakra-ui/react'
-import React from 'react'
 import { useGetAllCollabProjectsQuery } from '../redux/services/collab'
 import CollabProject from './CollabProject'
 

@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, Button, Flex, FormControl, FormLabel, Input, Select, Stack } from '@chakra-ui/react'
+import { Alert, AlertIcon, Button, Flex, FormLabel, Input, Select, Stack } from '@chakra-ui/react'
 
 import { useState } from 'react'
 import { useUpdateIssueMutation } from '../redux/services/issues'
