@@ -75,7 +75,7 @@ function ProjectPage() {
 
   return (
     <>
-      <Box bg="white">
+      <Box borderRadius={'5px'} bg="white">
         {error && (
           <Alert status="error">
             <AlertIcon /> {error}
@@ -86,66 +86,98 @@ function ProjectPage() {
             <AlertIcon /> {success}
           </Alert>
         )}
-        <Heading my={2} textAlign={'center'}>
+        <Text my={2} pt={2} fontSize={30} textAlign={'center'}>
           {data?.name.toUpperCase()}
-        </Heading>
-        <Flex justifyContent={'center'} alignItems="center" gap={5}>
-          <Heading>Status:</Heading>
-          <Badge rounded={16} my={3} alignItems={'center'} colorScheme={statusColor(data?.status)} fontSize="1.5em">
+        </Text>
+        <Text
+          fontSize={'17px'}
+          mb={4}
+          mx={10}
+          pl={2}
+          borderBottom="1px"
+          borderColor="lightgray"
+          fontWeight="bold"
+          fontFamily="Baloo Tamma 2', cursive"
+        ></Text>
+        <Text mt={3} size="md" textAlign={'center'} fontSize={15}>
+          Description
+        </Text>
+        <Text fontSize={'22px'} mt={2} mx={5} textAlign="center">
+          {data?.description}
+        </Text>
+        <Flex gap="2" mt="2" justifyContent={'center'}>
+          <Button size="sm" aria-label="icon">
+            <Image width={5} h={5} src={editIcon} alt="" onClick={onOpen} />
+          </Button>
+          <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader>Edit {data?.name}</DrawerHeader>
+              <DrawerBody>
+                <ProjectEdit project={data} />
+              </DrawerBody>
+              <DrawerFooter>
+                <Button variant="outline" mr={3} onClick={onClose}>
+                  Cancel
+                </Button>
+              </DrawerFooter>
+            </DrawerContent>
+          </Drawer>
+          <Button
+            size="sm"
+            onClick={() =>
+              deleteProject(data?.id)
+                .unwrap()
+                .then((data) => {
+                  setSuccess(data.success)
+                })
+                .catch((error) => {
+                  setError(error.data.error)
+                  onOpen()
+                  onClose()
+                  // setIsOpen(!isOpen)
+                  // setOnClose(!onClose)
+                })
+            }
+            aria-label="icon"
+          >
+            <Image width={5} h={5} src={trashIcon} alt="" />
+          </Button>
+        </Flex>
+        <Text
+          fontSize={'17px'}
+          mt={3}
+          mb={2}
+          mx={10}
+          pl={2}
+          borderBottom="1px"
+          borderColor="lightgray"
+          fontWeight="bold"
+          fontFamily="Baloo Tamma 2', cursive"
+        ></Text>
+        <Flex justifyContent={'center'} alignItems="center" mt={2}>
+          {/* <Text pt={2} fontSize={15} mr={2} textAlign="center">
+            Status:
+          </Text> */}
+          <Badge
+            borderRadius={'20px'}
+            my={2}
+            px={4}
+            pt={1}
+            alignItems={'center'}
+            colorScheme={statusColor(data?.status)}
+            fontSize={13}
+          >
             {data?.status}
           </Badge>
           <div></div>
         </Flex>
         <Text textAlign={'center'}>Last Updated: {new Date(data?.updatedAt).toDateString()}</Text>
-        <Text textAlign={'center'}>Issue Opened: {new Date(data?.createdAt).toDateString()}</Text>
-        <Flex flexDir={'column'} alignItems="center" justifyContent="center">
-          <Flex gap="2" mt="2" justifyContent={'center'}>
-            <Button size="sm" aria-label="icon">
-              <Image width={5} h={5} src={editIcon} alt="" onClick={onOpen} />
-            </Button>
-            <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
-              <DrawerOverlay />
-              <DrawerContent>
-                <DrawerCloseButton />
-                <DrawerHeader>Edit {data?.name}</DrawerHeader>
-                <DrawerBody>
-                  <ProjectEdit project={data} />
-                </DrawerBody>
-                <DrawerFooter>
-                  <Button variant="outline" mr={3} onClick={onClose}>
-                    Cancel
-                  </Button>
-                </DrawerFooter>
-              </DrawerContent>
-            </Drawer>
-            <Button
-              size="sm"
-              onClick={() =>
-                deleteProject(data?.id)
-                  .unwrap()
-                  .then((data) => {
-                    setSuccess(data.success)
-                  })
-                  .catch((error) => {
-                    setError(error.data.error)
-                    onOpen()
-                    onClose()
-                    // setIsOpen(!isOpen)
-                    // setOnClose(!onClose)
-                  })
-              }
-              aria-label="icon"
-            >
-              <Image width={5} h={5} src={trashIcon} alt="" />
-            </Button>
-          </Flex>
-          <Heading mt={3} size="md" textDecoration={'underline'} textDecorationColor={'red'} fontSize={'35px'}>
-            Description
-          </Heading>
-          <Text fontSize={'22px'} mt={5} textAlign="center">
-            {data?.description}
-          </Text>
-        </Flex>
+        <Text textAlign={'center'} pb={2}>
+          Issue Opened: {new Date(data?.createdAt).toDateString()}
+        </Text>
+        <Flex flexDir={'column'} alignItems="center" justifyContent="center"></Flex>
       </Box>
     </>
   )

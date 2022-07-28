@@ -51,7 +51,7 @@ function HomeTableRow({ issue }) {
             {issue.description.length > 20 ? issue.description.substring(0, 25) + '...' : issue.description}
           </Anchor>
         </Td>
-        <Td borderBottom="2px">{issue.User.username}</Td>
+        <Td borderBottom="2px">@{issue.User.username}</Td>
         <Td borderBottom="2px">{new Date(issue.createdAt).toDateString()}</Td>
         <Td borderBottom="2px">
           <Flex justifyContent={'flex-end'} gap={3} alignItems="center">

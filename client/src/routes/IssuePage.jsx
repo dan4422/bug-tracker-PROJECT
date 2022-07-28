@@ -71,22 +71,28 @@ function IssuePage() {
             <AlertIcon /> {success}
           </Alert>
         )}
-        <Heading my={2} textAlign={'center'}>
+        <Text my={2} pt={2} fontSize={30} textAlign={'center'}>
           {data?.name.toUpperCase()}
-        </Heading>
-        <Heading size={'sm'} my={2} textAlign={'center'}>
-          Created by: {data?.User.username}
-        </Heading>
-        <Flex justifyContent={'center'} alignItems="center" gap={5}>
-          <Badge rounded={16} my={2} alignItems={'center'} colorScheme={priorityColor(data?.priority)} fontSize="1.5em">
-            {data?.priority}
-          </Badge>
-          <Badge rounded={16} my={2} alignItems={'center'} colorScheme={statusColor(data?.status)} fontSize="1.5em">
-            {data?.status}
-          </Badge>
-        </Flex>
-        <Text textAlign={'center'}>Last Updated: {new Date(data?.updatedAt).toDateString()}</Text>
-        <Text textAlign={'center'}>Issue Opened: {new Date(data?.createdAt).toDateString()}</Text>
+        </Text>
+        <Text size={'sm'} my={2} textAlign={'center'}>
+          Issue posted by {data?.User.username}
+        </Text>
+        <Text
+          fontSize={'17px'}
+          mb={4}
+          mx={10}
+          pl={2}
+          borderBottom="1px"
+          borderColor="lightgray"
+          fontWeight="bold"
+          fontFamily="Baloo Tamma 2', cursive"
+        ></Text>
+        <Text mt={3} size="md" textAlign={'center'} fontSize={15}>
+          Description
+        </Text>
+        <Text fontSize={'22px'} mt={2} mx={5} textAlign="center">
+          {data?.description}
+        </Text>
         <Flex mt={2} justifyContent={'center'} gap={2}>
           <Button size="sm">
             <Image width={5} h={5} src={editIcon} alt="" onClick={onOpen} ref={btnRef} />
@@ -107,13 +113,7 @@ function IssuePage() {
             <Image width={5} h={5} src={trashIcon} alt="" />
           </Button>
         </Flex>
-        <Flex flexDir={'column'} alignItems="center" justifyContent="center">
-          <Heading mt={3} size="md">
-            Description
-          </Heading>
-          <Divider />
-          <Text mt={5}>{data?.description}</Text>
-        </Flex>
+        <Flex flexDir={'column'} alignItems="center" justifyContent="center" mb={3}></Flex>
         <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
           <DrawerOverlay />
           <DrawerContent>
@@ -129,6 +129,44 @@ function IssuePage() {
             </DrawerFooter>
           </DrawerContent>
         </Drawer>
+        <Text
+          fontSize={'17px'}
+          mb={4}
+          mx={10}
+          pl={2}
+          borderBottom="1px"
+          borderColor="lightgray"
+          fontWeight="bold"
+          fontFamily="Baloo Tamma 2', cursive"
+        ></Text>
+        <Flex justifyContent={'center'} alignItems="center" gap={2}>
+          <Badge
+            borderRadius={'20px'}
+            fontSize={13}
+            my={2}
+            px={4}
+            pt={1}
+            alignItems={'center'}
+            colorScheme={priorityColor(data?.priority)}
+          >
+            {data?.priority}
+          </Badge>
+          <Badge
+            borderRadius={'20px'}
+            fontSize={13}
+            my={2}
+            px={4}
+            pt={1}
+            alignItems={'center'}
+            colorScheme={statusColor(data?.status)}
+          >
+            {data?.status}
+          </Badge>
+        </Flex>
+        <Text textAlign={'center'}>Last Updated: {new Date(data?.updatedAt).toDateString()}</Text>
+        <Text textAlign={'center'} pb={2}>
+          Issue Opened: {new Date(data?.createdAt).toDateString()}
+        </Text>
       </Box>
     </>
   )
