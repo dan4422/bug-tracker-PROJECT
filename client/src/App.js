@@ -96,10 +96,17 @@ export default function App() {
   } else {
     return (
       <Box className="App" paddingY="50px" minH="100vh">
-        <Container maxW={'1300px'}>
+        <Container maxW={'1600px'}>
           <Flex gap="5" w="100%" justifyContent={'center'}>
             <PrimaryNav />
-            <Flex flexDirection={'column'} alignItems="center" maxW="full" gap="10px" flexGrow="1">
+            <Flex
+              flexDirection={'column'}
+              alignItems="center"
+              maxW="full"
+              gap="10px"
+              flexGrow="1"
+              w="calc(100% - 220px)"
+            >
               <SiteTitle />
               <Box w="100%" h="100%">
                 <AppRoutes />

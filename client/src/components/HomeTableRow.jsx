@@ -56,7 +56,7 @@ function HomeTableRow({ issue }) {
         <Td borderBottom="2px">
           <Flex justifyContent={'flex-end'} gap={3} alignItems="center">
             <Text>{issue.priority}</Text>
-            <Button size="sm">
+            <Button size="sm" flexShrink={0}>
               <Image width={5} h={5} src={editIcon} alt="" onClick={onOpen} ref={btnRef} />
             </Button>
             <Drawer isOpen={isOpen} placement="right" onClose={onClose} finalFocusRef={btnRef}>
@@ -74,7 +74,11 @@ function HomeTableRow({ issue }) {
                 </DrawerFooter>
               </DrawerContent>
             </Drawer>
-            <Button size="sm" onClick={() => deleteIssue({ projectId: issue.ProjectId, issueId: issue.id })}>
+            <Button
+              flexShrink={0}
+              size="sm"
+              onClick={() => deleteIssue({ projectId: issue.ProjectId, issueId: issue.id })}
+            >
               <Image width={5} h={5} src={trashIcon} alt="" />
             </Button>
           </Flex>
