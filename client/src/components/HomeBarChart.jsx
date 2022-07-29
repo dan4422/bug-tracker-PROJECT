@@ -1,5 +1,4 @@
 import { Heading } from '@chakra-ui/react'
-import React, { useState } from 'react'
 import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { useGetProjectsQuery } from '../redux/services/projects'
 
