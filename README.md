@@ -20,7 +20,9 @@ A bug tracking app that allows users to keep track of issues found in their proj
 **Once users submit their project issues, they can add other users to specific projects to work on**
 ![img!](./Collaborator.png)
 
-
+# Guest User Login Info
+* Email: guest@bugsly.com 
+* Password: squash
 
 # Team Members
 * Gerardo Delao
