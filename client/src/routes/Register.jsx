@@ -7,7 +7,7 @@ import FormRegister from '../components/FormRegister'
 // REGISTER:
 export default function Register() {
   return (
-    <Box className="App" width="100%" objectFit={'fill'}>
+    <Box className="App" width="100%">
       <Box my={10} mx="auto" w="100%" maxW="400px">
         <FormRegister />
       </Box>
