@@ -7,4 +7,5 @@
   --color-b: rgba(187, 181, 15, 0.609);
   background: linear-gradient(to bottom right, var(--color-a), var(--color-b));
   padding: 1px;
+  min-height: 100vh;
 }

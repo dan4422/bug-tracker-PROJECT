@@ -95,7 +95,7 @@ export default function App() {
     return <AppRoutes />
   } else {
     return (
-      <Box className="App" paddingY="50px" minH="100vh">
+      <Box className="App" paddingY="50px">
         <Container maxW={'1600px'}>
           <Flex gap="5" w="100%" justifyContent={'center'}>
             <PrimaryNav />
