@@ -10,7 +10,7 @@ import logo from '../imgs/logoAndShadow.png'
 // LOGIN:
 export default function Login() {
   return (
-    <Box className="App" w="100%" h="100vh">
+    <Box className="App" w="100%">
       <Box my={10} mx="auto" w="95%" maxW="400px">
         <Image m={'0 auto'} width={'80%'} src={logo} alt="" />
         <FormLogin />
