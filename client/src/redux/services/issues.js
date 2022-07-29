@@ -25,14 +25,14 @@ export const issuesApiSlice = mainApi.injectEndpoints({
         method: 'POST',
         body: newIssue,
       }),
-      invalidatesTags: ['Issue'],
+      invalidatesTags: ['Issue', 'Project'],
     }),
     deleteIssue: builder.mutation({
       query: ({ projectId, issueId }) => ({
         url: `/projects/${projectId}/issues/${issueId}`,
         method: 'DELETE',
       }),
-      invalidatesTags: ['Issue'],
+      invalidatesTags: ['Issue', 'Project'],
     }),
     updateIssue: builder.mutation({
       query: ({ projectId, issueId, updatedIssue }) => ({
@@ -40,7 +40,7 @@ export const issuesApiSlice = mainApi.injectEndpoints({
         method: 'PATCH',
         body: updatedIssue,
       }),
-      invalidatesTags: ['Issue'],
+      invalidatesTags: ['Issue', 'Project'],
     }),
   }),
 })
