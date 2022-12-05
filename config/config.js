@@ -7,7 +7,7 @@ module.exports = {
   development: {
     username: process.env.DB_USERNAME || 'postgres',
     password: process.env.DB_PASSWORD || 'Milo072515!',
-    database: process.env.DB_DATABASE || '-',
+    database: process.env.DB_DATABASE || '',
     host: process.env.DB_HOST || 'database-bugsly.cafn11s2pstd.us-east-1.rds.amazonaws.com',
     port: process.env.DB_PORT || 5432,
     dialect: 'postgres',
