@@ -30,7 +30,7 @@
     "connect-session-sequelize": "^7.1.4",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.0.3",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
     "framer-motion": "^6.5.1",
